@@ -1,0 +1,470 @@
+/* =========================================================
+   Минимальный custom CSS поверх Tailwind:
+   только то, что не сделать через utility-классы
+   ========================================================= */
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ========== Scroll-reveal ========== */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.is-visible { opacity: 1; transform: none; }
+.reveal:nth-child(2) { transition-delay: 0.08s; }
+.reveal:nth-child(3) { transition-delay: 0.16s; }
+.reveal:nth-child(4) { transition-delay: 0.24s; }
+.reveal:nth-child(5) { transition-delay: 0.32s; }
+.reveal:nth-child(6) { transition-delay: 0.4s; }
+
+/* ========== Hero / page-hero фон с радиальными градиентами ========== */
+.hero-bg::before {
+  content: "";
+  position: absolute; inset: -10%;
+  z-index: -2;
+  background:
+    radial-gradient(40% 30% at 20% 30%, rgba(43,191,139,0.32), transparent 70%),
+    radial-gradient(36% 28% at 80% 20%, rgba(116,223,187,0.18), transparent 72%),
+    radial-gradient(34% 28% at 70% 80%, rgba(24,103,78,0.40), transparent 70%),
+    linear-gradient(160deg, #0a1f1a 0%, #07251f 50%, #04332a 100%);
+  background-size: 220% 220%;
+  animation: heroShift 22s ease-in-out infinite alternate;
+}
+.hero-bg::after {
+  content: "";
+  position: absolute; inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(22% 18% at 60% 58%, rgba(255,138,51,0.10), transparent 75%),
+    radial-gradient(18% 14% at 32% 76%, rgba(255,168,97,0.06), transparent 75%);
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+.hero-bg-orange::before {
+  content: "";
+  position: absolute; inset: -10%;
+  z-index: -2;
+  background:
+    radial-gradient(40% 30% at 18% 28%, rgba(249,115,22,0.22), transparent 70%),
+    radial-gradient(36% 28% at 82% 22%, rgba(255,168,97,0.14), transparent 72%),
+    radial-gradient(34% 28% at 72% 80%, rgba(43,191,139,0.22), transparent 70%),
+    linear-gradient(160deg, #1a0e07 0%, #20120c 50%, #18221c 100%);
+  background-size: 220% 220%;
+  animation: heroShift 22s ease-in-out infinite alternate;
+}
+
+@keyframes heroShift {
+  0%   { background-position: 0% 0%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 50% 100%; }
+}
+
+/* ========== Floating mockups ========== */
+@keyframes floatA {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+@keyframes floatB {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
+.float-a { animation: floatA 7s ease-in-out infinite; }
+.float-b { animation: floatB 9s ease-in-out infinite; }
+.float-b-slow { animation: floatB 11s ease-in-out infinite; }
+
+/* ========== Scroll hint bounce ========== */
+@keyframes scrollBounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(6px); }
+}
+.scroll-bounce { animation: scrollBounce 2.4s ease-in-out infinite; }
+
+/* ========== Hero swap-word ========== */
+.hero-em { transition: opacity 0.4s ease; }
+.hero-em.is-swapping { opacity: 0; }
+
+/* ========== Text gradients ========== */
+.text-grad-mint {
+  background: linear-gradient(135deg, #74dfbb, #d4f5ea);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.text-grad-orange {
+  background: linear-gradient(135deg, #ffa861, #ffe4d0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.text-grad-price {
+  background: linear-gradient(135deg, #0f1916, #1a8261);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.text-grad-price-white {
+  background: linear-gradient(135deg, #fff, #a8ecd5);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.text-grad-stage {
+  background: linear-gradient(135deg, #46cfa1, #1a8261);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ========== Header glassmorphism ========== */
+.site-header {
+  background: rgba(255,255,255,0.78);
+  backdrop-filter: saturate(160%) blur(16px);
+  -webkit-backdrop-filter: saturate(160%) blur(16px);
+  border-bottom: 1px solid transparent;
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.site-header.is-scrolled {
+  background: rgba(255,255,255,0.92);
+  border-bottom-color: #e6e9e8;
+  box-shadow: 0 6px 20px rgba(15,25,22,0.04);
+}
+
+/* ========== Nav dropdown ========== */
+.nav-group { position: relative; display: inline-flex; }
+.nav-group::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: -8px;
+  right: -8px;
+  height: 14px;
+  pointer-events: none;
+}
+.nav-group:hover::before { pointer-events: auto; }
+.nav-dropdown {
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, -8px);
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+}
+.nav-group:hover .nav-dropdown,
+.nav-group.is-open .nav-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+.nav-chevron { transition: transform 0.3s ease; }
+.nav-group:hover .nav-chevron,
+.nav-group.is-open .nav-chevron { transform: rotate(180deg); }
+
+/* ========== Mobile menu (≤1023px) ========== */
+@media (max-width: 1023.98px) {
+  .site-nav {
+    display: none !important;
+  }
+  #menuToggle {
+    display: grid !important;
+  }
+}
+@media (min-width: 1024px) {
+  #menuToggle {
+    display: none !important;
+  }
+}
+
+body.is-menu-open {
+  overflow: hidden;
+}
+/* Снимаем backdrop-filter с шапки, иначе она становится containing block
+   для fixed-меню — и оверлей привязывается к её 72px-высоте, а не к вьюпорту. */
+body.is-menu-open .site-header {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  background: rgba(255,255,255,0.96) !important;
+  border-bottom: 1px solid #e6e9e8;
+}
+body.is-menu-open .site-nav {
+  display: flex !important;
+  position: fixed;
+  top: 72px;
+  left: 0; right: 0;
+  bottom: 0;
+  background: #fff;
+  padding: 18px 20px 32px;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 4px;
+  border-top: 1px solid #e6e9e8;
+  box-shadow: 0 18px 30px rgba(15,25,22,0.08);
+  z-index: 49;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+body.is-menu-open .site-nav > a {
+  padding: 10px 14px !important;
+  font-size: 15px !important;
+}
+body.is-menu-open .site-nav .nav-group {
+  display: block;
+  width: 100%;
+}
+body.is-menu-open .site-nav .nav-group > button {
+  width: 100%;
+  justify-content: space-between !important;
+  padding: 10px 14px !important;
+  font-size: 15px !important;
+}
+body.is-menu-open .nav-dropdown {
+  position: static !important;
+  width: 100% !important;
+  max-width: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+  box-shadow: none !important;
+  margin: 2px 0 6px !important;
+  border: none !important;
+  background: transparent !important;
+  padding: 0 0 0 14px !important;
+  left: 0 !important;
+  top: auto !important;
+}
+/* В мобильном меню упрощаем dropdown-карточки до простых ссылок */
+body.is-menu-open .nav-dropdown > a {
+  padding: 8px 12px !important;
+  gap: 0 !important;
+  border-radius: 8px;
+}
+body.is-menu-open .nav-dropdown > a > div:first-child {
+  display: none !important;
+}
+body.is-menu-open .nav-dropdown > a > div:last-child > span:last-child {
+  display: none !important;
+}
+body.is-menu-open .nav-dropdown > a > div:last-child > span:first-child {
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: #5a6661 !important;
+}
+
+/* Burger icon swap (close icon injected by JS) */
+#menuToggle { position: relative; }
+#menuToggle .menu-icon-open,
+#menuToggle .menu-icon-close {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#menuToggle .menu-icon-close { display: none; }
+body.is-menu-open #menuToggle .menu-icon-open { display: none; }
+body.is-menu-open #menuToggle .menu-icon-close { display: block; }
+
+/* ========== Roadmap timeline (вертикальная линия) ========== */
+.roadmap-grid { position: relative; }
+.roadmap-grid::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0; bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, #a8ecd5, #d4f5ea);
+  transform: translateX(-50%);
+}
+.roadmap-item::before {
+  content: "";
+  position: absolute;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: #2bbf8b;
+  border: 3px solid #f6f8f7;
+  box-shadow: 0 0 0 2px #a8ecd5;
+  top: 32px;
+}
+.roadmap-item.is-current::before {
+  background: #f97316;
+  box-shadow: 0 0 0 2px #ffc89c;
+}
+.roadmap-item:nth-child(odd)::before  { right: -36px; }
+.roadmap-item:nth-child(even)::before { left:  -36px; }
+@media (max-width: 1079px) {
+  .roadmap-grid::before { left: 22px; }
+  .roadmap-item::before { left: -38px !important; right: auto !important; }
+}
+
+/* ========== Timeline (как купить / сроки внедрения) ========== */
+.timeline-row { position: relative; }
+.timeline-row::before {
+  content: "";
+  position: absolute;
+  top: 32px;
+  left: 6%; right: 6%;
+  height: 2px;
+  background: linear-gradient(90deg, #74dfbb, #2bbf8b, #1a8261);
+  z-index: 0;
+}
+@media (max-width: 1079px) {
+  .timeline-row::before { display: none; }
+}
+
+/* ========== Donut chart ========== */
+.donut {
+  width: 180px; height: 180px;
+  border-radius: 50%;
+  background: conic-gradient(
+    #2bbf8b 0 45%,
+    #74dfbb 45% 72%,
+    #f97316 72% 90%,
+    #e6e9e8 90% 100%
+  );
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+.donut::before {
+  content: "";
+  position: absolute;
+  inset: 26px;
+  background: #fff;
+  border-radius: 50%;
+}
+.donut > * { position: relative; z-index: 1; }
+
+/* ========== Bar chart bars (height animation) ========== */
+.bar {
+  width: 100%;
+  max-width: 36px;
+  border-radius: 8px 8px 4px 4px;
+  margin-top: auto;
+  transition: height 1.2s cubic-bezier(.18,1.2,.5,1);
+}
+.bar-mint   { background: linear-gradient(180deg, #46cfa1, #1fa376); }
+.bar-soft   { background: linear-gradient(180deg, #a8ecd5, #74dfbb); }
+.bar-orange { background: linear-gradient(180deg, #ff8a33, #e05a00); }
+
+/* ========== Module/case appearance animation ========== */
+@keyframes moduleAppear {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+.module-appear { animation: moduleAppear 0.5s ease both; }
+
+/* ========== Stage card large numbers ========== */
+.stage-num {
+  font-size: 86px;
+  line-height: 1;
+  font-weight: 800;
+  background: linear-gradient(135deg, #46cfa1, #1a8261);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: -0.03em;
+}
+@media (max-width: 1079px) { .stage-num { font-size: 64px; } }
+@media (max-width: 719px)  { .stage-num { font-size: 52px; } }
+
+/* ========== FAQ accordion ========== */
+.faq-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+.faq-item.is-open .faq-body { max-height: 320px; }
+.faq-icon { transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease; }
+.faq-item.is-open .faq-icon { background-color: #2bbf8b; color: #fff; transform: rotate(45deg); }
+
+/* ========== Sized SVGs inside dynamic icon wrappers ========== */
+.niche-icon svg { width: 22px; height: 22px; }
+.module-icon svg { width: 26px; height: 26px; }
+
+/* ========== Niche active state checkmark ========== */
+.niche.is-active::after {
+  content: "";
+  position: absolute;
+  top: 10px; right: 10px;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: #2bbf8b url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>") center / 10px no-repeat;
+}
+
+/* ========== Niche/role active state ========== */
+.niche.is-active {
+  border-color: #2bbf8b;
+  background: linear-gradient(160deg, #ecfbf6, #fff);
+  box-shadow: 0 12px 24px rgba(43,191,139,0.16);
+}
+.niche.is-active .niche-icon { background: #2bbf8b; color: #fff; }
+.role.is-active {
+  border-color: #2bbf8b;
+  background: #ecfbf6;
+}
+.role.is-active::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 4px;
+  background: #2bbf8b;
+}
+.role.is-active .role-count { background: #2bbf8b; color: #fff; }
+
+/* ========== Checkmark bullet utility (for big lists) ========== */
+.list-check li {
+  padding-left: 22px;
+  position: relative;
+}
+.list-check li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 7px;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: #d4f5ea url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231a8261' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>") center / 9px no-repeat;
+}
+.list-check-lg li {
+  padding-left: 24px;
+}
+.list-check-lg li::before {
+  width: 16px; height: 16px;
+  background-size: 10px;
+}
+.list-check-white li::before {
+  background-color: rgba(116,223,187,0.22);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2374dfbb' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>");
+}
+.list-check-sq li {
+  padding-left: 0;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.list-check-sq li::before {
+  position: static;
+  flex: 0 0 22px;
+  width: 22px; height: 22px;
+  border-radius: 8px;
+  background-size: 12px;
+  margin-top: 1px;
+}
+
+/* ========== Mockup dots ========== */
+.dot { width: 10px; height: 10px; border-radius: 50%; background: #e0e3e2; }
+.dot-r { background: #ff6f5b; }
+.dot-y { background: #ffbd4a; }
+.dot-g { background: #46cfa1; }
+
+/* ========== Brand mark gradient ========== */
+.brand-mark {
+  background: linear-gradient(135deg, #74dfbb, #1fa376);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.35), 0 6px 14px rgba(43,191,139,0.35);
+}
+
+/* ========== Hide scrollbar but keep scroll ========== */
+.scrollbar-hide { scrollbar-width: none; -ms-overflow-style: none; }
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+
+/* ========== Reduce motion ========== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition-duration: 0s !important; }
+}

@@ -1,0 +1,22 @@
+# Claude Code session settings (local-only)
+.claude/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.bak
+.idea/
+.vscode/
+
+# Node / build artefacts (если появятся)
+node_modules/
+dist/
+.cache/
+
+# Environment / secrets
+.env
+.env.local
+*.pem
+*.key

@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Интеграции — Эвикс</title>
+  <meta name="description" content="Подключение соцсетей и площадок к Эвикс: парсинг конкурентов и трекинг публикаций по основным площадкам." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="assets/js/tw-config.js"></script>
+  <link rel="stylesheet" href="assets/css/custom.css" />
+</head>
+<body class="bg-canvas text-ink font-sans antialiased">
+
+  <header class="site-header fixed inset-x-0 top-0 h-[72px] z-50" id="siteHeader">
+    <div class="max-w-container mx-auto px-6 h-full flex items-center justify-between gap-6">
+      <a href="index.html" class="inline-flex items-center gap-2 text-ink">
+        <span class="brand-mark w-9 h-9 rounded-[10px] grid place-items-center text-white"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C7 3 3 7 3 12s4 9 9 9h6v-3h-6c-3.3 0-6-2.7-6-6s2.7-6 6-6h6V3h-6z"/><rect x="6" y="10.5" width="12" height="3"/></svg></span>
+      </a>
+      <nav class="site-nav flex items-center gap-1" aria-label="Основная навигация">
+        <a href="functions.html" class="px-3.5 py-2.5 rounded-[10px] text-ink-soft text-sm font-medium hover:bg-mint-50 hover:text-mint-800 transition">Функции</a>
+        <div class="nav-group is-current">
+          <button class="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-[10px] bg-mint-100 text-mint-800 text-sm font-semibold transition" type="button" aria-haspopup="menu" aria-expanded="false">О продукте<svg class="nav-chevron w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="nav-dropdown absolute top-[calc(100%+10px)] left-1/2 w-[440px] bg-white border border-line rounded-rxl p-2 shadow-soft-lg z-[60]" role="menu">
+            <a href="implementation.html" class="flex items-start gap-3.5 p-3.5 rounded-rmd hover:bg-mint-50 transition group" role="menuitem"><div class="w-10 h-10 rounded-[11px] bg-mint-50 text-mint-700 grid place-items-center shrink-0 group-hover:bg-mint-500 group-hover:text-white transition"><svg class="w-[19px] h-[19px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91-.78-.79-2.07-.79-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/></svg></div><div class="flex flex-col gap-0.5 min-w-0"><span class="text-sm font-bold text-ink tracking-tight">Внедрение</span><span class="text-[12.5px] text-ink-soft leading-snug">Как встраиваем продукт в работу студии</span></div></a>
+            <a href="training.html" class="flex items-start gap-3.5 p-3.5 rounded-rmd hover:bg-mint-50 transition group" role="menuitem"><div class="w-10 h-10 rounded-[11px] bg-mint-50 text-mint-700 grid place-items-center shrink-0 group-hover:bg-mint-500 group-hover:text-white transition"><svg class="w-[19px] h-[19px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6"/><path d="M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1 4 3 6 3s6-2 6-3v-5"/></svg></div><div class="flex flex-col gap-0.5 min-w-0"><span class="text-sm font-bold text-ink tracking-tight">Обучение</span><span class="text-[12.5px] text-ink-soft leading-snug">Научим команду работать с Эвикс</span></div></a>
+            <a href="integrations.html" class="flex items-start gap-3.5 p-3.5 rounded-rmd hover:bg-mint-50 transition group" role="menuitem"><div class="w-10 h-10 rounded-[11px] bg-mint-50 text-mint-700 grid place-items-center shrink-0 group-hover:bg-mint-500 group-hover:text-white transition"><svg class="w-[19px] h-[19px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="6" rx="1"/><rect x="2" y="14" width="6" height="6" rx="1"/><rect x="16" y="14" width="6" height="6" rx="1"/><path d="M12 8v3a2 2 0 0 0 2 2h3"/><path d="M12 11H8a2 2 0 0 0-2 2v1"/></svg></div><div class="flex flex-col gap-0.5 min-w-0"><span class="text-sm font-bold text-ink tracking-tight">Интеграции</span><span class="text-[12.5px] text-ink-soft leading-snug">Подключение соцсетей и площадок</span></div></a>
+          </div>
+        </div>
+        <a href="pricing.html" class="px-3.5 py-2.5 rounded-[10px] text-ink-soft text-sm font-medium hover:bg-mint-50 hover:text-mint-800 transition">Тарифы</a>
+        <a href="clients.html" class="px-3.5 py-2.5 rounded-[10px] text-ink-soft text-sm font-medium hover:bg-mint-50 hover:text-mint-800 transition">Клиенты</a>
+        <a href="about.html" class="px-3.5 py-2.5 rounded-[10px] text-ink-soft text-sm font-medium hover:bg-mint-50 hover:text-mint-800 transition">О компании</a>
+        <a href="blog.html" class="px-3.5 py-2.5 rounded-[10px] text-ink-soft text-sm font-medium hover:bg-mint-50 hover:text-mint-800 transition">Блог</a>
+        <div class="nav-group">
+          <button class="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-[10px] text-ink-soft text-sm font-medium hover:bg-mint-50 hover:text-mint-800 transition" type="button" aria-haspopup="menu" aria-expanded="false">Поддержка<svg class="nav-chevron w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="nav-dropdown absolute top-[calc(100%+10px)] left-1/2 w-[400px] bg-white border border-line rounded-rxl p-2 shadow-soft-lg z-[60]" role="menu">
+            <a href="knowledge-base.html" class="flex items-start gap-3.5 p-3.5 rounded-rmd hover:bg-mint-50 transition group" role="menuitem"><div class="w-10 h-10 rounded-[11px] bg-mint-50 text-mint-700 grid place-items-center shrink-0 group-hover:bg-mint-500 group-hover:text-white transition"><svg class="w-[19px] h-[19px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div><div class="flex flex-col gap-0.5 min-w-0"><span class="text-sm font-bold text-ink tracking-tight">База знаний</span><span class="text-[12.5px] text-ink-soft leading-snug">Гайды по модулям и сценариям</span></div></a>
+            <a href="faq.html" class="flex items-start gap-3.5 p-3.5 rounded-rmd hover:bg-mint-50 transition group" role="menuitem"><div class="w-10 h-10 rounded-[11px] bg-mint-50 text-mint-700 grid place-items-center shrink-0 group-hover:bg-mint-500 group-hover:text-white transition"><svg class="w-[19px] h-[19px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div><div class="flex flex-col gap-0.5 min-w-0"><span class="text-sm font-bold text-ink tracking-tight">Частые вопросы</span><span class="text-[12.5px] text-ink-soft leading-snug">FAQ по продукту и тарифам</span></div></a>
+            <a href="contacts.html" class="flex items-start gap-3.5 p-3.5 rounded-rmd hover:bg-mint-50 transition group" role="menuitem"><div class="w-10 h-10 rounded-[11px] bg-mint-50 text-mint-700 grid place-items-center shrink-0 group-hover:bg-mint-500 group-hover:text-white transition"><svg class="w-[19px] h-[19px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><div class="flex flex-col gap-0.5 min-w-0"><span class="text-sm font-bold text-ink tracking-tight">Контакты</span><span class="text-[12.5px] text-ink-soft leading-snug">Связаться с командой</span></div></a>
+          </div>
+        </div>
+      </nav>
+      <div class="flex items-center gap-2.5">
+        <a href="#contact" class="hidden md:inline-flex items-center gap-1.5 h-11 px-4 rounded-rmd border border-line bg-white text-sm font-semibold text-ink-soft hover:bg-mint-50 hover:border-mint-300 hover:text-mint-700 transition">Запросить демо<svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg></a>
+        <button class="hidden max-lg:grid w-[42px] h-[42px] rounded-rmd border border-line bg-white text-ink place-items-center" type="button" aria-label="Меню" id="menuToggle">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero-bg relative pt-[152px] pb-20 bg-dark text-white isolate overflow-hidden">
+    <div class="max-w-container mx-auto px-6">
+      <div class="flex flex-col items-center text-center gap-6 max-w-[820px] mx-auto">
+        <div class="inline-flex items-center gap-2 pl-2 pr-3.5 py-1.5 rounded-full bg-mint-300/10 border border-mint-300/20 text-mint-300 text-[12.5px] font-semibold">
+          <span class="w-[22px] h-[22px] rounded-full bg-mint-500 grid place-items-center text-[#04241a] text-xs font-extrabold">↔</span>
+          Интеграции
+        </div>
+        <h1 class="text-[clamp(32px,5vw,52px)] leading-[1.06] font-extrabold tracking-tight">
+          Подключение соцсетей<br/>и <em class="not-italic text-grad-mint">площадок</em>
+        </h1>
+        <p class="text-[clamp(15px,1.6vw,17px)] text-white/75 leading-relaxed">
+          Все возможности продукта по работе со сторонними площадками — для парсинга конкурентов, сбора виральных роликов и трекинга публикаций.
+        </p>
+        <div class="flex gap-3 flex-wrap justify-center">
+          <a href="#capabilities" class="inline-flex items-center justify-center gap-2 h-14 px-7 rounded-rmd bg-orange-500 text-white text-[15px] font-semibold shadow-orange hover:bg-orange-600 hover:shadow-orange-hover hover:-translate-y-0.5 transition">Посмотреть возможности</a>
+          <a href="#categories" class="inline-flex items-center justify-center gap-2 h-14 px-7 rounded-rmd bg-white/10 backdrop-blur-sm text-white border border-white/20 text-[15px] font-semibold hover:bg-white/20 hover:border-white/30 transition">
+            Категории и примеры
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ВСЕ РАЗВЁРНУТЫЕ ВОЗМОЖНОСТИ -->
+  <section class="py-24" id="capabilities">
+    <div class="max-w-container mx-auto px-6">
+      <div class="reveal flex flex-col items-center text-center gap-3.5 mb-14">
+        <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-mint-100 text-mint-800 text-xs font-bold tracking-[0.14em] uppercase">Возможности интеграции</span>
+        <h2 class="text-[clamp(28px,4vw,44px)] font-extrabold tracking-tight leading-[1.1] max-w-[780px]">Что Эвикс умеет делать с внешними ресурсами</h2>
+        <p class="text-[clamp(15px,1.6vw,17px)] text-ink-soft max-w-[640px]">Все возможности продукта по работе со сторонними площадками — в одном списке.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-[1080px] mx-auto">
+        <article class="reveal bg-white border border-line rounded-rxl p-7 flex flex-col gap-3.5">
+          <div class="w-12 h-12 rounded-rmd bg-mint-50 text-mint-700 grid place-items-center">
+            <svg class="w-[22px] h-[22px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          </div>
+          <h3 class="text-lg font-bold tracking-tight">Парсинг конкурентов</h3>
+          <p class="text-[14px] text-ink-soft leading-relaxed">Скрап аккаунтов и роликов конкурентов с фильтрами периода, охватов и просмотров. Вручную и через автопоиск по нише.</p>
+          <ul class="list-none m-0 p-0 flex flex-col gap-2 list-check text-[13.5px]">
+            <li>Автопоиск по нише и аудитории</li>
+            <li>Ручное и массовое добавление</li>
+            <li>Фильтры периода и метрик</li>
+          </ul>
+        </article>
+
+        <article class="reveal bg-white border border-line rounded-rxl p-7 flex flex-col gap-3.5">
+          <div class="w-12 h-12 rounded-rmd bg-mint-50 text-mint-700 grid place-items-center">
+            <svg class="w-[22px] h-[22px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>
+          </div>
+          <h3 class="text-lg font-bold tracking-tight">Сбор виральных роликов</h3>
+          <p class="text-[14px] text-ink-soft leading-relaxed">Сетка «залетевших» видео по площадкам — с метриками, превью и возможностью добавить в избранное команды.</p>
+          <ul class="list-none m-0 p-0 flex flex-col gap-2 list-check text-[13.5px]">
+            <li>Топ по охватам</li>
+            <li>Превью и метрики</li>
+            <li>Перенос в библиотеку форматов</li>
+          </ul>
+        </article>
+
+        <article class="reveal bg-white border border-line rounded-rxl p-7 flex flex-col gap-3.5">
+          <div class="w-12 h-12 rounded-rmd bg-mint-50 text-mint-700 grid place-items-center">
+            <svg class="w-[22px] h-[22px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </div>
+          <h3 class="text-lg font-bold tracking-tight">Анализ виральных роликов</h3>
+          <p class="text-[14px] text-ink-soft leading-relaxed">Транскрибация, таймлайн, разметка по хуку, удержанию и триггерам. На выходе — шаблон для своего сценария.</p>
+          <ul class="list-none m-0 p-0 flex flex-col gap-2 list-check text-[13.5px]">
+            <li>Транскрибация ролика</li>
+            <li>Разбор по хуку и триггерам</li>
+            <li>Готовый шаблон сценария</li>
+          </ul>
+        </article>
+
+        <article class="reveal bg-white border border-line rounded-rxl p-7 flex flex-col gap-3.5">
+          <div class="w-12 h-12 rounded-rmd bg-mint-50 text-mint-700 grid place-items-center">
+            <svg class="w-[22px] h-[22px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+          </div>
+          <h3 class="text-lg font-bold tracking-tight">Трекинг публикаций</h3>
+          <p class="text-[14px] text-ink-soft leading-relaxed">Учёт выложенных роликов по площадкам с превью, описанием и метриками. Привязка к смонтированному ролику в кабинете.</p>
+          <ul class="list-none m-0 p-0 flex flex-col gap-2 list-check text-[13.5px]">
+            <li>Карточка публикации с превью</li>
+            <li>Просмотры и лайки</li>
+            <li>Привязка к сценарию и обложке</li>
+          </ul>
+        </article>
+
+        <article class="reveal bg-white border border-line rounded-rxl p-7 flex flex-col gap-3.5">
+          <div class="w-12 h-12 rounded-rmd bg-mint-50 text-mint-700 grid place-items-center">
+            <svg class="w-[22px] h-[22px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+          </div>
+          <h3 class="text-lg font-bold tracking-tight">Подключение аккаунтов</h3>
+          <p class="text-[14px] text-ink-soft leading-relaxed">Привязка соцсетей клиента в профиле и в библиотеке данных — управляется владельцем и менеджерами.</p>
+          <ul class="list-none m-0 p-0 flex flex-col gap-2 list-check text-[13.5px]">
+            <li>Привязка в профиле клиента</li>
+            <li>Видна команде с правом доступа</li>
+            <li>Используется в публикациях и парсинге</li>
+          </ul>
+        </article>
+
+        <article class="reveal bg-white border border-line rounded-rxl p-7 flex flex-col gap-3.5">
+          <div class="w-12 h-12 rounded-rmd bg-mint-50 text-mint-700 grid place-items-center">
+            <svg class="w-[22px] h-[22px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          </div>
+          <h3 class="text-lg font-bold tracking-tight">Перенос форматов в библиотеку</h3>
+          <p class="text-[14px] text-ink-soft leading-relaxed">Понравившийся виральный формат из любой площадки добавляется в базу визуальных форматов и применяется в сценариях.</p>
+          <ul class="list-none m-0 p-0 flex flex-col gap-2 list-check text-[13.5px]">
+            <li>Один клик из ленты конкурентов</li>
+            <li>Сохранение под клиента</li>
+            <li>Использование при создании сценария</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ВЫБОРКИ КАТЕГОРИЙ И ПРИМЕРЫ -->
+  <section class="py-24 bg-gradient-to-b from-mint-50 to-canvas" id="categories">
+    <div class="max-w-container mx-auto px-6">
+      <div class="reveal flex flex-col items-center text-center gap-3.5 mb-14">
+        <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-mint-100 text-mint-800 text-xs font-bold tracking-[0.14em] uppercase">Категории и примеры</span>
+        <h2 class="text-[clamp(28px,4vw,44px)] font-extrabold tracking-tight leading-[1.1] max-w-[780px]">Категории площадок и примеры подключений</h2>
+        <p class="text-[clamp(15px,1.6vw,17px)] text-ink-soft max-w-[640px]">Каждая площадка покрывает свой набор задач: где-то — только парсинг конкурентов, где-то — и парсинг, и трекинг публикаций.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-7 max-w-[1080px] mx-auto">
+        <!-- Категория 1: Видео-площадки с трекингом -->
+        <article class="reveal bg-white border border-line rounded-rxl p-7 flex flex-col gap-4">
+          <header class="flex items-center gap-3 pb-4 border-b border-line">
+            <div class="w-11 h-11 rounded-rmd bg-mint-500 text-white grid place-items-center">
+              <svg class="w-[20px] h-[20px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+            </div>
+            <div>
+              <h3 class="text-[17px] font-extrabold tracking-tight">Видео-площадки с трекингом</h3>
+              <div class="text-[12px] text-ink-mute mt-0.5">Парсинг + публикации</div>
+            </div>
+          </header>
+          <p class="text-[13.5px] text-ink-soft leading-relaxed">Площадки, по которым работает и анализ конкурентов, и учёт собственных публикаций с метриками.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-mint-50 text-mint-800 text-[12.5px] font-semibold">Instagram</span>
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-mint-50 text-mint-800 text-[12.5px] font-semibold">TikTok</span>
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-mint-50 text-mint-800 text-[12.5px] font-semibold">YouTube</span>
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-mint-50 text-mint-800 text-[12.5px] font-semibold">ВКонтакте</span>
+          </div>
+          <div class="text-[12.5px] text-ink-mute leading-relaxed pt-2 border-t border-line">
+            <strong class="text-ink">Пример:</strong> добавили публикацию ролика в Instagram → в карточке видно превью, дату, описание и метрики. Параллельно конкуренты в этой же сети парсятся в раздел «Залетевшие видео».
+          </div>
+        </article>
+
+        <!-- Категория 2: Дополнительные форматы видео -->
+        <article class="reveal bg-white border border-line rounded-rxl p-7 flex flex-col gap-4">
+          <header class="flex items-center gap-3 pb-4 border-b border-line">
+            <div class="w-11 h-11 rounded-rmd bg-mint-500 text-white grid place-items-center">
+              <svg class="w-[20px] h-[20px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12l5-9 5 5 5-3 5 7-5 8H7z"/></svg>
+            </div>
+            <div>
+              <h3 class="text-[17px] font-extrabold tracking-tight">Короткие форматы видео</h3>
+              <div class="text-[12px] text-ink-mute mt-0.5">Парсинг конкурентов</div>
+            </div>
+          </header>
+          <p class="text-[13.5px] text-ink-soft leading-relaxed">Дополнительные форматы для глубокого анализа конкурентов — там, где живёт большой пул виральных роликов.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-mint-50 text-mint-800 text-[12.5px] font-semibold">YouTube Shorts</span>
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-mint-50 text-mint-800 text-[12.5px] font-semibold">VK Клипы</span>
+          </div>
+          <div class="text-[12.5px] text-ink-mute leading-relaxed pt-2 border-t border-line">
+            <strong class="text-ink">Пример:</strong> в автопоиске выбрали YouTube Shorts и VK Клипы — Эвикс предлагает аккаунты по ER и охватам, дальше парсятся залетевшие ролики с разбором.
+          </div>
+        </article>
+
+        <!-- Категория 3: Социальные сети без коротких видео -->
+        <article class="reveal bg-white border border-line rounded-rxl p-7 flex flex-col gap-4">
+          <header class="flex items-center gap-3 pb-4 border-b border-line">
+            <div class="w-11 h-11 rounded-rmd bg-mint-500 text-white grid place-items-center">
+              <svg class="w-[20px] h-[20px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a13 13 0 0 1 0 18"/><path d="M12 3a13 13 0 0 0 0 18"/></svg>
+            </div>
+            <div>
+              <h3 class="text-[17px] font-extrabold tracking-tight">Контент-площадки</h3>
+              <div class="text-[12px] text-ink-mute mt-0.5">Парсинг и автопоиск</div>
+            </div>
+          </header>
+          <p class="text-[13.5px] text-ink-soft leading-relaxed">Площадки с разнородным контентом, на которых нас интересуют аккаунты и ролики ниши.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-mint-50 text-mint-800 text-[12.5px] font-semibold">Facebook</span>
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-mint-50 text-mint-800 text-[12.5px] font-semibold">Telegram</span>
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-mint-50 text-mint-800 text-[12.5px] font-semibold">Дзен</span>
+          </div>
+          <div class="text-[12.5px] text-ink-mute leading-relaxed pt-2 border-t border-line">
+            <strong class="text-ink">Пример:</strong> запустили автопоиск с регионом «Россия» и охватами от 10K — на выходе список Telegram-каналов и Дзен-блогеров с релевантной аудиторией.
+          </div>
+        </article>
+
+        <!-- Категория 4: Прочие -->
+        <article class="reveal bg-white border border-line rounded-rxl p-7 flex flex-col gap-4">
+          <header class="flex items-center gap-3 pb-4 border-b border-line">
+            <div class="w-11 h-11 rounded-rmd bg-mint-500 text-white grid place-items-center">
+              <svg class="w-[20px] h-[20px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+            </div>
+            <div>
+              <h3 class="text-[17px] font-extrabold tracking-tight">Прочие площадки для публикаций</h3>
+              <div class="text-[12px] text-ink-mute mt-0.5">Трекинг публикаций</div>
+            </div>
+          </header>
+          <p class="text-[13.5px] text-ink-soft leading-relaxed">Если выложили ролик не в основной соцсети — добавьте публикацию в категорию «Прочее» и ведите по ней учёт вручную.</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-mint-50 text-mint-800 text-[12.5px] font-semibold">Прочее</span>
+          </div>
+          <div class="text-[12.5px] text-ink-mute leading-relaxed pt-2 border-t border-line">
+            <strong class="text-ink">Пример:</strong> опубликовали ролик на нишевом сайте или в новой соцсети — заводите карточку в «Прочее» с превью и метриками вручную.
+          </div>
+        </article>
+      </div>
+
+      <div class="reveal mt-12 max-w-[820px] mx-auto bg-white border border-line rounded-rxl p-6">
+        <p class="text-sm text-ink-soft leading-relaxed"><strong class="text-ink">Важно:</strong> Эвикс не публикует ролики автоматически. Готовый ролик вы выкладываете в соцсеть сами, а в кабинете ведёте учёт публикаций — это упрощает работу команды и убирает риски с авто-постингом.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ФОРМА ОБРАТНОЙ СВЯЗИ -->
+  <section class="hero-bg py-24 relative bg-dark text-white isolate overflow-hidden" id="contact">
+    <div class="max-w-container mx-auto px-6">
+      <div class="grid lg:grid-cols-[1fr_1.1fr] gap-14 items-center">
+        <div class="reveal">
+          <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-mint-300/20 text-mint-300 text-xs font-bold tracking-[0.14em] uppercase">Запросить подключение</span>
+          <h2 class="text-[clamp(28px,4vw,40px)] font-extrabold tracking-tight leading-[1.1] mt-4.5 mb-4.5">Расскажем, как подключить ваши соцсети</h2>
+          <p class="text-base text-white/75 leading-relaxed max-w-[460px] mb-7">Опишите, какие площадки нужно завести — настроим парсинг и трекинг публикаций под ваш кейс.</p>
+        </div>
+
+        <div class="reveal bg-white text-ink rounded-r2xl p-9 shadow-mockup">
+          <h3 class="text-[22px] font-bold tracking-tight mb-2">Заявка по интеграциям</h3>
+          <p class="text-[13.5px] text-ink-soft mb-5">Свяжемся в ближайшее время.</p>
+          <form class="flex flex-col gap-3.5" novalidate>
+            <div class="grid grid-cols-2 gap-3">
+              <input class="h-[50px] px-4 border border-line bg-white rounded-rmd text-[15px] hover:border-line-strong focus:border-mint-400 focus:outline-none focus:ring-4 focus:ring-mint-500/20 transition" type="text" name="name" placeholder="Имя" required />
+              <input class="h-[50px] px-4 border border-line bg-white rounded-rmd text-[15px] hover:border-line-strong focus:border-mint-400 focus:outline-none focus:ring-4 focus:ring-mint-500/20 transition" type="text" name="company" placeholder="Студия / компания" />
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+              <input class="h-[50px] px-4 border border-line bg-white rounded-rmd text-[15px] hover:border-line-strong focus:border-mint-400 focus:outline-none focus:ring-4 focus:ring-mint-500/20 transition" type="email" name="email" placeholder="E-mail" required />
+              <input class="h-[50px] px-4 border border-line bg-white rounded-rmd text-[15px] hover:border-line-strong focus:border-mint-400 focus:outline-none focus:ring-4 focus:ring-mint-500/20 transition" type="tel" name="phone" placeholder="Телефон" />
+            </div>
+            <textarea class="min-h-[110px] px-4 py-3.5 border border-line bg-white rounded-rmd text-[15px] hover:border-line-strong focus:border-mint-400 focus:outline-none focus:ring-4 focus:ring-mint-500/20 transition resize-y leading-relaxed" name="message" placeholder="Площадки, аккаунты клиентов, что нужно — парсинг, трекинг или оба сразу…"></textarea>
+            <button type="submit" class="inline-flex items-center justify-center gap-2 h-14 w-full rounded-rmd bg-orange-500 text-white text-[15px] font-semibold shadow-orange hover:bg-orange-600 hover:shadow-orange-hover hover:-translate-y-0.5 transition">Отправить заявку</button>
+            <p class="text-[11.5px] text-ink-mute text-center">Нажимая кнопку, вы соглашаетесь с политикой обработки персональных данных.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-[#0a1410] text-white/70 pt-16 pb-7">
+    <div class="max-w-container mx-auto px-6">
+      <div class="grid md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr] gap-10 pb-10 border-b border-white/10">
+        <div>
+          <div class="inline-flex items-center gap-2.5 text-white font-extrabold text-lg tracking-[0.2em] uppercase mb-3.5">
+            <span class="brand-mark w-8 h-8 rounded-[9px] grid place-items-center text-white"><svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C7 3 3 7 3 12s4 9 9 9h6v-3h-6c-3.3 0-6-2.7-6-6s2.7-6 6-6h6V3h-6z"/><rect x="6" y="10.5" width="12" height="3"/></svg></span>
+          </div>
+          <p class="text-sm text-white/60 leading-relaxed max-w-[340px] mb-4.5">AI-студия контента: сценарии, аватары, монтаж и трекинг публикаций в одном кабинете.</p>
+        </div>
+        <div>
+          <div class="text-xs font-bold text-white uppercase tracking-[0.14em] mb-4">Продукт</div>
+          <ul class="list-none m-0 p-0 flex flex-col gap-2.5">
+            <li><a href="functions.html" class="text-sm text-white/70 hover:text-mint-300 transition">Функции</a></li>
+            <li><a href="pricing.html" class="text-sm text-white/70 hover:text-mint-300 transition">Тарифы</a></li>
+            <li><a href="clients.html" class="text-sm text-white/70 hover:text-mint-300 transition">Клиенты</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="text-xs font-bold text-white uppercase tracking-[0.14em] mb-4">О продукте</div>
+          <ul class="list-none m-0 p-0 flex flex-col gap-2.5">
+            <li><a href="implementation.html" class="text-sm text-white/70 hover:text-mint-300 transition">Внедрение</a></li>
+            <li><a href="training.html" class="text-sm text-white/70 hover:text-mint-300 transition">Обучение</a></li>
+            <li><a href="integrations.html" class="text-sm text-white/70 hover:text-mint-300 transition">Интеграции</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="text-xs font-bold text-white uppercase tracking-[0.14em] mb-4">Поддержка</div>
+          <ul class="list-none m-0 p-0 flex flex-col gap-2.5">
+            <li><a href="knowledge-base.html" class="text-sm text-white/70 hover:text-mint-300 transition">База знаний</a></li>
+            <li><a href="faq.html" class="text-sm text-white/70 hover:text-mint-300 transition">FAQ</a></li>
+            <li><a href="contacts.html" class="text-sm text-white/70 hover:text-mint-300 transition">Контакты</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="pt-6 flex justify-between flex-wrap gap-3 text-[12.5px] text-white/50">
+        <span>© 2026 Эвикс. Все права защищены.</span>
+        <div class="flex gap-4.5">
+          <a href="#" class="text-white/50 hover:text-mint-300 transition">Политика конфиденциальности</a>
+          <a href="#" class="text-white/50 hover:text-mint-300 transition">Публичная оферта</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/landing.js"></script>
+</body>
+</html>

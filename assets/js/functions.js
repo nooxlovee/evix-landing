@@ -1,0 +1,673 @@
+(function () {
+  'use strict';
+
+  // ============ SVG icons (только реальные модули) ============
+  const ICON = {
+    // Niches
+    smm: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>',
+    studio: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>',
+    blogger: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg>',
+    marketer: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>',
+
+    // Modules
+    dashboard: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>',
+    clients: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>',
+    library: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h6v16H4zM14 4h6v10h-6zM14 16h6v4h-6z"/></svg>',
+    formats: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>',
+    scripts: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h11l5 5v11a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="M14 4v6h6"/><path d="M7 14h8M7 18h6"/></svg>',
+    scriptsAnalysis: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-5"/></svg>',
+    covers: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>',
+    avatar: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg>',
+    edits: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>',
+    publish: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>',
+    competitors: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>',
+    transcribe: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>',
+    core: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg>',
+    favorites: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2"/></svg>',
+    quiz: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>',
+    team: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/><circle cx="17" cy="7" r="3"/><path d="M21 21v-2a3 3 0 0 0-3-3"/></svg>',
+  };
+
+  // ============ Каталог модулей — только реально реализованные ============
+  const MODULES = {
+    dashboard: {
+      icon: ICON.dashboard,
+      base: { title: 'Дашборд студии', badge: 'Базово' },
+      perNiche: {
+        smm: {
+          desc: 'Сводка по агентству: статусы сценариев, монтажа и публикаций по всем клиентам в одном окне.',
+          list: ['KPI: всего сценариев, готово, в монтаже, черновики', 'Последние сценарии команды', 'Активные задачи монтажа', 'Аналитика по сценариям и публикациям'],
+        },
+        studio: {
+          desc: 'Сводка по производственному циклу: что в работе у сценариста, монтажёра, паблишера.',
+          list: ['KPI по проектам', 'Очередь монтажа', 'Готовые ролики и сданные клиенту', 'Активность за 30 дней'],
+        },
+        blogger: {
+          desc: 'Личная сводка: что в работе, что готово, что опубликовано.',
+          list: ['Активные сценарии', 'Статусы монтажа', 'Последние публикации и метрики', 'Что нужно сделать сегодня'],
+        },
+        marketer: {
+          desc: 'Сводка контент-активности бренда: сценарии, монтаж, публикации.',
+          list: ['KPI команды', 'Активные сценарии и публикации', 'Последние посты и охваты', 'Срочные задачи'],
+        },
+      },
+    },
+
+    clients: {
+      icon: ICON.clients,
+      base: { title: 'Клиенты + Workspace', badge: 'Базово' },
+      perNiche: {
+        smm: {
+          desc: 'Реестр клиентов агентства со статусами (активен / пауза / просрочка), пакетом Free/Pro и командой.',
+          list: ['Статусы клиента: активен / на паузе / просрочка', 'Пакеты Free / Pro (на Pro — ручной монтаж)', 'Команда привязывается к клиенту', 'Workspace с разделами под клиента'],
+        },
+        studio: {
+          title: 'Клиенты-заказчики',
+          desc: 'Каждый клиент-заказчик со своими брифами, сценариями, монтажами и публикациями.',
+          list: ['Карточка клиента-заказчика', 'Привязка команды к проекту', 'Workspace с публикациями и монтажом', 'Статусы и история работ'],
+        },
+        blogger: {
+          title: 'Контакты партнёров',
+          desc: 'Учёт партнёров и рекламодателей — отдельный Workspace под каждую коллаборацию.',
+          list: ['Карточка партнёра', 'История коллабораций', 'Статус интеграции', 'Workspace проекта'],
+        },
+        marketer: {
+          title: 'Workspace бренда',
+          desc: 'Один кабинет под бренд: команда, сценарии, монтаж, публикации.',
+          list: ['Карточка бренда / линейки', 'Команда контент-производства', 'Все разделы внутри Workspace', 'История активности'],
+        },
+      },
+    },
+
+    library: {
+      icon: ICON.library,
+      base: { title: 'Библиотека ядер', badge: 'AI' },
+      perNiche: {
+        smm: {
+          desc: 'У каждого клиента — свои 5 ядер: ToV, маркетинг-, продукт-, аккаунт- и ниша-анализ.',
+          list: ['ToV клиента — фирменный голос', 'Маркетинг-анализ: аудитория, боли, триггеры', 'Продукт-анализ: УТП, цены, преимущества', 'Аккаунт-ядро: позиционирование в соцсетях', 'Ниша-ядро: общие правила сегмента'],
+        },
+        studio: {
+          desc: '5 ядер на каждого клиента-заказчика — основа для брифа и сценариста.',
+          list: ['ToV клиента', 'Маркетинг- и продукт-анализ', 'Аккаунт- и ниша-ядра', 'Используется сценаристом и продюсером'],
+        },
+        blogger: {
+          desc: 'Ваш собственный ToV + маркетинг- и продукт-анализ как у бренда.',
+          list: ['ToV в вашем стиле речи', 'Маркетинг-анализ вашей аудитории', 'Продукт-анализ вашей экспертизы', 'Аккаунт- и ниша-ядра'],
+        },
+        marketer: {
+          desc: '5 ядер бренда — единый источник правды для всей контент-команды.',
+          list: ['Брендовый ToV', 'Маркетинг-анализ ICP', 'Продукт-анализ линейки', 'Аккаунт- и ниша-ядра', 'Применяется AI на каждом шаге'],
+        },
+      },
+    },
+
+    formats: {
+      icon: ICON.formats,
+      base: { title: 'Визуальные форматы', badge: 'Контент' },
+      perNiche: {
+        smm: {
+          desc: 'Шаблоны Эвикс + собственные форматы под каждого клиента.',
+          list: ['Готовая база шаблонов Эвикс', 'Свои форматы клиента', 'Reels 9:16, Shorts 9:16, YouTube 16:9', 'Квадрат 1:1'],
+        },
+        studio: {
+          desc: 'Каталог форматов под все типы заказа: рекламные, обучающие, имиджевые.',
+          list: ['Шаблоны студии', 'Форматы под бриф клиента', 'Все размеры экрана', 'Привязка к шаблонам монтажа'],
+        },
+        blogger: {
+          desc: 'Свой фирменный визуальный стиль под рилсы и YouTube.',
+          list: ['Шаблоны Эвикс', 'Ваши собственные форматы', 'Reels / Shorts / YouTube', 'Применяется в обложках'],
+        },
+        marketer: {
+          desc: 'Брендбук визуальных форматов: все размеры и типы постов.',
+          list: ['Шаблоны бренда', 'Свои форматы', 'Все размеры (9:16, 1:1, 16:9)', 'Единый стиль для команд'],
+        },
+      },
+    },
+
+    scripts: {
+      icon: ICON.scripts,
+      base: { title: 'AI-сценарии', badge: 'AI' },
+      perNiche: {
+        smm: {
+          desc: 'Мастер 5 шагов: тип → сценарий → аватар → результат → монтаж. AI собирает текст под ToV клиента.',
+          list: ['8 статусов: черновик / на согласовании / отклонён / сгенерировано / в монтаже / готово / опубликовано', 'Привязка к аватару и голосу', 'Готовое видео из медиа-библиотеки', 'Передача в монтаж'],
+        },
+        studio: {
+          desc: 'Сценарий по брифу клиента с возможностью адаптации перед съёмкой.',
+          list: ['Структура сценария по типам', 'Привязка к брифу', 'Статусы согласования', 'Передача в монтаж'],
+        },
+        blogger: {
+          desc: 'Сценарий в вашем голосе через привязку к личному ToV.',
+          list: ['Сценарий под ваш ToV', 'Структура хук + тело + CTA', '8 статусов прохождения', 'От черновика до публикации'],
+        },
+        marketer: {
+          desc: 'Сценарии под бренд с проверкой соответствия ядрам и стандартам.',
+          list: ['Сценарий под ToV бренда', 'Структура по типу контента', '8 статусов с согласованием', 'Привязка к продуктовой линейке'],
+        },
+      },
+    },
+
+    scriptsAnalysis: {
+      icon: ICON.scriptsAnalysis,
+      base: { title: 'AI-анализ сценария', badge: 'AI' },
+      perNiche: {
+        smm: {
+          desc: '10 критериев анализа: общий балл, хук + удержание, соответствие ToV клиента, ТЗ монтажа, рекомендации.',
+          list: ['Общий балл сценария', 'Хук и удержание', 'Соответствие ToV клиента', 'Сравнение с конкурентом', 'ТЗ монтажу: сцены и переходы', 'Рекомендации по доработке'],
+        },
+        studio: {
+          desc: 'Анализ сценария до запуска в съёмку: что усилить, на что обратить внимание.',
+          list: ['Балл и оценка по критериям', 'Хук, удержание, CTA', 'ТЗ для монтажёра', 'Рекомендации для съёмки'],
+        },
+        blogger: {
+          desc: 'Проверка сценария до съёмки: насколько сильный хук, держит ли удержание, ваш ли голос.',
+          list: ['Общий балл', 'Соответствие вашему ToV', 'Сила хука и удержание', 'ТЗ монтажу', 'Что улучшить'],
+        },
+        marketer: {
+          desc: 'Контроль качества сценария до публикации: соответствие бренду и стандартам.',
+          list: ['Балл по критериям', 'Соответствие ToV и ядрам', 'Хук + удержание', 'ТЗ монтажу', 'Рекомендации'],
+        },
+      },
+    },
+
+    covers: {
+      icon: ICON.covers,
+      base: { title: 'AI-обложки', badge: 'AI' },
+      perNiche: {
+        smm: {
+          desc: 'Мастер 5 шагов: источник → текст → оценка → концепт → результат. Обложки 9:16 и 16:9.',
+          list: ['Источник: сценарий или новая идея', '4 варианта текстовой подачи', 'Оценка по 5 критериям', '3 концепта дизайна', 'Готовая обложка для постинга'],
+        },
+        studio: {
+          desc: 'Обложки под коммерческие проекты в брендинге клиента.',
+          list: ['Брендинг клиента-заказчика', 'Мастер 5 шагов', 'Форматы 9:16 и 16:9', 'Готова к выгрузке клиенту'],
+        },
+        blogger: {
+          desc: 'Узнаваемая обложка в вашем стиле для рилсов и YouTube.',
+          list: ['Ваш фирменный стиль', 'A/B-варианты подачи', 'Оценка 5 критериев', 'Reels и YouTube форматы'],
+        },
+        marketer: {
+          desc: 'Обложки в едином стиле бренда — все каналы выглядят одинаково.',
+          list: ['Брендбук применяется автоматически', 'Мастер 5 шагов', 'A/B-варианты', '9:16 и 16:9'],
+        },
+      },
+    },
+
+    avatar: {
+      icon: ICON.avatar,
+      base: { title: 'Аватары и голоса', badge: 'Базово' },
+      perNiche: {
+        smm: {
+          desc: 'Каталог фото-аватаров и голосов с тонами. Используется при создании сценариев.',
+          list: ['Фото-аватар клиента или ведущего', 'Тоны: дружеский, прямой, экспертный, провокационный, мотивирующий, юмористический', 'Эмоции: дружелюбно / нейтрально / серьёзно / шутливо / энергично / тёпло', 'Демо-фразы голоса'],
+        },
+        studio: {
+          desc: 'Каталог ведущих и голосов для коммерческих проектов.',
+          list: ['Несколько ведущих в каталоге', 'Голосовая палитра по типам', 'Демо-озвучка', 'Привязка к сценарию'],
+        },
+        blogger: {
+          desc: 'Ваш аватар и голос как пресет — выбирается при создании сценария.',
+          list: ['Ваш аватар-пресет', 'Свой голос с эмоциями', 'Демо-фразы', 'Привязка к сценарию'],
+        },
+        marketer: {
+          desc: 'Аватары и голоса бренда — единый набор для всей команды.',
+          list: ['Аватар амбассадора бренда', 'Брендированный голос', 'Демо-фразы', 'Применяется в сценариях'],
+        },
+      },
+    },
+
+    edits: {
+      icon: ICON.edits,
+      base: { title: 'Очередь монтажа', badge: 'Команда' },
+      perNiche: {
+        smm: {
+          desc: 'Воркфлоу для монтажёра: 7 статусов от «назначен» до «готово». Pro-клиенты получают ручной монтаж.',
+          list: ['7 статусов: назначены / без монтажа / в работе / у монтажёра / на согласовании / отклонены / готовые', 'Pro-тариф: монтаж делает живой монтажёр', 'Free: автомонтаж по шаблону', 'Согласование и отказ с причиной'],
+        },
+        studio: {
+          desc: 'Производственный воркфлоу монтажа с согласованиями клиента.',
+          list: ['7 статусов задач', 'Назначение на конкретного монтажёра', 'Согласование с клиентом', 'Отказ с причиной'],
+        },
+        blogger: {
+          desc: 'Задачи монтажа: что готово, что в работе, что нужно одобрить.',
+          list: ['Список задач монтажа', '7 статусов', 'Согласование готовых роликов', 'Передача в публикацию'],
+        },
+        marketer: {
+          desc: 'Контроль очереди монтажа: что готово, что нужно одобрить.',
+          list: ['Задачи команды монтажа', '7 статусов', 'Согласование роликов', 'Передача паблишеру'],
+        },
+      },
+    },
+
+    publish: {
+      icon: ICON.publish,
+      base: { title: 'Трекер публикаций', badge: 'Базово' },
+      perNiche: {
+        smm: {
+          desc: 'Учёт публикаций по клиентам: Instagram, TikTok, YouTube, ВКонтакте. Ролик постит человек, метрики ведутся в продукте.',
+          list: ['4 основных площадки + 6 запасных', 'Дата, время, описание до 2200 символов', 'Привязка к готовому монтажу', 'Имитация обновления просмотров и лайков', 'Аналитика «Лучший пост недели»'],
+        },
+        studio: {
+          desc: 'Учёт сданных и опубликованных роликов по клиентам.',
+          list: ['Учёт публикаций по проектам', '4 площадки', 'Метрики ролика', 'Отчёт клиенту'],
+        },
+        blogger: {
+          desc: 'Учёт ваших публикаций по соцсетям с метриками и лучшим постом.',
+          list: ['Календарь публикаций', '4 площадки', 'Метрики постов', 'Топ-публикации недели'],
+        },
+        marketer: {
+          desc: 'Учёт публикаций бренда по соцсетям с агрегированной аналитикой.',
+          list: ['Учёт постов по всем линиям', '4 основных площадки', 'Метрики просмотров / лайков / ER', 'Топ-посты для отчётов'],
+        },
+      },
+    },
+
+    competitors: {
+      icon: ICON.competitors,
+      base: { title: 'Парсинг конкурентов', badge: 'AI' },
+      perNiche: {
+        smm: {
+          desc: 'Автопоиск, ручное и массовое добавление аккаунтов. Скрап с фильтрами периода, охватов, просмотров.',
+          list: ['Прямые и косвенные конкуренты', 'Платформы: Instagram, TikTok, ВК, YouTube, Facebook + 4 запасных', 'Фильтры периода и охватов', 'Сетка «Залетевших видео»', 'Регулярный апдейт по графику'],
+        },
+        studio: {
+          desc: 'Конкуренты по клиенту-заказчику для брифинга сценариста.',
+          list: ['Парсинг конкурентов клиента', 'Фильтры по охватам', 'Залетевшие видео в каталог', 'Используется при подготовке к съёмке'],
+        },
+        blogger: {
+          desc: 'Что выходит у вашей ниши — без ручного скрапа.',
+          list: ['Парсинг конкурентов вручную и автопоиском', 'Фильтры по охватам', 'Залетевшие ролики в избранное', 'Темы для своих видео'],
+        },
+        marketer: {
+          desc: 'Конкуренты бренда: аккаунты, форматы, виральные ролики.',
+          list: ['Прямые и косвенные конкуренты', 'Все основные площадки', 'Фильтры периода и охватов', 'Источник идей для контент-плана'],
+        },
+      },
+    },
+
+    transcribe: {
+      icon: ICON.transcribe,
+      base: { title: 'Транскрибация роликов', badge: 'AI' },
+      perNiche: {
+        smm: {
+          desc: 'Анализ виральных роликов конкурентов: транскрибация, виральность, таймлайн, хук, триггеры, шаблон.',
+          list: ['Фильтры: мин. длительность, просмотры, ER', 'Хук и триггеры виральности', 'Таймлайн с разметкой сцен', 'Готовый шаблон для своего сценария'],
+        },
+        studio: {
+          desc: 'Глубокий разбор референса перед запуском в съёмку.',
+          list: ['Транскрибация ролика', 'Разметка структуры', 'Что взять в сценарий', 'Чего избегать'],
+        },
+        blogger: {
+          desc: 'Понять, почему ролик коллеги залетел, и переснять под себя.',
+          list: ['Транскрибация и разбор', 'Хук и триггеры', 'Структура и таймлайн', 'Готовый шаблон ролика'],
+        },
+        marketer: {
+          desc: 'Разбор виральных роликов в нише как источник инсайтов.',
+          list: ['Транскрибация с фильтрами', 'Анализ хука и удержания', 'Структура ролика', 'Шаблон для своего контента'],
+        },
+      },
+    },
+
+    core: {
+      icon: ICON.core,
+      base: { title: 'Ядро конкурентов', badge: 'AI' },
+      perNiche: {
+        smm: {
+          desc: 'Сводное ядро на основе всех конкурентов клиента: темы, хуки, структуры, что забрать / избегать. Выгрузка .md.',
+          list: ['Ключевые темы конкурентов', 'Сильные хуки', 'Типичные структуры роликов', 'Что забрать в свой контент', 'Чего избегать', 'Скачивание в .md'],
+        },
+        studio: {
+          desc: 'Сборка инсайтов от конкурентов клиента для сценарного отдела.',
+          list: ['Анализ всех конкурентов', 'Темы и хуки', 'Структуры роликов', 'Выгрузка в .md'],
+        },
+        blogger: {
+          desc: 'Сводный анализ ниши: что точно работает у других.',
+          list: ['Топ-темы ниши', 'Сильные хуки', 'Структуры', 'Что копировать, чего избегать', 'Скачивание в .md'],
+        },
+        marketer: {
+          desc: 'Стратегический ракурс на нишу для контент-плана бренда.',
+          list: ['Темы конкурентов', 'Сильные хуки', 'Структуры роликов', 'Что взять в контент-план', 'Выгрузка .md'],
+        },
+      },
+    },
+
+    favorites: {
+      icon: ICON.favorites,
+      base: { title: 'Залетевшие ролики', badge: 'Контент' },
+      perNiche: {
+        smm: {
+          desc: 'Топ-видео конкурентов в избранное команды — общая копилка референсов.',
+          list: ['Сетка залетевших видео', 'Добавление в избранное одним кликом', 'Доступно всей команде клиента', 'Источник для сценариев'],
+        },
+        studio: {
+          desc: 'Сохранённые референсы для брифа сценариста и продюсера.',
+          list: ['Каталог референсов', 'Превью с метриками', 'Используется в брифе', 'Доступ всей команды'],
+        },
+        blogger: {
+          desc: 'Ваша личная коллекция референсов — что заходит в нише.',
+          list: ['Избранные виральные ролики', 'Сохраняются одним кликом', 'Метрики поста', 'Используются как идеи'],
+        },
+        marketer: {
+          desc: 'Референсы для команды контент-маркетинга бренда.',
+          list: ['Каталог референсов', 'Метрики ролика', 'Источник идей', 'Доступ всей команде'],
+        },
+      },
+    },
+
+    quiz: {
+      icon: ICON.quiz,
+      base: { title: 'Квиз ToV (онбординг)', badge: 'AI' },
+      perNiche: {
+        smm: {
+          desc: '12 коротких вопросов про клиента → анализ → сегментация → готовый ToV-файл. Запускается при добавлении клиента.',
+          list: ['12 вопросов о бренде клиента', 'AI-анализ ответов', 'Сегментация аудитории', 'Готовый ToV в библиотеке', 'Сразу применяется в сценариях'],
+        },
+        studio: {
+          desc: 'Бриф клиента в формате квиза → ToV для сценариста.',
+          list: ['Структурированный бриф', 'Сегменты аудитории', 'Сборка ToV', 'Передача сценарному отделу'],
+        },
+        blogger: {
+          desc: 'Онбординг при первом входе: задайте себе 12 вопросов → ваш ToV-файл готов.',
+          list: ['12 вопросов о вашем контенте', 'Сегменты вашей аудитории', 'Готовый личный ToV', 'Сразу работает в AI-сценариях'],
+        },
+        marketer: {
+          desc: 'Квиз для уточнения ToV бренда — раз в полгода под обновление позиционирования.',
+          list: ['12 вопросов', 'Анализ и сегментация', 'Сборка обновлённого ToV', 'Сразу применяется командой'],
+        },
+      },
+    },
+
+    team: {
+      icon: ICON.team,
+      base: { title: 'Команда и роли', badge: 'Команда' },
+      perNiche: {
+        smm: {
+          desc: '9 готовых ролей под процесс агентства: владелец, руководители и исполнители по направлениям, гостевой клиент.',
+          list: ['Владелец', 'Руководитель сценаристов + сценарист', 'Руководитель монтажа + монтажёр', 'Руководитель публикаций + паблишер', 'Технический отдел', 'Гостевой доступ клиента'],
+        },
+        studio: {
+          desc: 'Роли производственного цикла: продюсер, сценарист, монтажёр, паблишер, клиент-гость.',
+          list: ['Продюсер (руководитель)', 'Сценарный отдел', 'Монтажный отдел', 'Менеджер публикаций', 'Гость-клиент'],
+        },
+        blogger: {
+          desc: 'Подключите ассистента, продюсера или маленькую команду с нужным уровнем доступа.',
+          list: ['Я-автор + ассистент', 'Продюсер с полными правами', 'Сценарист и монтажёр на freelance', 'Журнал действий'],
+        },
+        marketer: {
+          desc: 'Роли in-house: маркетинг-директор, контент-менеджер, SMM, дизайнер / монтажёр.',
+          list: ['Маркетинг-директор', 'Контент-менеджер', 'SMM и копирайтер', 'Дизайнер и монтажёр', 'Журнал действий'],
+        },
+      },
+    },
+  };
+
+  // ============ Реальные ниши применения ============
+  const NICHES = {
+    smm: {
+      name: 'SMM-агентство',
+      sub: 'Поток клиентов и команда',
+      hero: 'SMM-агентства',
+      icon: ICON.smm,
+      roles: {
+        owner: {
+          name: 'Владелец',
+          desc: 'Сводка по агентству, маржинальность клиентов, нагрузка команды.',
+          modules: ['dashboard', 'clients', 'team', 'library', 'competitors'],
+        },
+        account: {
+          name: 'Аккаунт-менеджер',
+          desc: 'Клиенты, согласования сценариев, трекер публикаций.',
+          modules: ['clients', 'scripts', 'scriptsAnalysis', 'publish', 'edits', 'library'],
+        },
+        scriptwriter: {
+          name: 'Сценарист',
+          desc: 'Сценарии, библиотека ядер, AI-анализ, материал из конкурентов.',
+          modules: ['library', 'scripts', 'scriptsAnalysis', 'competitors', 'transcribe', 'core', 'favorites', 'quiz'],
+        },
+        editor: {
+          name: 'Монтажёр',
+          desc: 'Очередь задач монтажа с 7 статусами, обложки, аватары.',
+          modules: ['edits', 'covers', 'formats', 'avatar'],
+        },
+      },
+    },
+
+    studio: {
+      name: 'Продакшен-студия',
+      sub: 'Сценарий → съёмка → монтаж',
+      hero: 'продакшен-студии',
+      icon: ICON.studio,
+      roles: {
+        producer: {
+          name: 'Продюсер',
+          desc: 'Очередь задач, контроль монтажа и публикаций по клиентам.',
+          modules: ['dashboard', 'clients', 'edits', 'publish', 'team', 'library'],
+        },
+        scriptwriter: {
+          name: 'Сценарист',
+          desc: 'Сценарии под бриф клиента, ядра, разбор конкурентов.',
+          modules: ['library', 'scripts', 'scriptsAnalysis', 'competitors', 'transcribe', 'core', 'favorites'],
+        },
+        editor: {
+          name: 'Монтажёр',
+          desc: 'Задачи монтажа, обложки, работа с аватарами.',
+          modules: ['edits', 'covers', 'formats', 'avatar'],
+        },
+        publisher: {
+          name: 'Менеджер публикаций',
+          desc: 'Трекер постов по площадкам, обновление метрик.',
+          modules: ['publish', 'dashboard', 'clients'],
+        },
+      },
+    },
+
+    blogger: {
+      name: 'Эксперт / блогер',
+      sub: 'Личный бренд',
+      hero: 'личного бренда',
+      icon: ICON.blogger,
+      roles: {
+        soloAuthor: {
+          name: 'Я — автор',
+          desc: 'Сам делаю всё: сценарии, обложки, трекинг публикаций.',
+          modules: ['quiz', 'library', 'scripts', 'scriptsAnalysis', 'covers', 'publish', 'competitors', 'favorites'],
+        },
+        withAssistant: {
+          name: 'Я + ассистент',
+          desc: 'Я снимаю смысл, ассистент собирает контент.',
+          modules: ['scripts', 'covers', 'publish', 'edits', 'team', 'library', 'avatar'],
+        },
+        withProducer: {
+          name: 'Я + продюсер',
+          desc: 'Делегирую часть задач продюсеру.',
+          modules: ['library', 'scripts', 'scriptsAnalysis', 'publish', 'edits', 'competitors', 'core'],
+        },
+        withTeam: {
+          name: 'Я + команда',
+          desc: 'Полноценная команда: сценарист, монтажёр, паблишер.',
+          modules: ['dashboard', 'team', 'scripts', 'edits', 'publish', 'clients'],
+        },
+      },
+    },
+
+    marketer: {
+      name: 'In-house маркетолог',
+      sub: 'Один продукт / бренд',
+      hero: 'in-house бренда',
+      icon: ICON.marketer,
+      roles: {
+        head: {
+          name: 'Директор по маркетингу',
+          desc: 'Дашборд активности, контроль команды, библиотека ядер.',
+          modules: ['dashboard', 'team', 'library', 'competitors', 'core'],
+        },
+        marketer: {
+          name: 'Маркетолог',
+          desc: 'Контент бренда: сценарии, ядра, парсинг конкурентов.',
+          modules: ['library', 'scripts', 'scriptsAnalysis', 'competitors', 'transcribe', 'core', 'quiz'],
+        },
+        contentManager: {
+          name: 'Контент-менеджер',
+          desc: 'Сценарии, обложки, форматы, трекинг публикаций.',
+          modules: ['scripts', 'covers', 'publish', 'formats', 'favorites', 'avatar'],
+        },
+        smmSpec: {
+          name: 'SMM-специалист',
+          desc: 'Парсинг конкурентов, аватары, публикации.',
+          modules: ['competitors', 'transcribe', 'favorites', 'avatar', 'publish'],
+        },
+      },
+    },
+  };
+
+  // ============ State ============
+  const state = {
+    niche: 'smm',
+    role: 'owner',
+  };
+
+  // ============ Render: niche row ============
+  const nicheRow = document.getElementById('nicheRow');
+  const NICHE_BASE_CLS = 'niche reveal relative font-sans bg-white border-[1.5px] border-line rounded-rlg px-5 py-6 text-center cursor-pointer flex flex-col items-center gap-2.5 hover:border-mint-300 hover:shadow-soft-sm hover:-translate-y-0.5 transition';
+  function renderNiches() {
+    if (!nicheRow) return;
+    nicheRow.innerHTML = '';
+    Object.entries(NICHES).forEach(([key, n]) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = NICHE_BASE_CLS + (key === state.niche ? ' is-active' : '');
+      btn.setAttribute('data-niche', key);
+      btn.innerHTML =
+        '<div class="niche-icon w-12 h-12 rounded-rmd bg-mint-50 text-mint-700 grid place-items-center transition">' + n.icon + '</div>' +
+        '<div class="text-sm font-bold tracking-tight">' + n.name + '</div>' +
+        '<div class="text-[11.5px] text-ink-mute">' + n.sub + '</div>';
+      btn.addEventListener('click', () => {
+        if (state.niche === key) return;
+        state.niche = key;
+        const firstRole = Object.keys(NICHES[key].roles)[0];
+        state.role = firstRole;
+        updateHero();
+        renderNiches();
+        renderRoles();
+        renderModules();
+        const target = document.getElementById('roles');
+        if (target) {
+          const top = target.getBoundingClientRect().top + window.scrollY - 60;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+      nicheRow.appendChild(btn);
+    });
+    requestAnimationFrame(() => {
+      nicheRow.querySelectorAll('.reveal').forEach((el) => el.classList.add('is-visible'));
+    });
+  }
+
+  // ============ Render: roles row ============
+  const rolesRow = document.getElementById('rolesRow');
+  const ROLE_BASE_CLS = 'role reveal relative font-sans bg-white border-[1.5px] border-line rounded-rlg p-5.5 cursor-pointer text-left flex flex-col gap-2 hover:border-mint-300 hover:shadow-soft-sm hover:-translate-y-0.5 transition overflow-hidden';
+  function renderRoles() {
+    if (!rolesRow) return;
+    rolesRow.innerHTML = '';
+    const niche = NICHES[state.niche];
+    Object.entries(niche.roles).forEach(([key, r]) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = ROLE_BASE_CLS + (key === state.role ? ' is-active' : '');
+      btn.setAttribute('data-role', key);
+      btn.innerHTML =
+        '<div class="flex items-center justify-between gap-2.5">' +
+          '<span class="text-base font-bold tracking-tight">' + r.name + '</span>' +
+          '<span class="role-count inline-flex items-center px-2.5 py-0.5 rounded-full bg-mint-100 text-mint-800 text-[11px] font-bold">' + r.modules.length + ' модулей</span>' +
+        '</div>' +
+        '<div class="text-[13px] text-ink-soft leading-snug">' + r.desc + '</div>';
+      btn.addEventListener('click', () => {
+        if (state.role === key) return;
+        state.role = key;
+        renderRoles();
+        renderModules();
+        const target = document.getElementById('modulesDetail');
+        if (target) {
+          const top = target.getBoundingClientRect().top + window.scrollY - 60;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+      rolesRow.appendChild(btn);
+    });
+    requestAnimationFrame(() => {
+      rolesRow.querySelectorAll('.reveal').forEach((el) => el.classList.add('is-visible'));
+    });
+  }
+
+  // ============ Render: modules detail ============
+  const modulesContainer = document.getElementById('modulesContainer');
+  const stateNiche = document.getElementById('stateNiche');
+  const stateRole = document.getElementById('stateRole');
+  const stateCount = document.getElementById('stateCount');
+
+  function renderModules() {
+    if (!modulesContainer) return;
+    const niche = NICHES[state.niche];
+    const role = niche.roles[state.role];
+
+    if (stateNiche) stateNiche.textContent = niche.name;
+    if (stateRole) stateRole.textContent = role.name;
+    if (stateCount) stateCount.textContent = role.modules.length;
+
+    modulesContainer.innerHTML = '';
+
+    if (!role.modules.length) {
+      modulesContainer.innerHTML = '<div class="col-span-full p-10 bg-white border border-dashed border-line-strong rounded-rxl text-center text-ink-soft">Для этой роли модули пока не подобраны.</div>';
+      return;
+    }
+
+    role.modules.forEach((moduleKey, idx) => {
+      const m = MODULES[moduleKey];
+      if (!m) return;
+      const perNiche = m.perNiche[state.niche] || {};
+      const title = perNiche.title || m.base.title;
+      const desc = perNiche.desc || '';
+      const list = perNiche.list || [];
+      const badge = m.base.badge;
+      const badgeColors = badge === 'AI' ? 'bg-orange-100 text-orange-700'
+                       : badge === 'Команда' ? 'bg-mint-100 text-mint-800'
+                       : badge === 'Контент' ? 'bg-mint-100 text-mint-800'
+                       : 'bg-mint-100 text-mint-800';
+
+      const card = document.createElement('article');
+      card.className = 'module-appear bg-white border border-line rounded-rxl p-7 grid grid-cols-[56px_1fr] gap-5 hover:border-mint-200 hover:shadow-soft hover:-translate-y-0.5 transition';
+      card.style.animationDelay = (idx * 60) + 'ms';
+      card.innerHTML =
+        '<div class="module-icon w-14 h-14 rounded-[14px] bg-gradient-to-br from-mint-100 to-mint-50 text-mint-700 grid place-items-center">' + m.icon + '</div>' +
+        '<div>' +
+          '<div class="flex items-center flex-wrap gap-2 mb-2">' +
+            '<h3 class="text-lg font-bold tracking-tight">' + title + '</h3>' +
+            '<span class="inline-flex text-[10.5px] font-bold tracking-wider uppercase px-2.5 py-0.5 rounded-full ' + badgeColors + '">' + badge + '</span>' +
+          '</div>' +
+          '<p class="text-sm text-ink-soft leading-relaxed mb-3.5">' + desc + '</p>' +
+          '<ul class="list-none m-0 p-0 flex flex-col gap-2 list-check text-[13.5px]">' +
+            list.map((item) => '<li>' + item + '</li>').join('') +
+          '</ul>' +
+        '</div>';
+      modulesContainer.appendChild(card);
+    });
+  }
+
+  // ============ Hero word swap with niche ============
+  const heroNiche = document.getElementById('heroNiche');
+  function updateHero() {
+    if (!heroNiche) return;
+    const word = NICHES[state.niche].hero;
+    heroNiche.classList.add('is-swapping');
+    setTimeout(() => {
+      heroNiche.textContent = word;
+      heroNiche.classList.remove('is-swapping');
+    }, 300);
+  }
+
+  // ============ Init ============
+  renderNiches();
+  renderRoles();
+  renderModules();
+})();
