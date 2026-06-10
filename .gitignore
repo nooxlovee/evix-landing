@@ -10,10 +10,12 @@ desktop.ini
 .idea/
 .vscode/
 
-# Node / build artefacts (если появятся)
+# Node / build artefacts
 node_modules/
 dist/
 .cache/
+.vite/
+*.log
 
 # Environment / secrets
 .env

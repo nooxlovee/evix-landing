@@ -168,12 +168,12 @@ body {
   .site-nav {
     display: none !important;
   }
-  #menuToggle {
+  .menu-toggle {
     display: grid !important;
   }
 }
 @media (min-width: 1024px) {
-  #menuToggle {
+  .menu-toggle {
     display: none !important;
   }
 }
@@ -181,8 +181,6 @@ body {
 body.is-menu-open {
   overflow: hidden;
 }
-/* Снимаем backdrop-filter с шапки, иначе она становится containing block
-   для fixed-меню — и оверлей привязывается к её 72px-высоте, а не к вьюпорту. */
 body.is-menu-open .site-header {
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
@@ -235,7 +233,6 @@ body.is-menu-open .nav-dropdown {
   left: 0 !important;
   top: auto !important;
 }
-/* В мобильном меню упрощаем dropdown-карточки до простых ссылок */
 body.is-menu-open .nav-dropdown > a {
   padding: 8px 12px !important;
   gap: 0 !important;
@@ -253,20 +250,7 @@ body.is-menu-open .nav-dropdown > a > div:last-child > span:first-child {
   color: #5a6661 !important;
 }
 
-/* Burger icon swap (close icon injected by JS) */
-#menuToggle { position: relative; }
-#menuToggle .menu-icon-open,
-#menuToggle .menu-icon-close {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-#menuToggle .menu-icon-close { display: none; }
-body.is-menu-open #menuToggle .menu-icon-open { display: none; }
-body.is-menu-open #menuToggle .menu-icon-close { display: block; }
-
-/* ========== Roadmap timeline (вертикальная линия) ========== */
+/* ========== Roadmap timeline ========== */
 .roadmap-grid { position: relative; }
 .roadmap-grid::before {
   content: "";
@@ -298,7 +282,7 @@ body.is-menu-open #menuToggle .menu-icon-close { display: block; }
   .roadmap-item::before { left: -38px !important; right: auto !important; }
 }
 
-/* ========== Timeline (как купить / сроки внедрения) ========== */
+/* ========== Timeline ========== */
 .timeline-row { position: relative; }
 .timeline-row::before {
   content: "";
@@ -336,7 +320,7 @@ body.is-menu-open #menuToggle .menu-icon-close { display: block; }
 }
 .donut > * { position: relative; z-index: 1; }
 
-/* ========== Bar chart bars (height animation) ========== */
+/* ========== Bar chart bars ========== */
 .bar {
   width: 100%;
   max-width: 36px;
@@ -409,7 +393,7 @@ body.is-menu-open #menuToggle .menu-icon-close { display: block; }
 }
 .role.is-active .role-count { background: #2bbf8b; color: #fff; }
 
-/* ========== Checkmark bullet utility (for big lists) ========== */
+/* ========== Checkmark bullet utility ========== */
 .list-check li {
   padding-left: 22px;
   position: relative;
@@ -463,6 +447,13 @@ body.is-menu-open #menuToggle .menu-icon-close { display: block; }
 /* ========== Hide scrollbar but keep scroll ========== */
 .scrollbar-hide { scrollbar-width: none; -ms-overflow-style: none; }
 .scrollbar-hide::-webkit-scrollbar { display: none; }
+
+/* ========== Billing toggle ========== */
+.billing-toggle__btn.is-active {
+  background: #fff;
+  color: #1a8261;
+  box-shadow: 0 6px 14px rgba(15,25,22,0.08);
+}
 
 /* ========== Reduce motion ========== */
 @media (prefers-reduced-motion: reduce) {
