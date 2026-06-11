@@ -24,7 +24,7 @@ export default function Layout() {
   return (
     <>
       <Header />
-      <main>
+      <main key={pathname} className="page-transition">
         <Outlet />
       </main>
       <Footer />

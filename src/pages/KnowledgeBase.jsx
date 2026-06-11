@@ -1,11 +1,86 @@
-import { useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+const SEARCH_SAMPLES = {
+  ru: [
+    'как настроить Tone of Voice',
+    'добавить нового клиента',
+    'автомонтаж по сценарию',
+    'парсинг конкурентов',
+    'роли и доступ в команде',
+    'подключить соцсети',
+  ],
+  en: [
+    'how to set up Tone of Voice',
+    'add a new client',
+    'auto-edit by script',
+    'competitor parsing',
+    'team roles and access',
+    'connect socials',
+  ],
+};
+
+function TypewriterOverlay({ phrases }) {
+  const [text, setText] = useState('');
+
+  useEffect(() => {
+    if (!phrases || phrases.length === 0) return undefined;
+    let phraseIdx = 0;
+    let charIdx = 0;
+    let deleting = false;
+    let timeoutId;
+
+    const tick = () => {
+      const current = phrases[phraseIdx];
+
+      if (!deleting) {
+        charIdx += 1;
+        setText(current.substring(0, charIdx));
+        if (charIdx === current.length) {
+          timeoutId = setTimeout(() => {
+            deleting = true;
+            tick();
+          }, 1600);
+          return;
+        }
+      } else {
+        charIdx -= 1;
+        setText(current.substring(0, charIdx));
+        if (charIdx === 0) {
+          deleting = false;
+          phraseIdx = (phraseIdx + 1) % phrases.length;
+        }
+      }
+
+      const speed = deleting ? 28 : 60 + Math.floor(Math.random() * 50);
+      timeoutId = setTimeout(tick, speed);
+    };
+
+    timeoutId = setTimeout(tick, 500);
+    return () => clearTimeout(timeoutId);
+  }, [phrases]);
+
+  return (
+    <span className="text-ink-mute text-base whitespace-pre">
+      {text}
+      <span className="typewriter-caret" aria-hidden="true">|</span>
+    </span>
+  );
+}
+
 export default function KnowledgeBase() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const [query, setQuery] = useState('');
+  const [focused, setFocused] = useState(false);
+  const inputRef = useRef(null);
+
   useEffect(() => {
     document.title = t('knowledgeBase.meta.title');
   }, [t]);
+
+  const lang = i18n.language?.startsWith('en') ? 'en' : 'ru';
+  const phrases = SEARCH_SAMPLES[lang];
+  const showTypewriter = !query && !focused;
 
   return (
     <>
@@ -15,9 +90,26 @@ export default function KnowledgeBase() {
             <h1 className="text-[clamp(32px,5vw,56px)] leading-[1.06] font-extrabold tracking-tight max-w-[820px]">{t('knowledgeBase.hero.title1')}<em className="not-italic text-grad-mint">{t('knowledgeBase.hero.titleEm')}</em></h1>
             <p className="text-[clamp(15px,1.6vw,17px)] text-white/75 leading-relaxed max-w-[620px]">{t('knowledgeBase.hero.desc')}</p>
 
-            <div className="relative w-full max-w-[600px] mt-3">
-              <svg className="w-5 h-5 absolute left-5 top-1/2 -translate-y-1/2 text-ink-mute" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8" /><path d="M21 21l-4.35-4.35" /></svg>
-              <input type="search" placeholder={t('knowledgeBase.hero.searchPlaceholder')} className="w-full h-14 pl-14 pr-5 rounded-rxl bg-white text-ink placeholder:text-ink-mute border border-transparent focus:outline-none focus:ring-4 focus:ring-mint-500/30 shadow-mockup text-base" />
+            <div
+              className="relative w-full max-w-[600px] mt-3"
+              onClick={() => inputRef.current?.focus()}
+            >
+              <svg className="w-5 h-5 absolute left-5 top-1/2 -translate-y-1/2 text-ink-mute z-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8" /><path d="M21 21l-4.35-4.35" /></svg>
+              <input
+                ref={inputRef}
+                type="search"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                onFocus={() => setFocused(true)}
+                onBlur={() => setFocused(false)}
+                placeholder={focused ? t('knowledgeBase.hero.searchPlaceholder') : ''}
+                className="relative w-full h-14 pl-14 pr-5 rounded-rxl bg-white text-ink placeholder:text-ink-mute border border-transparent focus:outline-none focus:ring-4 focus:ring-mint-500/30 shadow-mockup text-base"
+              />
+              {showTypewriter && (
+                <div className="absolute left-14 top-1/2 -translate-y-1/2 pointer-events-none select-none">
+                  <TypewriterOverlay phrases={phrases} />
+                </div>
+              )}
             </div>
           </div>
         </div>

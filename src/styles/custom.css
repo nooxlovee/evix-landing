@@ -23,6 +23,59 @@ body {
 .reveal:nth-child(5) { transition-delay: 0.32s; }
 .reveal:nth-child(6) { transition-delay: 0.4s; }
 
+/* ========== Footer ========== */
+.footer-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+.footer-link::before {
+  content: "";
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  margin-right: 0;
+  opacity: 0;
+  transition: width 0.25s ease, margin-right 0.25s ease, opacity 0.25s ease;
+}
+.footer-link:hover {
+  color: #74dfbb;
+}
+.footer-link:hover::before {
+  width: 14px;
+  margin-right: 8px;
+  opacity: 1;
+}
+
+/* ========== Page transition ========== */
+@keyframes pageIn {
+  0%   { opacity: 0; transform: translateY(8px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.page-transition {
+  animation: pageIn 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+@media (prefers-reduced-motion: reduce) {
+  .page-transition { animation: none; }
+}
+
+/* ========== Typewriter caret ========== */
+@keyframes typewriterCaret {
+  0%, 49%   { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+.typewriter-caret {
+  display: inline-block;
+  margin-left: 1px;
+  color: #1fa376;
+  font-weight: 300;
+  animation: typewriterCaret 1s steps(1) infinite;
+}
+
 /* ========== Twitter testimonials ========== */
 @keyframes testimonialCardIn {
   0%   { opacity: 0; transform: translateY(28px) scale(0.96); }

@@ -41,7 +41,14 @@
     "contacts": "Contact",
     "rights": "© 2026 Evix. All rights reserved.",
     "privacy": "Privacy policy",
-    "offer": "Public offer"
+    "offer": "Public offer",
+    "cta": {
+      "title": "Ready to launch your content pipeline?",
+      "desc": "We'll show the product on your case. No sales pitch — just Evix tuned to your ToV.",
+      "button": "Request demo"
+    },
+    "status": "Product in active development",
+    "madeIn": "Crafted for content teams"
   },
   "home": {
     "heroTitle": "One pipeline",
