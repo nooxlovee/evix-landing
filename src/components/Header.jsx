@@ -1,8 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { LinkButton } from './ui/Button';
+import { LanguageSwitcher } from './ui/LanguageSwitcher';
+import { ThemeSwitcher } from './ui/ThemeSwitcher';
 
 const navLinkBase =
-  'px-3.5 py-2.5 rounded-[10px] text-sm font-medium transition';
+  'px-2.5 py-2 rounded-[10px] text-sm font-medium whitespace-nowrap transition';
 const navLinkIdle = 'text-ink-soft hover:bg-mint-50 hover:text-mint-800';
 const navLinkActive = 'bg-mint-100 text-mint-800 font-semibold';
 
@@ -13,7 +17,7 @@ function navCls({ isActive }) {
 function DropdownTrigger({ label }) {
   return (
     <button
-      className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-[10px] text-ink-soft text-sm font-medium hover:bg-mint-50 hover:text-mint-800 transition"
+      className="inline-flex items-center gap-1 px-2.5 py-2 rounded-[10px] text-ink-soft text-sm font-medium whitespace-nowrap hover:bg-mint-50 hover:text-mint-800 transition"
       type="button"
       aria-haspopup="menu"
       aria-expanded="false"
@@ -49,6 +53,7 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openGroup, setOpenGroup] = useState(null);
   const location = useLocation();
+  const { t } = useTranslation();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -72,7 +77,7 @@ export default function Header() {
       if (e.key === 'Escape' && menuOpen) setMenuOpen(false);
     };
     const onResize = () => {
-      if (window.innerWidth >= 1024 && menuOpen) setMenuOpen(false);
+      if (window.innerWidth >= 1180 && menuOpen) setMenuOpen(false);
     };
     document.addEventListener('keydown', onKey);
     window.addEventListener('resize', onResize);
@@ -89,18 +94,13 @@ export default function Header() {
 
   return (
     <header className={`site-header fixed inset-x-0 top-0 h-[72px] z-50 ${scrolled ? 'is-scrolled' : ''}`} id="siteHeader">
-      <div className="max-w-container mx-auto px-6 h-full flex items-center justify-between gap-6">
-        <Link to="/" className="inline-flex items-center gap-2 text-ink">
-          <span className="brand-mark w-9 h-9 rounded-[10px] grid place-items-center text-white">
-            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 3C7 3 3 7 3 12s4 9 9 9h6v-3h-6c-3.3 0-6-2.7-6-6s2.7-6 6-6h6V3h-6z" />
-              <rect x="6" y="10.5" width="12" height="3" />
-            </svg>
-          </span>
+      <div className="max-w-container mx-auto px-6 h-full flex items-center justify-between gap-4">
+        <Link to="/" className="inline-flex items-center text-ink font-extrabold text-xl tracking-tight">
+          Эвикс
         </Link>
 
-        <nav className="site-nav flex items-center gap-1" aria-label="Основная навигация">
-          <NavLink to="/functions" className={navCls}>Функции</NavLink>
+        <nav className="site-nav flex items-center gap-0.5 flex-nowrap" aria-label={t('nav.mainNav')}>
+          <NavLink to="/functions" className={navCls}>{t('nav.functions')}</NavLink>
 
           <div
             className={`nav-group ${openGroup === 'product' ? 'is-open' : ''}`}
@@ -108,12 +108,12 @@ export default function Header() {
               if (e.target.closest('button')) toggleGroup('product');
             }}
           >
-            <DropdownTrigger label="О продукте" />
+            <DropdownTrigger label={t('nav.product')} />
             <div className="nav-dropdown absolute top-[calc(100%+10px)] left-1/2 w-[440px] bg-white border border-line rounded-rxl p-2 shadow-soft-lg z-[60]" role="menu">
               <DropdownItem
                 to="/implementation"
-                title="Внедрение"
-                subtitle="Как встраиваем продукт в работу студии"
+                title={t('nav.implementation')}
+                subtitle={t('nav.implementationSub')}
                 icon={
                   <svg className="w-[19px] h-[19px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91-.78-.79-2.07-.79-2.91-.09z" />
@@ -124,8 +124,8 @@ export default function Header() {
               />
               <DropdownItem
                 to="/training"
-                title="Обучение"
-                subtitle="Научим команду работать с Эвикс"
+                title={t('nav.training')}
+                subtitle={t('nav.trainingSub')}
                 icon={
                   <svg className="w-[19px] h-[19px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M22 10v6" />
@@ -136,8 +136,8 @@ export default function Header() {
               />
               <DropdownItem
                 to="/integrations"
-                title="Интеграции"
-                subtitle="Подключение соцсетей и площадок"
+                title={t('nav.integrations')}
+                subtitle={t('nav.integrationsSub')}
                 icon={
                   <svg className="w-[19px] h-[19px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <rect x="9" y="2" width="6" height="6" rx="1" />
@@ -151,10 +151,10 @@ export default function Header() {
             </div>
           </div>
 
-          <NavLink to="/pricing" className={navCls}>Тарифы</NavLink>
-          <NavLink to="/clients" className={navCls}>Клиенты</NavLink>
-          <NavLink to="/about" className={navCls}>О компании</NavLink>
-          <NavLink to="/blog" className={navCls}>Блог</NavLink>
+          <NavLink to="/pricing" className={navCls}>{t('nav.pricing')}</NavLink>
+          <NavLink to="/clients" className={navCls}>{t('nav.clients')}</NavLink>
+          <NavLink to="/about" className={navCls}>{t('nav.about')}</NavLink>
+          <NavLink to="/blog" className={navCls}>{t('nav.blog')}</NavLink>
 
           <div
             className={`nav-group ${openGroup === 'support' ? 'is-open' : ''}`}
@@ -162,12 +162,12 @@ export default function Header() {
               if (e.target.closest('button')) toggleGroup('support');
             }}
           >
-            <DropdownTrigger label="Поддержка" />
+            <DropdownTrigger label={t('nav.support')} />
             <div className="nav-dropdown absolute top-[calc(100%+10px)] left-1/2 w-[400px] bg-white border border-line rounded-rxl p-2 shadow-soft-lg z-[60]" role="menu">
               <DropdownItem
                 to="/knowledge-base"
-                title="База знаний"
-                subtitle="Гайды по модулям и сценариям"
+                title={t('nav.knowledgeBase')}
+                subtitle={t('nav.knowledgeBaseSub')}
                 icon={
                   <svg className="w-[19px] h-[19px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
@@ -177,8 +177,8 @@ export default function Header() {
               />
               <DropdownItem
                 to="/faq"
-                title="Частые вопросы"
-                subtitle="FAQ по продукту и тарифам"
+                title={t('nav.faq')}
+                subtitle={t('nav.faqSub')}
                 icon={
                   <svg className="w-[19px] h-[19px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <circle cx="12" cy="12" r="10" />
@@ -189,8 +189,8 @@ export default function Header() {
               />
               <DropdownItem
                 to="/contacts"
-                title="Контакты"
-                subtitle="Связаться с командой"
+                title={t('nav.contacts')}
+                subtitle={t('nav.contactsSub')}
                 icon={
                   <svg className="w-[19px] h-[19px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
@@ -201,21 +201,25 @@ export default function Header() {
           </div>
         </nav>
 
-        <div className="flex items-center gap-2.5">
-          <Link
+        <div className="flex items-center gap-2 shrink-0">
+          <ThemeSwitcher className="hidden sm:inline-flex" />
+          <LanguageSwitcher className="hidden sm:inline-flex" />
+          <LinkButton
             to="/#contact"
-            className="hidden md:inline-flex items-center gap-1.5 h-11 px-4 rounded-rmd border border-line bg-white text-sm font-semibold text-ink-soft hover:bg-mint-50 hover:border-mint-300 hover:text-mint-700 transition"
+            variant="secondary"
+            size="sm"
+            className="hidden md:inline-flex whitespace-nowrap"
           >
-            Запросить демо
+            {t('nav.requestDemo')}
             <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M7 17L17 7" />
               <path d="M7 7h10v10" />
             </svg>
-          </Link>
+          </LinkButton>
           <button
-            className="menu-toggle hidden max-lg:grid w-[42px] h-[42px] rounded-rmd border border-line bg-white text-ink place-items-center relative"
+            className="menu-toggle hidden w-[42px] h-[42px] rounded-rmd border border-line bg-white text-ink place-items-center relative"
             type="button"
-            aria-label={menuOpen ? 'Закрыть меню' : 'Меню'}
+            aria-label={menuOpen ? t('nav.closeMenu') : t('nav.menu')}
             aria-expanded={menuOpen}
             onClick={(e) => {
               e.stopPropagation();

@@ -1,0 +1,1566 @@
+{
+  "nav": {
+    "functions": "Features",
+    "product": "Product",
+    "pricing": "Pricing",
+    "clients": "Clients",
+    "about": "About",
+    "blog": "Blog",
+    "support": "Support",
+    "implementation": "Implementation",
+    "implementationSub": "How we embed Evix in your studio's workflow",
+    "training": "Training",
+    "trainingSub": "We'll teach your team to work with Evix",
+    "integrations": "Integrations",
+    "integrationsSub": "Social networks and platform connections",
+    "knowledgeBase": "Knowledge base",
+    "knowledgeBaseSub": "Guides for modules and workflows",
+    "faq": "FAQ",
+    "faqSub": "Product and pricing questions",
+    "contacts": "Contact",
+    "contactsSub": "Reach out to the team",
+    "requestDemo": "Request demo",
+    "menu": "Menu",
+    "closeMenu": "Close menu",
+    "mainNav": "Main navigation"
+  },
+  "footer": {
+    "tagline": "AI content studio: scripts, avatars, editing and publication tracking in one workspace. For studios, agencies and creators.",
+    "productCol": "Product",
+    "companyCol": "Company",
+    "supportCol": "Support",
+    "functions": "Features",
+    "pricing": "Pricing",
+    "howWorks": "How it works",
+    "clients": "Clients",
+    "about": "About",
+    "blog": "Blog",
+    "requestDemo": "Request demo",
+    "knowledgeBase": "Knowledge base",
+    "faq": "FAQ",
+    "contacts": "Contact",
+    "rights": "© 2026 Evix. All rights reserved.",
+    "privacy": "Privacy policy",
+    "offer": "Public offer"
+  },
+  "home": {
+    "heroTitle": "One pipeline",
+    "heroHighlight": "from idea to publication",
+    "heroDesc": "Script, voice avatar, editing, cover art and publication tracking — all in one workspace. The ToV quiz tunes your brand voice; Evix handles the rest.",
+    "leaveRequest": "Get started",
+    "docTitle": "Evix — AI content studio for agencies and bloggers",
+    "audience": {
+      "kicker": "Who it's for",
+      "title": "For those who live and breathe content — and count every hour of their team's time",
+      "lead": "Evix replaces the manual routine of scripting and production teams. The product is built around specific roles — no fluff, no one-size-fits-all promises.",
+      "cards": {
+        "experts": {
+          "title": "Experts and bloggers",
+          "quote": "\"I want to post regularly, but I don't have a team\"",
+          "desc": "Evix captures a ToV in your voice, builds scripts with an AI avatar, and manages publishing — all in one dashboard, with no scriptwriter or editor on the team."
+        },
+        "production": {
+          "title": "Production studios",
+          "desc": "You spend more time on briefs than on shooting. Scripts split into hook, body, and CTA — instantly tailored to the format you need."
+        },
+        "smm": {
+          "title": "SMM agencies",
+          "desc": "You juggle multiple clients and lose hours on approvals. Evix pulls every client's ToV and formats into a single workspace."
+        }
+      }
+    },
+    "modules": {
+      "kicker": "Modules and features",
+      "title": "A pipeline from client data to published post",
+      "lead": "Each module works on its own and in tandem with the others. Every step of producing a video — inside a single dashboard.",
+      "spec": {
+        "kicker": "Spec sheet",
+        "title": "9 modules —  one production line",
+        "desc": "Client data goes in at the start, a finished published video comes out at the end. Every step is numbered and linked to the next."
+      },
+      "legend": {
+        "inLabel": "Input",
+        "inText": "Data library — the source of truth",
+        "coreLabel": "Core",
+        "coreText": "AI scripts — the pipeline engine",
+        "outLabel": "Output",
+        "outText": "Post tracking — the end of the line"
+      },
+      "allLink": "All dashboard features",
+      "items": {
+        "0": {
+          "title": "Data library",
+          "desc": "Client cores: Tone of Voice, marketing and product analysis, account and niche cores. The source of truth for generation.",
+          "bullets": {
+            "0": "ToV from the quiz, marketing, product",
+            "1": "Account and niche core",
+            "2": "Visual format library"
+          }
+        },
+        "1": {
+          "title": "AI scripts",
+          "desc": "A 5-step wizard: script type, text, avatar and voiceover, video generation, editing. Cross-checked against the ToV, marketing, and product cores.",
+          "steps": {
+            "0": "Type",
+            "1": "Text",
+            "2": "Voice",
+            "3": "Video",
+            "4": "Editing"
+          },
+          "bullets": {
+            "0": "Hook, body, CTA — separated",
+            "1": "Script analysis before launch",
+            "2": "Script from a competitor or from scratch"
+          }
+        },
+        "2": {
+          "title": "Avatars and voices",
+          "desc": "A catalog of faces and voices for narrating scripts. You can upload your own photo and audio, then pick a style, emotion, and tone.",
+          "bullets": {
+            "0": "Business, expert, and youthful styles",
+            "1": "Tones: friendly, direct, expert",
+            "2": "Delivery tuned to the chosen script"
+          }
+        },
+        "3": {
+          "title": "Covers",
+          "desc": "A 5-step wizard: source, text, scoring, concept, generation. Tailored to the format and script.",
+          "bullets": {
+            "0": "4 text treatment options",
+            "1": "Scored on 5 criteria",
+            "2": "Linked to the script"
+          }
+        },
+        "4": {
+          "title": "Editing",
+          "desc": "A script with finished footage goes to editing: automatic in under a minute, or hand-edited by a real editor on the Pro plan.",
+          "bullets": {
+            "0": "Auto-edit driven by the script",
+            "1": "Manual editing on Pro",
+            "2": "Statuses: in progress, with the editor, done"
+          }
+        },
+        "5": {
+          "title": "Post tracking",
+          "desc": "Add a published video and keep views and likes in one place. Platforms: Instagram, TikTok, YouTube, VK, and more.",
+          "bullets": {
+            "0": "Manual post entry",
+            "1": "Preview, date, description",
+            "2": "Views and likes per post"
+          }
+        },
+        "6": {
+          "title": "Studio dashboard",
+          "desc": "An overview of scripts, editing, and posts. See what's in drafts, what's in progress, and what's live.",
+          "bullets": {
+            "0": "Monthly overview",
+            "1": "Script analytics",
+            "2": "Post summary"
+          }
+        },
+        "7": {
+          "title": "Competitor analysis",
+          "desc": "Parse accounts across selected platforms and view thresholds. Viral videos are broken down by hook, retention, and triggers.",
+          "bullets": {
+            "0": "Auto-search by niche and ER",
+            "1": "List of viral videos",
+            "2": "Push formats into the library"
+          }
+        },
+        "8": {
+          "title": "Roles and access",
+          "desc": "Owner, script / editing / publishing managers, and contributors. Every role has its own set of action permissions.",
+          "bullets": {
+            "0": "Each team member gets their own client pool",
+            "1": "Approvals and send-backs for revisions",
+            "2": "A separate service login"
+          }
+        }
+      },
+      "coreBadge": "Core"
+    },
+    "how": {
+      "kicker": "How it works",
+      "title": "From client onboarding to publishing — 4 steps",
+      "lead": "Each step takes minutes, not hours. Every step lives inside one dashboard — no exports, no app-switching.",
+      "stepLabel": "Step",
+      "scrollHint": "Scroll down for the next step",
+      "stepAria": "Step {{n}}: {{title}}",
+      "steps": {
+        "0": {
+          "title": "Fill out the ToV quiz",
+          "desc": "12 questions about the brand, audience, and tone. From the answers, Evix builds the core — every script is grounded in it."
+        },
+        "1": {
+          "title": "Build the script",
+          "desc": "A 5-step wizard: type, text, avatar and voiceover, video generation, editing. With built-in script analysis before launch."
+        },
+        "2": {
+          "title": "Get the cover and the edit",
+          "desc": "The avatar narrates the script, then the video heads to auto-editing or a real editor. The cover is generated in parallel."
+        },
+        "3": {
+          "title": "Publish and track",
+          "desc": "Post the video to a social network and add the post to Evix — views and likes land in one summary."
+        }
+      }
+    },
+    "advantages": {
+      "kicker": "Advantages",
+      "title": "Why choose Evix",
+      "lead": "A tool for people who actually live in content — not for slides in an investor deck.",
+      "items": {
+        "0": {
+          "kicker": "Brand voice",
+          "title": "Content in your voice",
+          "desc": "Evix checks every script against the client's ToV — no faceless AI-flavored copy."
+        },
+        "1": {
+          "kicker": "Single flow",
+          "title": "A ready-made production pipeline",
+          "desc": "Script -> avatar -> edit -> cover -> publish. All in one window, with no exports."
+        },
+        "2": {
+          "kicker": "Team",
+          "title": "Team collaboration out of the box",
+          "desc": "Owner, manager, and contributor roles. Script and edit approvals, with send-backs for revisions."
+        },
+        "3": {
+          "kicker": "The differentiator",
+          "title": "Analysis before generation",
+          "desc": "The script and topic are cross-checked against the ToV, marketing core, and product core before any video is rendered."
+        }
+      },
+      "figures": {
+        "tov": {
+          "label": "ToV check",
+          "badge": "On brand voice · 98%",
+          "quote": "\"Busting three myths about small-business bookkeeping — calmly, without the stuffy jargon...\"",
+          "tags": {
+            "0": "tone: friendly",
+            "1": "no bureaucratese",
+            "2": "terms: simplified"
+          }
+        },
+        "pipeline": {
+          "label": "One flow, no exports",
+          "count": "steps in one window",
+          "steps": {
+            "0": "Script",
+            "1": "Avatar",
+            "2": "Edit",
+            "3": "Cover",
+            "4": "Publish"
+          }
+        },
+        "roles": {
+          "label": "Roles and approvals",
+          "items": {
+            "owner": {
+              "role": "Owner",
+              "tag": "all permissions"
+            },
+            "manager": {
+              "role": "Manager",
+              "tag": "approves"
+            },
+            "contractor": {
+              "role": "Contributor",
+              "tag": "editing"
+            }
+          },
+          "cta": "Send back for revisions"
+        },
+        "analysis": {
+          "label": "Cross-check before rendering",
+          "items": {
+            "0": "ToV — alignment with brand voice",
+            "1": "Marketing core — positioning",
+            "2": "Product core — substance and offer"
+          }
+        }
+      }
+    },
+    "clients": {
+      "kicker": "Our clients",
+      "title": "Studios and bloggers already working in Evix",
+      "lead": "From independent experts to networked SMM agencies. Detailed case studies are on the Clients page.",
+      "marqueeAria": "Client logos",
+      "casesLink": "See client case studies"
+    },
+    "reviews": {
+      "kicker": "Reviews",
+      "title": "What Evix users have to say",
+      "lead": "Direct words from agency founders and content teams. Unfiltered, no marketing polish.",
+      "items": {
+        "0": {
+          "text": "In the first month we moved from three SaaS tools to one. Our scriptwriter started handling several times more clients, and approvals shrank from three days to one.",
+          "name": "Anna Kuznetsova",
+          "role": "Co-founder, Layers SMM"
+        },
+        "1": {
+          "text": "The big thing — scripts stopped sounding \"AI-generated.\" You load up the client's ToV and get copy that actually sounds like the product. That changes everything.",
+          "name": "Dmitry Solovyov",
+          "role": "Creative director, PlayLab"
+        },
+        "2": {
+          "text": "I run my blog as an expert, and shooting every day just isn't possible. The Evix avatar is the only solution where my \"AI self\" doesn't turn into a caricature.",
+          "name": "Maria Lebedeva",
+          "role": "Nutrition expert"
+        },
+        "3": {
+          "text": "We replaced three tools with one. Scriptwriter, editor, and SMM all work in the same window — we no longer lose approvals in chat threads.",
+          "name": "Igor Terentyev",
+          "role": "Head of Content, Studio M"
+        },
+        "4": {
+          "text": "The ToV quiz is the best way to digitize a client's brand. Each new scriptwriter used to rewrite the copy from scratch — now everyone works from one core.",
+          "name": "Olga Morozova",
+          "role": "Content producer, Reel.it"
+        },
+        "5": {
+          "text": "A viral video used to spiral into an endless list of edits. With Evix the script comes together in an hour and lands straight in our ToV.",
+          "name": "Alexander Nikitin",
+          "role": "Founder, Nomos Media"
+        },
+        "6": {
+          "text": "I run 4 clients on my own. Evix replaced my scriptwriter and junior editor. If I had found it on day one, I'd have saved half a year of my life.",
+          "name": "Ekaterina Voronova",
+          "role": "SMM manager, freelance"
+        },
+        "7": {
+          "text": "I used to edit 3 videos a day — now I comfortably ship 8. Auto-editing handles the grunt work, and I polish the parts that matter.",
+          "name": "Nikita Zhukov",
+          "role": "Video editor, PlayLab"
+        },
+        "8": {
+          "text": "I don't enjoy filming myself. The Evix avatar sounds like me, speaks like me — and my followers can't tell the difference. It saved my blog during maternity leave.",
+          "name": "Daria Sokolova",
+          "role": "Psychology expert"
+        }
+      }
+    },
+    "contact": {
+      "kicker": "Request a demo",
+      "title": "We'll show the product tailored to your studio",
+      "lead": "We'll get in touch and walk you through how Evix fits into your workflow. No sales call — just the product and your use case.",
+      "benefits": {
+        "0": "A demo built around your use case",
+        "1": "A walkthrough of the pipeline from ToV to publishing",
+        "2": "Answers about the Free / Pro plans"
+      },
+      "form": {
+        "title": "Book a demo",
+        "subtitle": "Direct contacts will be added later — for now, send a request through the form.",
+        "name": "Name",
+        "company": "Studio / company",
+        "email": "E-mail",
+        "phone": "Phone",
+        "message": "A quick note about your task (optional)",
+        "submit": "Send request",
+        "privacy": "By clicking the button, you agree to the privacy policy.",
+        "success": "Request received. We'll be in touch shortly."
+      }
+    }
+  },
+  "lang": {
+    "switchTo": "Переключить на русский",
+    "current": "EN"
+  },
+  "functions": {
+    "meta": {
+      "title": "Features — Evix"
+    },
+    "hero": {
+      "titlePart1": "Content pipeline",
+      "titlePart2": "for",
+      "subtitle": "Evix brings scripts, competitor parsing, thumbnails and publication tracking together in one workspace. Pick your team context — and see a relevant module set, with no promises of what doesn't exist.",
+      "stats": {
+        "0": {
+          "label": "Real modules"
+        },
+        "1": {
+          "label": "Use-case scenarios"
+        },
+        "2": {
+          "label": "Team roles"
+        }
+      }
+    },
+    "allModules": {
+      "title": "16 modules already live in the product",
+      "subtitle": "Only what's actually in the workspace. Below you can filter modules by a team role."
+    },
+    "adaptation": {
+      "badge": "Niche adaptation",
+      "title": "Evix adapts to any industry",
+      "subtitle": "Not a table of 4 industries. For each brand we assemble its own set of \"cores\" — knowledge files that Evix consults at every generation step.",
+      "steps": {
+        "0": {
+          "label": "ToV quiz",
+          "title": "12 questions about the brand",
+          "desc": "Name, niche, audience, pains and fears, tone, form of address, monetization, topics, taboos, expertise, platforms and CTA."
+        },
+        "1": {
+          "label": "Core library",
+          "title": "6 knowledge files",
+          "desc": "Quiz answers turn into cores: ToV, marketing and product analysis, account core, niche core and competitor core."
+        },
+        "2": {
+          "label": "Every generation",
+          "title": "Cross-check before delivery",
+          "desc": "Script, avatar, thumbnail — each one is cross-checked against the relevant cores before the result lands in your workspace."
+        }
+      },
+      "coresHeading": "6 cores in the library",
+      "coresNote": "5 live + 1 in development",
+      "cores": {
+        "0": {
+          "title": "Client ToV",
+          "desc": "The brand's signature voice: form of address, vocabulary, intonation. Evix cross-checks every script and avatar delivery against it."
+        },
+        "1": {
+          "title": "Marketing analysis",
+          "desc": "Audience, pains, objections, triggers, segments. Hook and CTA hit real needs, not generic platitudes."
+        },
+        "2": {
+          "title": "Product analysis",
+          "desc": "USP, competitor differentiators, pricing, key advantages. Surfaces the offer without slipping into salesy language."
+        },
+        "3": {
+          "title": "Account core",
+          "desc": "Stats on the account's viral mechanics: which hooks and topics popped, what burned out. The basis for a strategy for new clips."
+        },
+        "4": {
+          "title": "Niche core",
+          "desc": "A digest of viral mechanics across every competitor in the niche: what works on the market, white-space zones and the anti-canon."
+        },
+        "5": {
+          "title": "Competitor core",
+          "desc": "Captures a specific competitor's mechanics: hooks, formats, audio tricks. Evix adapts them to your ToV."
+        }
+      },
+      "wipBadge": "In development"
+    },
+    "roles": {
+      "badge": "Role selection",
+      "title": "Who will work in Evix?",
+      "subtitle": "Every role gets its own interface and module set. No \"one-size-fits-all\" workspaces where half the tools are dead weight.",
+      "modulesSuffix": "modules"
+    },
+    "modulesDetail": {
+      "badge": "Modules tailored to your role",
+      "title": "What exactly you'll get in Evix",
+      "subtitle": "Module descriptions matched to your chosen niche and role. Each block shows real usage scenarios, not theoretical capabilities.",
+      "contextLabel": "Context:",
+      "matchedPrefix": "Modules matched:",
+      "emptyState": "No modules are matched to this role yet."
+    },
+    "cta": {
+      "title": "Want to see this in action for your business?",
+      "desc": "Let's set up a demo — we'll show a workspace configured with real data from your niche and help you gauge how many hours a week you'll free up.",
+      "primary": "Get a demo",
+      "secondary": "How it works"
+    }
+  },
+  "pricing": {
+    "meta": {
+      "title": "Pricing — Evix. Free and Pro"
+    },
+    "hero": {
+      "titleLine1": "Two plans:",
+      "titleHighlight": "Free and Pro",
+      "desc": "Free gives you everything for self-service work: AI scripts, avatars, auto-editing, and publication tracking. Pro adds a human editor and priority in the auto-editing queue. We discuss Pro pricing individually.",
+      "compare": "Compare plans",
+      "askPrice": "Get Pro pricing"
+    },
+    "tariffs": {
+      "badge": "Plan grid",
+      "title": "Free and Pro — the only difference is editing",
+      "desc": "All product modules, AI features, and roles are available on both plans. You need Pro when you want manual editing by a human editor instead of automatic.",
+      "free": {
+        "name": "Free",
+        "desc": "Base plan. Everything you need for self-service work with the content studio.",
+        "price": "0",
+        "currency": "₽",
+        "period": "/mo",
+        "features": {
+          "0": "Dashboard: overview, scripts, publications",
+          "1": "Clients and a Workspace for each one",
+          "2": "Core library: ToV, marketing, product, account, niche",
+          "3": "Visual format library and your own templates",
+          "4": "AI scripts — a 5-step wizard",
+          "5": "AI script analysis across 10 criteria",
+          "6": "Catalog of avatars and voices",
+          "7": "AI thumbnails — a 5-step wizard",
+          "8": {
+            "strong": "Auto-editing",
+            "rest": " by template"
+          },
+          "9": "Publication tracking (manual entry)",
+          "10": "Competitor parsing and viral clips",
+          "11": "Team roles and approvals"
+        },
+        "cta": "Request access"
+      },
+      "pro": {
+        "badge": "Human editor",
+        "name": "Pro",
+        "desc": "Everything from Free plus manual editing by a human editor and priority in the auto-editing queue.",
+        "price": "On request",
+        "note": "Price depends on the volume of clips and the team. We'll discuss it on the demo.",
+        "features": {
+          "0": {
+            "rest": "Everything from the ",
+            "strong": "Free",
+            "suffix": " plan"
+          },
+          "1": {
+            "strong": "Manual editing",
+            "rest": " by a human editor"
+          },
+          "2": "Priority in the auto-editing queue",
+          "3": "Approvals and returns for revisions with a comment"
+        },
+        "cta": "Get Pro pricing"
+      }
+    },
+    "corporate": {
+      "title": "Enterprise terms",
+      "desc": "If you run a network agency with a high client flow or have specific team-collaboration requirements — drop us a line. We'll discuss the cooperation format and pricing.",
+      "cta": "Discuss an enterprise plan"
+    },
+    "comparison": {
+      "badge": "Comparison",
+      "title": "What's included in each plan",
+      "headers": {
+        "feature": "Feature",
+        "free": "Free",
+        "pro": "Pro"
+      },
+      "rows": {
+        "0": "Studio dashboard",
+        "1": "Clients and Workspace",
+        "2": "Core library (ToV, marketing, product, account, niche)",
+        "3": "Visual format library",
+        "4": "AI scripts (5-step wizard)",
+        "5": "AI script analysis (10 criteria)",
+        "6": "Avatars and voices",
+        "7": "AI thumbnails (5-step wizard)",
+        "8": "Auto-editing",
+        "9": "Manual editing by a human editor",
+        "10": "Publication tracker",
+        "11": "Competitor parsing and viral clips",
+        "12": "Team roles and approvals",
+        "13": "Notifications and the ToV quiz"
+      },
+      "values": {
+        "priority": "with priority"
+      }
+    },
+    "cta": {
+      "title": "We'll match a plan to your task",
+      "desc": "We'll show the workspace tailored to your team, answer your questions about Pro, and discuss how scripts will fit into your process.",
+      "demo": "Book a demo",
+      "features": "All features"
+    }
+  },
+  "about": {
+    "meta": {
+      "title": "About — Evix"
+    },
+    "hero": {
+      "titleStart": "A content pipeline",
+      "titleEnd": "built",
+      "titleHighlight": "in a single workspace",
+      "desc": "Evix is an AI content studio — a product that connects scripts, avatars, editing, thumbnails and publishing tracking. We're building a tool for people who live in content, not for people who write slides about it."
+    },
+    "building": {
+      "badge": "What we're building",
+      "title": "One workspace instead of five SaaS tools",
+      "desc": "Scripts, AI avatars, editing, thumbnails and publishing usually live in different services. We've pulled it all into a single system where the client's data (ToV, marketing, product) is the shared source of truth for every step.",
+      "cards": {
+        "0": {
+          "title": "Preserve the brand voice",
+          "desc": "The ToV quiz captures the client's signature voice, and a ToV check is built into script analysis — generation never turns into faceless AI copy."
+        },
+        "1": {
+          "title": "Less manual busywork",
+          "desc": "Teams burn hours on approvals, shuffling files and reconciling versions. In Evix the steps are linked: script, edit, thumbnail and publication all live together."
+        },
+        "2": {
+          "title": "Grounded in competitor data",
+          "desc": "Parsing, auto-discovery and viral video breakdowns are built right into the product. Ideas don't come from thin air — they come from what actually works in your niche."
+        }
+      }
+    },
+    "principles": {
+      "badge": "Product principles",
+      "title": "How we build Evix",
+      "items": {
+        "0": {
+          "title": "Only what actually works",
+          "desc": "We don't market features that aren't in the workspace. If a section is still in development, the page carries a \"Coming soon\" label."
+        },
+        "1": {
+          "title": "One workspace — every step",
+          "desc": "No exports between services — just a single chain: ToV → script → avatar → editing → thumbnail → publication."
+        },
+        "2": {
+          "title": "Team roles out of the box",
+          "desc": "Owner, managers (scripts / editing / publications), contributors and a guest client — each role with its own permission set."
+        },
+        "3": {
+          "title": "Analysis before generation",
+          "desc": "Before a video goes into production — a check of the topic and script against the ToV, marketing and product core, with recommendations."
+        }
+      }
+    },
+    "team": {
+      "badge": "Team — coming soon",
+      "title": "More about the team soon",
+      "desc": "We're putting together a page about the team building Evix. In the meantime, talk product with the people making it through the contact form.",
+      "cta": "Get in touch with the team"
+    },
+    "demo": {
+      "title": "We'll show the product tailored to your studio",
+      "desc": "A demo built around your case — we'll put together a sample script in your ToV and walk the pipeline all the way to publication.",
+      "ctaPrimary": "Book a demo",
+      "ctaSecondary": "All features"
+    }
+  },
+  "blog": {
+    "meta": {
+      "title": "Blog — Evix"
+    },
+    "hero": {
+      "titlePart1": "Insights about the",
+      "titleHighlight": "content pipeline",
+      "desc": "Case studies, production guides, and product updates. The first posts are on the way — keep an eye on the feed below."
+    },
+    "section": {
+      "badge": "Posts in progress",
+      "title": "The first articles and case studies are coming soon",
+      "desc": "We're preparing breakdowns on scripts, AI analysis, competitor parsing, and team workflows. If you'd like to receive them — drop your email in the form."
+    },
+    "card": {
+      "inProgress": "In progress",
+      "soon": "Soon"
+    },
+    "posts": {
+      "0": {
+        "tag": "Guide",
+        "title": "How to define a Tone of Voice so AI doesn't drift",
+        "desc": "What's inside: ToV structure, common mistakes, and templates for experts and brands."
+      },
+      "1": {
+        "tag": "Breakdown",
+        "title": "Analyzing a script against 10 criteria: what Evix looks for",
+        "desc": "Hook, retention, editing brief, ToV check — what each group of criteria covers."
+      },
+      "2": {
+        "tag": "Guide",
+        "title": "Competitor parsing: setting up auto-discovery for your niche",
+        "desc": "Platforms, ER, reach, region — which filters surface the most relevant candidates."
+      }
+    },
+    "subscribe": {
+      "title": "Get new posts first",
+      "desc": "Leave your email — we'll send you the first breakdowns and guides as soon as they're out.",
+      "cta": "Subscribe"
+    }
+  },
+  "clients": {
+    "meta": {
+      "title": "Clients — Evix"
+    },
+    "hero": {
+      "titlePart1": "Teams building a",
+      "titleEm": "content conveyor",
+      "titlePart2": "on Evix",
+      "desc": "Studios, agencies and experts — each niche has its own case. A selection of stories and testimonials from those already working in the product."
+    },
+    "reviews": {
+      "badge": "Success stories",
+      "title": "Direct words from those who work on Evix",
+      "desc": "Eight teams from different niches and scales. Each review — collected in a live conversation, unedited.",
+      "starsAria": "5 out of 5",
+      "items": {
+        "0": {
+          "text": "In the first month we migrated from three SaaS tools to one. Our scriptwriter started handling 4x more clients, and approvals dropped from three days to one.",
+          "initials": "AK",
+          "name": "Anna Kuznetsova",
+          "role": "Co-founder, Layers SMM",
+          "tag": "SMM agency"
+        },
+        "1": {
+          "text": "The main thing — scripts stopped sounding \"AI-generated\". Upload the client's ToV — and you get text that really sounds like the product. That changes everything.",
+          "initials": "DS",
+          "name": "Dmitry Solovyov",
+          "role": "Creative Director, PlayLab",
+          "tag": "Production"
+        },
+        "2": {
+          "text": "I run a blog as an expert and shooting every day is impossible. The Evix avatar is the only solution where my \"AI self\" doesn't turn into a caricature. Subscribers still don't suspect a thing.",
+          "initials": "ML",
+          "name": "Maria Lebedeva",
+          "role": "Nutrition expert",
+          "tag": "Expert"
+        },
+        "3": {
+          "text": "We run a four-chair dental clinic. Our marketer used to disappear to \"write scripts\" for half a day. Now a full posting plan takes an hour — and that includes competitor analysis.",
+          "initials": "IM",
+          "name": "Igor Morozov",
+          "role": "Chief Physician, Adamant clinic",
+          "tag": "Clinic"
+        },
+        "4": {
+          "text": "A small cafe, no marketer. Evix puts together content about dishes and promotions in an evening. Two months after launch we're number one in the district for Instagram bookings.",
+          "initials": "EP",
+          "name": "Elena Petrova",
+          "role": "Owner, Svet cafe",
+          "tag": "HoReCa"
+        },
+        "5": {
+          "text": "We run an online design school with 8 cohorts. The marketing cycle cost more than the instructors. With Evix we closed it for three times less — and inbound went up.",
+          "initials": "SV",
+          "name": "Sergey Vlasov",
+          "role": "Director, Liniya school",
+          "tag": "Education"
+        },
+        "6": {
+          "text": "I produce 3 commercial shoots a week. Briefs and scripts used to take longer than the shoot day itself. Now they take 20 minutes — and the team thinks I've stopped \"riding\" them on deadlines.",
+          "initials": "TO",
+          "name": "Tatiana Orlova",
+          "role": "Producer, Nomos studio",
+          "tag": "Production"
+        },
+        "7": {
+          "text": "I run 14 clients as a solo freelancer. Without Evix I'd have cut down to five — I'd have burned out. Now I effectively work as a small agency, and the clients don't even notice.",
+          "initials": "MA",
+          "name": "Mikhail Andreev",
+          "role": "SMM freelancer",
+          "tag": "Freelance"
+        },
+        "8": {
+          "text": "We have 4 locations across three cities. Evix is the only product where each location's branding is stored separately, while the content team sees everything in a single workspace.",
+          "initials": "OT",
+          "name": "Oleg Terekhov",
+          "role": "Marketing Director, Etazh fitness network",
+          "tag": "Fitness"
+        }
+      }
+    },
+    "cases": {
+      "badge": "Use cases",
+      "title": "Real-world business use cases",
+      "desc": "Short cases with before-and-after numbers. What hurt, what we changed, and what we got 3 months in.",
+      "featured": {
+        "bestCase": "Best case",
+        "tag": "SMM agency",
+        "title": "How Layers SMM grew from 10 to 30 clients in a quarter",
+        "desc": "The agency was stuck at 10 clients for two years because the scriptwriter spent 4 hours per video. After rolling out Evix they moved 100% of the client library into the workspace and switched on AI scripts and avatars. The team didn't grow — productivity did.",
+        "badges": {
+          "0": "Rolled out in 12 days",
+          "1": "Team of 6",
+          "2": "Studio plan"
+        },
+        "stats": {
+          "0": {
+            "label": "Active clients",
+            "note": "from 10 → to 30"
+          },
+          "1": {
+            "label": "Margin",
+            "note": "per client"
+          },
+          "2": {
+            "label": "Time per script",
+            "note": "from 4 hours to 1 hour"
+          },
+          "3": {
+            "value": "1 day",
+            "label": "For approval",
+            "note": "was 3 days"
+          }
+        },
+        "cta": "Get a case like this"
+      },
+      "items": {
+        "0": {
+          "tag": "Clinic",
+          "title": "Adamant dental clinic",
+          "desc": "The marketer was spending 4 hours a day on scripts and stories. We added the doctor library, the clinic's ToV and AI avatars — freeing up half the day for other work.",
+          "stats": {
+            "0": {
+              "label": "posts/wk"
+            },
+            "1": {
+              "label": "for approval"
+            },
+            "2": {
+              "label": "bookings/mo"
+            }
+          }
+        },
+        "1": {
+          "tag": "HoReCa",
+          "title": "Svet cafe",
+          "desc": "No in-house marketer — the owner made content herself in the evenings. Evix generates posts about dishes and promos — it now takes 20 minutes a day instead of 2 hours.",
+          "stats": {
+            "0": {
+              "label": "bookings"
+            },
+            "1": {
+              "label": "posts/wk"
+            },
+            "2": {
+              "value": "+12 h",
+              "label": "per week"
+            }
+          }
+        },
+        "2": {
+          "tag": "Education",
+          "title": "Liniya design school",
+          "desc": "A content team of 3 couldn't keep up with materials for 8 cohorts. Evix sped production up 4x — without growing the team.",
+          "stats": {
+            "0": {
+              "label": "lead streams"
+            },
+            "1": {
+              "label": "CAC per lead"
+            },
+            "2": {
+              "label": "programs"
+            }
+          }
+        },
+        "3": {
+          "tag": "Production",
+          "title": "Nomos studio",
+          "desc": "A production company doing 12 commercial shoots a month. Briefs now take 20 minutes instead of 4 hours — the team fits in one extra shoot every week.",
+          "stats": {
+            "0": {
+              "label": "hours per brief"
+            },
+            "1": {
+              "label": "shoots/mo"
+            },
+            "2": {
+              "label": "reach"
+            }
+          }
+        },
+        "4": {
+          "tag": "Expert",
+          "title": "Maria Lebedeva",
+          "desc": "A nutritionist with 80k followers. Shooting on camera every day is impossible — now she publishes via an AI avatar. Content goes out regularly and subscribers don't spot the switch.",
+          "stats": {
+            "0": {
+              "label": "videos/wk"
+            },
+            "1": {
+              "label": "reach"
+            },
+            "2": {
+              "value": "2 h",
+              "label": "filming/mo"
+            }
+          }
+        },
+        "5": {
+          "tag": "Fitness network",
+          "title": "Etazh — 4 locations",
+          "desc": "Each location used to make content separately and the brand drifted. Now all content flows through a single workspace — with local branding for every club.",
+          "stats": {
+            "0": {
+              "label": "locations"
+            },
+            "1": {
+              "label": "new clients"
+            },
+            "2": {
+              "label": "brand consistency"
+            }
+          }
+        }
+      },
+      "detailsLink": "Read full case",
+      "summary": {
+        "title": "These results aren't exceptions — they're the average across our clients",
+        "desc": "We collect metrics every quarter and publish them without rounding. Want a similar case — tell us about your team and we'll run the numbers for your business.",
+        "stats": {
+          "0": {
+            "label": "Average speedup"
+          },
+          "1": {
+            "label": "Average reach growth"
+          },
+          "2": {
+            "label": "Hours on approvals"
+          },
+          "3": {
+            "value": "1.7 mo",
+            "label": "Plan payback"
+          }
+        }
+      }
+    }
+  },
+  "contacts": {
+    "meta": {
+      "title": "Contacts — Evix"
+    },
+    "hero": {
+      "title": "Get in touch",
+      "desc": "Phone numbers, emails and addresses will appear after the official launch. For now — reach out via the form, we respond as requests come in."
+    },
+    "channels": {
+      "title": "Ways to reach us",
+      "desc": "Right now the only channel is the contact form on the site. Phone, email addresses and offices will appear after launch and will be published here.",
+      "form": {
+        "title": "Contact form",
+        "desc": "Submit a request — we'll get in touch shortly."
+      },
+      "soonBadge": "Soon",
+      "soon": {
+        "phone": {
+          "title": "Phone",
+          "desc": "A contact number will appear later."
+        },
+        "email": {
+          "title": "Email",
+          "desc": "Addresses for different needs (sales, support, partnerships) will appear later."
+        },
+        "office": {
+          "title": "Office",
+          "desc": "Legal and physical addresses will appear later."
+        }
+      }
+    },
+    "form": {
+      "title": "Submit a request",
+      "desc": "Describe your task — we'll reach out to clarify the details.",
+      "fields": {
+        "name": "Name",
+        "company": "Company (optional)",
+        "email": "Email",
+        "message": "Briefly about your task"
+      },
+      "submit": "Send",
+      "consent": "By clicking the button, you agree to the personal data processing policy.",
+      "success": "Request received. We'll get in touch shortly."
+    }
+  },
+  "faq": {
+    "meta": {
+      "title": "FAQ — Evix"
+    },
+    "hero": {
+      "titleStart": "Answers to",
+      "titleHighlight": "common questions",
+      "desc": "What's in the product, how Free and Pro plans work, what AI does, and which social networks we support. If you don't find it — ask via the form."
+    },
+    "pills": {
+      "product": "Product",
+      "pricing": "Pricing",
+      "ai": "AI features",
+      "socials": "Social networks",
+      "team": "Team"
+    },
+    "categories": {
+      "product": {
+        "title": "Product",
+        "items": {
+          "0": {
+            "q": "What is Evix?",
+            "a": "Evix is an AI content studio in a single workspace: ToV quiz, client cores library, AI scripts with analysis, avatars and voices, covers, editing (auto and manual), competitor parsing, and publication tracking."
+          },
+          "1": {
+            "q": "Does Evix publish videos automatically?",
+            "a": "No. You post the finished video to the social network yourself, then add the publication to the tracker — with a preview, platform, date, and description. Views and likes are filled in manually or pulled in afterward."
+          },
+          "2": {
+            "q": "Can scripts be created from scratch or only 'based on a competitor'?",
+            "a": "Both options work. In the 5-step wizard, the first step is choosing the type: 'based on a competitor' (with virality analysis) or your own topic and key points. Then comes the script, avatar, video generation, and editing."
+          },
+          "3": {
+            "q": "What are 'cores' in the library?",
+            "a": "Five 'cores' are the shared source of truth for AI: client ToV, marketing and product analysis, account core (what worked), and niche core. The competitor core is currently in development."
+          },
+          "4": {
+            "q": "Where do view and like metrics come from?",
+            "a": "In the 'Publications' section, metrics update once the post goes live. The 'Statistics' section — aggregated analytics on reach and retention — is currently marked 'Soon'."
+          }
+        }
+      },
+      "pricing": {
+        "title": "Pricing",
+        "items": {
+          "0": {
+            "q": "How many plans are there and how do they differ?",
+            "a": "Two plans: Free — all modules and template-based auto-editing. Pro — the same plus manual editing by a live editor and priority on auto-editing."
+          },
+          "1": {
+            "q": "How much does Pro cost?",
+            "a": "Pricing is discussed individually and depends on video volume and team composition. Leave a request — we'll send a quote tailored to your case."
+          },
+          "2": {
+            "q": "Is there a separate plan for agencies?",
+            "a": "Corporate terms for network agencies with high client volume are discussed separately. Reach out via the form — we'll put together a plan tailored to your workflow."
+          }
+        }
+      },
+      "ai": {
+        "title": "AI features",
+        "items": {
+          "0": {
+            "q": "How does Evix analyze a script?",
+            "a": "The script is checked against groups: hook + retention (main weight), mid-tier criteria (visuals, CTA), and minor criteria. It's also cross-referenced with the ToV, marketing, and product cores, and in 'based on a competitor' mode — with the competitor itself. The output: a score, checklists, and recommendations."
+          },
+          "1": {
+            "q": "Can I upload my own voice for an avatar?",
+            "a": "You can add an avatar (photo) and a voice (audio sample) to the catalog — with a choice of gender, style, tone, and emotion. If you don't upload anything, the product uses an imitation for the preview."
+          },
+          "2": {
+            "q": "How does competitor parsing work?",
+            "a": "You can add competitors manually, in bulk, or run auto-search by niche (platforms, region, ER, audience size). After parsing, a grid of viral videos opens up with breakdowns by hook, retention, and triggers."
+          }
+        }
+      },
+      "socials": {
+        "title": "Social networks",
+        "items": {
+          "0": {
+            "q": "Which social networks are supported?",
+            "a": "In the publications tracker: Instagram, TikTok, YouTube, VKontakte, and others. In competitor parsing and auto-search, additionally: VK Clips, YouTube Shorts, Facebook, Telegram, Dzen."
+          },
+          "1": {
+            "q": "Where do I connect social networks?",
+            "a": "In the client profile and in the data library, the 'Connected social networks' section. In the publication form, you can only select connected platforms."
+          }
+        }
+      },
+      "team": {
+        "title": "Team",
+        "items": {
+          "0": {
+            "q": "What roles are available in the product?",
+            "a": "Owner, technical department, script / editing / publication managers, performers (scriptwriter, editor, publisher), and guest client access. Staff have a separate internal login with demo access."
+          },
+          "1": {
+            "q": "How do I assign a client to a staff member?",
+            "a": "When creating a client, the owner immediately selects managers (for scripts, editing, and publications). They in turn assign their own performers. A staff member sees their own clients and locked cards of the others — for team transparency."
+          },
+          "2": {
+            "q": "Can I reject a script with a comment?",
+            "a": "Yes. Scripts and edits can be returned with a reason for rejection — the author will see the comment. The same works in the editing queue."
+          }
+        }
+      }
+    },
+    "cta": {
+      "title": "Didn't find an answer?",
+      "desc": "Describe your question — we'll reply through the feedback form.",
+      "button": "Ask a question"
+    }
+  },
+  "implementation": {
+    "meta": {
+      "title": "Implementation — Evix"
+    },
+    "hero": {
+      "titleLine1": "We embed Evix",
+      "titleLine2Prefix": "into ",
+      "titleHighlight": "your team's workflow",
+      "desc": "We migrate your clients, configure the cores, and walk your team through the process. After that — the product runs on its own, without our ongoing involvement.",
+      "ctaPrimary": "Discuss implementation",
+      "ctaSecondary": "See the stages"
+    },
+    "audience": {
+      "badge": "Who it's for",
+      "title": "When our implementation is actually needed",
+      "desc": "If you can spin up the workspace yourselves — we won't insist. Implementation pays off when the team is large, there are many clients, or processes are already in place and can't be broken.",
+      "cards": {
+        "smm": {
+          "title": "SMM agencies with a client roster",
+          "desc": "When you need to move every client and team member into a single workspace without pausing ongoing projects."
+        },
+        "production": {
+          "title": "Production studios",
+          "desc": "That already have an established pipeline — we fit Evix into it, not the other way around."
+        },
+        "inhouse": {
+          "title": "In-house brand teams",
+          "desc": "When several departments work on content and you need shared data and roles with granular permissions."
+        },
+        "tov": {
+          "title": "Brands with an established ToV",
+          "desc": "If you already have a brand voice plus marketing and product analysis — we'll move them into the workspace cores."
+        },
+        "competitors": {
+          "title": "Teams with a ready competitor database",
+          "desc": "When you've already compiled a list of competitors and formats — we'll help move it over and wire it up to parsing."
+        },
+        "collab": {
+          "title": "Teams where collaboration is critical",
+          "desc": "When you need to split permissions across the owner, managers, and contributors without third-party SaaS."
+        }
+      }
+    },
+    "requirements": {
+      "badge": "What we need from you",
+      "title": "Minimal involvement on your side",
+      "desc": "The more you bring in at the start, the more precise the result. If something's missing — we'll gather it along the way.",
+      "items": {
+        "owner": {
+          "title": "A point person on the client side",
+          "desc": "One person who makes the calls on ToV, roles, and access. Without them, the implementation stalls."
+        },
+        "brand": {
+          "title": "Access to brand materials",
+          "desc": "Brand guidelines, product descriptions, example scripts, active social accounts — anything that helps us build the cores."
+        },
+        "team": {
+          "title": "A list of the team and their roles",
+          "desc": "Who will work in the workspace and what they own — we need this to set up permissions and link people to clients."
+        },
+        "sessions": {
+          "title": "A handful of working sessions",
+          "desc": "Calls at kickoff, during client migration, and at the finish line — without them, context gets lost. We'll lock down the exact count up front."
+        }
+      }
+    },
+    "stages": {
+      "badge": "What we do",
+      "title": "Implementation in three stages",
+      "desc": "No rigid timeline — we move to each stage only when the previous one is truly wrapped. Speed depends on the size of the team and the number of clients.",
+      "items": {
+        "start": {
+          "title": "Kickoff and data gathering",
+          "desc": "We meet the team, run the ToV quiz, collect brand materials, and lock down the processes the product will plug into.",
+          "list": {
+            "0": "Kickoff meeting with the owner and team leads",
+            "1": "Running through the ToV quiz",
+            "2": "Gathering brand and product materials",
+            "3": "Locking down team roles"
+          }
+        },
+        "setup": {
+          "title": "Workspace setup",
+          "desc": "We fill in the client's cores, port competitors, avatars, and formats. We hook up social accounts and assign roles to the team.",
+          "list": {
+            "0": "Building the five cores: ToV, marketing, product, account, niche",
+            "1": "Porting competitors and visual formats",
+            "2": "Connecting social accounts",
+            "3": "Assigning roles and access"
+          }
+        },
+        "launch": {
+          "title": "Going live",
+          "desc": "We run the pipeline on pilot scenarios, confirm that editing and publishing work, and hand the workspace over to the studio for independent use.",
+          "list": {
+            "0": "Pilot scenarios tailored to the client",
+            "1": "Verifying auto-editing and publishing",
+            "2": "Tuning the cores based on results",
+            "3": "Handover of the workspace for independent use"
+          }
+        }
+      }
+    },
+    "contact": {
+      "badge": "Discuss implementation",
+      "title": "Tell us about your team — we'll put together a plan",
+      "desc": "Send a request. We'll dig into your team size, client count, and the modules you need — and propose a plan tailored to your case.",
+      "form": {
+        "title": "Implementation request",
+        "subtitle": "We'll be in touch shortly.",
+        "placeholders": {
+          "name": "Name",
+          "company": "Studio / company",
+          "email": "Email",
+          "phone": "Phone",
+          "message": "Team size, client count, current tools..."
+        },
+        "submit": "Send request",
+        "privacy": "By clicking the button, you agree to the personal data processing policy.",
+        "success": "Request received. We'll be in touch shortly."
+      }
+    }
+  },
+  "integrations": {
+    "meta": {
+      "title": "Integrations — Evix"
+    },
+    "hero": {
+      "titleLine1": "Social media",
+      "titleAnd": "and ",
+      "titleHighlight": "platform integrations",
+      "desc": "Every product feature for working with third-party platforms — for competitor parsing, viral video collection and post tracking.",
+      "ctaPrimary": "See capabilities",
+      "ctaSecondary": "Categories and examples"
+    },
+    "capabilities": {
+      "badge": "Integration capabilities",
+      "title": "What Evix can do with external resources",
+      "subtitle": "Every product feature for working with third-party platforms — in one list.",
+      "items": {
+        "0": {
+          "title": "Competitor parsing",
+          "desc": "Scraping competitor accounts and videos with filters for period, reach and views. Manually or via niche auto-search.",
+          "bullets": {
+            "0": "Auto-search by niche and audience",
+            "1": "Manual and bulk adding",
+            "2": "Period and metric filters"
+          }
+        },
+        "1": {
+          "title": "Viral video collection",
+          "desc": "A grid of breakout videos across platforms — with metrics, previews and the option to save them to the team's favorites.",
+          "bullets": {
+            "0": "Top by reach",
+            "1": "Previews and metrics",
+            "2": "Transfer to the format library"
+          }
+        },
+        "2": {
+          "title": "Viral video analysis",
+          "desc": "Transcription, timeline, breakdown by hook, retention and triggers. The output — a template for your own script.",
+          "bullets": {
+            "0": "Video transcription",
+            "1": "Breakdown by hook and triggers",
+            "2": "Ready-made script template"
+          }
+        },
+        "3": {
+          "title": "Post tracking",
+          "desc": "Tracking published videos across platforms with previews, descriptions and metrics. Linked to the edited video in your workspace.",
+          "bullets": {
+            "0": "Post card with preview",
+            "1": "Views and likes",
+            "2": "Linked to the script and cover"
+          }
+        },
+        "4": {
+          "title": "Account linking",
+          "desc": "Linking client social accounts in the profile and data library — managed by the owner and managers.",
+          "bullets": {
+            "0": "Linked in the client profile",
+            "1": "Visible to the team with access rights",
+            "2": "Used for posts and parsing"
+          }
+        },
+        "5": {
+          "title": "Transferring formats to the library",
+          "desc": "Any viral format you like from any platform gets added to the visual format database and reused in scripts.",
+          "bullets": {
+            "0": "One click from the competitor feed",
+            "1": "Saved per client",
+            "2": "Used when creating a script"
+          }
+        }
+      }
+    },
+    "categories": {
+      "badge": "Categories and examples",
+      "title": "Platform categories and integration examples",
+      "subtitle": "Each platform covers its own set of tasks: somewhere — only competitor parsing, somewhere — both parsing and post tracking.",
+      "items": {
+        "0": {
+          "title": "Video platforms with tracking",
+          "subtitle": "Parsing + posts",
+          "desc": "Platforms that support both competitor analysis and tracking your own posts with metrics.",
+          "tags": {
+            "0": "Instagram",
+            "1": "TikTok",
+            "2": "YouTube",
+            "3": "VKontakte"
+          },
+          "exampleLabel": "Example:",
+          "exampleText": " you added a video post on Instagram → the card shows the preview, date, description and metrics. Meanwhile, competitors on the same network are parsed into the \"Breakout videos\" section."
+        },
+        "1": {
+          "title": "Short-form video",
+          "subtitle": "Competitor parsing",
+          "desc": "Additional formats for deep competitor analysis — where a large pool of viral videos lives.",
+          "tags": {
+            "0": "YouTube Shorts",
+            "1": "VK Clips"
+          },
+          "exampleLabel": "Example:",
+          "exampleText": " in auto-search you picked YouTube Shorts and VK Clips — Evix suggests accounts by ER and reach, then breakout videos are parsed and broken down."
+        },
+        "2": {
+          "title": "Content platforms",
+          "subtitle": "Parsing and auto-search",
+          "desc": "Platforms with mixed content where we are interested in accounts and videos within the niche.",
+          "tags": {
+            "0": "Facebook",
+            "1": "Telegram",
+            "2": "Dzen"
+          },
+          "exampleLabel": "Example:",
+          "exampleText": " you ran auto-search with the \"Russia\" region and reach from 10K — the output is a list of Telegram channels and Dzen bloggers with a relevant audience."
+        },
+        "3": {
+          "title": "Other publishing platforms",
+          "subtitle": "Post tracking",
+          "desc": "If you posted a video outside the main social network — add the post to the \"Other\" category and track it manually.",
+          "tags": {
+            "0": "Other"
+          },
+          "exampleLabel": "Example:",
+          "exampleText": " you published a video on a niche site or a new social network — create a card under \"Other\" with preview and metrics manually."
+        }
+      },
+      "noteLabel": "Important:",
+      "noteText": " Evix does not publish videos automatically. You post the finished video to the social network yourself, while tracking posts in your workspace — this simplifies the team's work and removes the risks of auto-posting."
+    },
+    "contact": {
+      "badge": "Request an integration",
+      "title": "We'll show you how to connect your social media",
+      "desc": "Tell us which platforms you need to set up — we'll configure parsing and post tracking for your case.",
+      "formTitle": "Integration request",
+      "formSubtitle": "We'll get back to you shortly.",
+      "placeholders": {
+        "name": "Name",
+        "company": "Studio / company",
+        "email": "Email",
+        "phone": "Phone",
+        "message": "Platforms, client accounts, what you need — parsing, tracking or both…"
+      },
+      "submit": "Send request",
+      "consent": "By clicking the button, you agree to the personal data processing policy.",
+      "success": "Request received. We'll get back to you shortly."
+    }
+  },
+  "knowledgeBase": {
+    "meta": {
+      "title": "Knowledge Base — Evix"
+    },
+    "hero": {
+      "title1": "Guides to the ",
+      "titleEm": "product modules",
+      "desc": "Sections are organized to match the workspace modules. The base grows as new features ship — materials still in progress are marked as Coming soon.",
+      "searchPlaceholder": "Search the knowledge base..."
+    },
+    "tree": {
+      "badge": "Base structure",
+      "heading": "Sections by product module",
+      "sections": {
+        "gettingStarted": {
+          "title": "Getting started",
+          "items": {
+            "0": "Sign-up and first login",
+            "1": "Staff sign-in for team members",
+            "2": "ToV quiz: 12 questions about the brand",
+            "3": "Profile and connecting social accounts"
+          }
+        },
+        "dashboard": {
+          "title": "Dashboard",
+          "items": {
+            "0": "Overview: studio at a glance",
+            "1": "Analytics by script",
+            "2": "Analytics by publication",
+            "3": "Stats — section in development"
+          }
+        },
+        "clients": {
+          "title": "Clients and Workspace",
+          "items": {
+            "0": "Adding a client and the Free / Pro plan",
+            "1": "Assigning managers to a client",
+            "2": "Workspace: sections and navigation",
+            "3": "Client statuses: active / paused / overdue"
+          }
+        },
+        "scripts": {
+          "title": "AI scripts",
+          "items": {
+            "0": "5-step wizard: from type to edit",
+            "1": "Scripts based on a competitor and from scratch",
+            "2": "Topic and thesis analysis",
+            "3": "Script review against 10 criteria",
+            "4": "Statuses and approvals"
+          }
+        },
+        "avatars": {
+          "title": "Avatars and voices",
+          "items": {
+            "0": "Uploading photos and audio to the catalog",
+            "1": "Avatar styles and emotions",
+            "2": "Voice tones: friendly, expert, direct",
+            "3": "Linking an avatar and voice to a script"
+          }
+        },
+        "editing": {
+          "title": "Editing and covers",
+          "items": {
+            "0": "Auto-edit from the script",
+            "1": "Manual editing on the Pro plan",
+            "2": "Queue statuses and sending back for rework",
+            "3": "Cover wizard: 5 steps"
+          }
+        },
+        "publications": {
+          "title": "Publications",
+          "items": {
+            "0": "Adding a publication manually",
+            "1": "Linking to an edited clip",
+            "2": "Platforms: IG, TikTok, YouTube, VKontakte",
+            "3": "Tracking views and likes"
+          }
+        },
+        "library": {
+          "title": "Data library",
+          "items": {
+            "0": "Cores: ToV, marketing, product, account, niche",
+            "1": "Visual format library",
+            "2": "Connected social accounts",
+            "3": "Favorites: viral clips",
+            "4": "Competitor core — in development"
+          }
+        },
+        "competitors": {
+          "title": "Competitors",
+          "items": {
+            "0": "Adding manually and in bulk",
+            "1": "Auto-search by niche, ER, and audience",
+            "2": "Parsing settings and platforms",
+            "3": "Viral clip analysis",
+            "4": "Competitor stats — in development"
+          }
+        },
+        "team": {
+          "title": "Team and roles",
+          "items": {
+            "0": "Owner and technical department",
+            "1": "Script, editing, and publication managers",
+            "2": "Scriptwriter, editor, publisher",
+            "3": "Guest client access"
+          }
+        },
+        "plans": {
+          "title": "Free and Pro plans",
+          "items": {
+            "0": "What is included in Free",
+            "1": "What Pro adds: manual editing plus priority",
+            "2": "Upgrading from Free to Pro"
+          }
+        },
+        "notifications": {
+          "title": "Notifications",
+          "items": {
+            "0": "Event feed and filters",
+            "1": "Read and unread"
+          }
+        }
+      }
+    },
+    "footer": {
+      "note": "The base grows as new features ship. If the guide you need isn't here yet — send your question through the form and the team will help directly."
+    }
+  },
+  "training": {
+    "meta": {
+      "title": "Training — Evix"
+    },
+    "hero": {
+      "titlePart1": "We'll train your team",
+      "titlePart2": "to work with",
+      "brand": "Evix",
+      "desc": "We'll train every team member to use Evix successfully — from first login to confidently running a script through the entire pipeline. No fluff, no generic \"one-size-fits-all\" courses.",
+      "ctaPrimary": "Request training",
+      "ctaSecondary": "How it works"
+    },
+    "benefits": {
+      "badge": "Why our training",
+      "title": "What sets it apart from typical courses",
+      "desc": "The training is built around roles and real-world workflows, not a checklist of product modules. Every team member sees exactly what they need.",
+      "role": {
+        "title": "Tailored to each role",
+        "desc": "A scriptwriter doesn't need to know parsing settings, and an editor doesn't need the ToV quiz. Each person learns only their part of the workspace."
+      },
+      "data": {
+        "title": "On your real data",
+        "desc": "We learn on your actual client cores and scripts — not abstract examples — so everything applies directly to real work."
+      },
+      "live": {
+        "title": "Live sessions and Q&A",
+        "desc": "Not recorded videos played at 2x — live calls with the team and answers to specific questions about your process."
+      },
+      "analysis": {
+        "title": "Script analysis breakdown",
+        "desc": "We teach you to read analysis output: what the hook score means, what to look for in the editor brief, and when a script needs a rewrite."
+      },
+      "parsing": {
+        "title": "Parsing and competitor research",
+        "desc": "We show how to set up filters for your niche and how to adapt viral formats into your own scripts."
+      },
+      "support": {
+        "title": "Post-training support",
+        "desc": "We help it stick — answering questions once your team is working in the workspace on its own."
+      }
+    },
+    "trainers": {
+      "badge": "Who teaches",
+      "title": "The people who build the product and work with real studios",
+      "desc": "No \"generalist trainers.\" Training is led by people from the Evix team who run through the entire pipeline themselves every day.",
+      "product": {
+        "title": "Product team",
+        "desc": "They own the scripts, avatars, editing, and thumbnails modules. They know how every step works from the inside."
+      },
+      "curators": {
+        "title": "Client curators",
+        "desc": "They guide teams through onboarding and know which questions come up first — and why."
+      },
+      "editors": {
+        "title": "In-house editors",
+        "desc": "They join for the editing and thumbnails block. They show what a good editor brief actually looks like."
+      },
+      "footnote": "Specific people and roles are agreed at kickoff — matched to your team's composition and your priority modules."
+    },
+    "stages": {
+      "badge": "How it works",
+      "title": "Training stage by stage",
+      "desc": "Each stage is a dedicated session or series of sessions. We move at the team's pace — no rushing.",
+      "items": {
+        "0": {
+          "title": "Workspace overview",
+          "desc": "We walk through the structure: dashboard, clients, library, avatars, scripts, editing, publishing. We show who sees what."
+        },
+        "1": {
+          "title": "Cores and the ToV quiz",
+          "desc": "We teach you how to fill in and maintain client cores: ToV, marketing, product. We unpack how they shape the analysis."
+        },
+        "2": {
+          "title": "Script wizard",
+          "desc": "We walk through all five steps: type, script, avatar and voiceover, video generation, editing — on a real client topic."
+        },
+        "3": {
+          "title": "Team workflow",
+          "desc": "Approvals, send-backs for revision, editing, and publishing. We break down how the process flows between roles."
+        }
+      }
+    },
+    "contact": {
+      "badge": "Request training",
+      "title": "We'll tailor a program to your team",
+      "desc": "Tell us about your team and priority modules — we'll send back a program tailored to your case.",
+      "formTitle": "Training request",
+      "formSubtitle": "We'll be in touch shortly.",
+      "fields": {
+        "name": "Name",
+        "company": "Studio / company",
+        "email": "Email",
+        "phone": "Phone",
+        "message": "Team composition, experience with AI tools, what's important to level up..."
+      },
+      "submit": "Send request",
+      "policy": "By clicking the button, you agree to the personal data processing policy.",
+      "success": "Request received. We'll be in touch shortly."
+    }
+  }
+}
