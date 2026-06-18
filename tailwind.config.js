@@ -55,9 +55,23 @@ export default {
           3: '#04332a',
           soft: '#0f2a23',
         },
+        brand: {
+          surface: '#ecfbf6',
+          accent:  '#a8ecd5',
+          DEFAULT: '#1fa376',
+          deep:    '#1a8261',
+          pressed: '#18674e',
+        },
+        stop: {
+          surface: '#fff4ec',
+          DEFAULT: '#f97316',
+          hover:   '#e05a00',
+          pressed: '#b04500',
+        },
       },
       fontFamily: {
-        sans: ['Montserrat', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        sans: ['Manrope', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+        mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'monospace'],
       },
       boxShadow: {
         'soft-sm': '0 1px 2px rgba(15,25,22,0.04), 0 1px 1px rgba(15,25,22,0.03)',

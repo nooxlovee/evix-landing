@@ -5,10 +5,79 @@
 
 html { scroll-behavior: smooth; }
 body {
-  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
+
+/* === Editorial Mint type scale === */
+.t-display { font: 800 clamp(64px, 7vw, 104px) / .94 'Manrope'; letter-spacing: -.035em; }
+.t-h1      { font: 800 clamp(40px, 5vw, 64px)  / 1.05 'Manrope'; letter-spacing: -.025em; }
+.t-h2      { font: 800 clamp(28px, 3vw, 36px)  / 1.15 'Manrope'; letter-spacing: -.015em; }
+.t-h3      { font: 700 22px / 1.2 'Manrope'; letter-spacing: -.01em; }
+.t-body    { font: 500 clamp(15px, 1.4vw, 17px) / 1.55 'Manrope'; }
+.t-lead    { font: 500 clamp(16px, 1.8vw, 20px) / 1.55 'Manrope'; color: #5a6661; }
+.t-eyebrow { font: 700 12px / 1 'Manrope'; letter-spacing: .16em; text-transform: uppercase; }
+.t-mono    { font: 500 13px / 1 'JetBrains Mono'; letter-spacing: .04em; }
+
+/* === Form field — shared input style === */
+.field {
+  height: 54px;
+  padding: 0 18px;
+  border: 1px solid #e6e9e8;
+  background: #fff;
+  border-radius: 14px;
+  font: 500 15px/1 'Manrope';
+  color: #0f1916;
+  outline: none;
+  transition: border-color .2s, box-shadow .2s;
+}
+.field:hover:not(:focus) { border-color: #d2d7d5; }
+.field:focus { border-color: #1fa376; box-shadow: 0 0 0 4px rgba(43,191,139,.18); }
+.field.is-error { border-color: #e05a00; background: #fff4ec; }
+.field.is-error + .field-error { color: #b04500; font-weight: 600; font-size: 13px; margin-top: 8px; }
+textarea.field { height: auto; min-height: 110px; padding: 14px 18px; resize: vertical; line-height: 1.5; }
+
+/* === Eyebrow — каждая секция начинается с него === */
+.c-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 14px; border-radius: 999px;
+  background: #d4f5ea; color: #18674e;
+  font: 700 12px/1 'Manrope'; letter-spacing: .16em; text-transform: uppercase;
+  white-space: nowrap;
+}
+.c-eyebrow::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #1fa376; }
+
+/* === Status badges === */
+.c-badge-active   { @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-mint-100 text-mint-800 text-[11px] font-bold uppercase tracking-[.14em]; }
+.c-badge-beta     { @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-orange-50 text-orange-700 text-[11px] font-bold uppercase tracking-[.14em]; }
+.c-badge-core     { @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-ink text-white text-[11px] font-bold uppercase tracking-[.14em]; }
+.c-badge-archived { @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-line text-ink-soft text-[11px] font-bold uppercase tracking-[.14em]; }
+
+/* === Pipeline step === */
+.c-step {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 13px; border-radius: 8px;
+  background: #fff; border: 1px solid #d2d7d5;
+  font: 600 12.5px/1 'Manrope';
+}
+.c-step.is-active { background: #1fa376; color: #fff; border-color: #1a8261; }
+.c-step .dot { width: 6px; height: 6px; border-radius: 50%; background: #1fa376; }
+.c-step-arrow { color: #46cfa1; font-weight: 700; }
+
+/* === Underline-on-hover link === */
+.c-ulink {
+  position: relative; display: inline-flex; align-items: center; gap: 8px;
+  color: #1a8261; font-weight: 700; font-size: 14.5px;
+}
+.c-ulink::after {
+  content: ""; position: absolute; left: 0; bottom: -3px;
+  height: 2px; width: 0; background: currentColor;
+  transition: width .35s ease;
+}
+.c-ulink:hover::after { width: 100%; }
+.c-ulink svg { transition: transform .25s; }
+.c-ulink:hover svg { transform: translateX(3px); }
 
 /* ========== Scroll-reveal ========== */
 .reveal {

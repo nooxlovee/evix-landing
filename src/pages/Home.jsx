@@ -409,9 +409,6 @@ export default function Home() {
     if (Object.keys(next).length === 0) setSubmitted(true);
   };
 
-  const inputBase =
-    'h-[50px] px-4 border bg-white rounded-rmd text-[15px] hover:border-line-strong focus:border-mint-400 focus:outline-none focus:ring-4 focus:ring-mint-500/20 transition';
-
   return (
     <>
       {/* HERO */}
@@ -1020,20 +1017,20 @@ export default function Home() {
                 <form className="flex flex-col gap-3.5" onSubmit={onSubmit} noValidate>
                   <div className="grid grid-cols-2 gap-3">
                     <input
-                      className={`${inputBase} ${errors.name ? 'border-orange-500' : 'border-line'}`}
+                      className={`field ${errors.name ? 'is-error' : ''}`}
                       type="text" name="name" placeholder={t('home.contact.form.name')} value={form.name} onChange={onChange} required
                     />
-                    <input className={`${inputBase} border-line`} type="text" name="company" placeholder={t('home.contact.form.company')} value={form.company} onChange={onChange} />
+                    <input className="field" type="text" name="company" placeholder={t('home.contact.form.company')} value={form.company} onChange={onChange} />
                   </div>
                   <div className="grid grid-cols-2 gap-3">
                     <input
-                      className={`${inputBase} ${errors.email ? 'border-orange-500' : 'border-line'}`}
+                      className={`field ${errors.email ? 'is-error' : ''}`}
                       type="email" name="email" placeholder={t('home.contact.form.email')} value={form.email} onChange={onChange} required
                     />
-                    <input className={`${inputBase} border-line`} type="tel" name="phone" placeholder={t('home.contact.form.phone')} value={form.phone} onChange={onChange} />
+                    <input className="field" type="tel" name="phone" placeholder={t('home.contact.form.phone')} value={form.phone} onChange={onChange} />
                   </div>
                   <textarea
-                    className="min-h-[110px] px-4 py-3.5 border border-line bg-white rounded-rmd text-[15px] hover:border-line-strong focus:border-mint-400 focus:outline-none focus:ring-4 focus:ring-mint-500/20 transition resize-y leading-relaxed"
+                    className="field"
                     name="message" placeholder={t('home.contact.form.message')} value={form.message} onChange={onChange}
                   />
                   <Button type="submit" fullWidth>
