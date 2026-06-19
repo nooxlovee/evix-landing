@@ -70,8 +70,8 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['Manrope', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
-        mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'monospace'],
+        sans: ['Manrope', 'sans-serif'],
+        mono: ['Manrope', 'sans-serif'],
       },
       boxShadow: {
         'soft-sm': '0 1px 2px rgba(15,25,22,0.04), 0 1px 1px rgba(15,25,22,0.03)',

@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import Header from './Header.jsx';
 import Footer from './Footer.jsx';
+import { ScrollProgress } from './ui/ScrollProgress.jsx';
 import useScrollReveal from '../hooks/useScrollReveal.js';
 
 export default function Layout() {
@@ -23,6 +24,7 @@ export default function Layout() {
 
   return (
     <>
+      <ScrollProgress />
       <Header />
       <main key={pathname} className="page-transition">
         <Outlet />
