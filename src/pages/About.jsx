@@ -1,5 +1,4 @@
 import { useEffect, useMemo } from 'react';
-import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { LinkButton } from '../components/ui/Button';
 
@@ -29,7 +28,7 @@ export default function About() {
   return (
     <>
       <section className="hero-bg relative pt-[152px] pb-20 bg-dark text-white isolate overflow-hidden">
-        <div className="max-w-container mx-auto px-6">
+        <div className="relative max-w-container mx-auto px-6">
           <div className="flex flex-col items-center text-center gap-6 max-w-[820px] mx-auto">
             <h1 className="text-[clamp(32px,5vw,52px)] leading-[1.06] font-extrabold tracking-tight">
               {t('about.hero.titleStart')}<br />
@@ -45,15 +44,14 @@ export default function About() {
       <section className="py-24">
         <div className="max-w-container mx-auto px-6">
           <div className="reveal flex flex-col items-center text-center gap-3.5 mb-14">
-            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-mint-100 text-mint-800 text-xs font-bold tracking-[0.14em] uppercase">{t('about.building.badge')}</span>
             <h2 className="text-[clamp(28px,4vw,44px)] font-extrabold tracking-tight leading-[1.1] max-w-[780px]">{t('about.building.title')}</h2>
             <p className="text-[clamp(15px,1.6vw,17px)] text-ink-soft max-w-[640px]">{t('about.building.desc')}</p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-[1080px] mx-auto">
-            {buildingCards.map((c) => (
-              <article key={c.title} className="reveal bg-white border border-line rounded-rxl p-7 flex flex-col gap-3.5">
-                <div className="w-12 h-12 rounded-rmd bg-mint-50 text-mint-700 grid place-items-center">{c.icon}</div>
+            {buildingCards.map((c, i) => (
+              <article key={c.title} className="reveal bg-white border border-line rounded-rxl p-7 flex flex-col gap-3">
+                <span className="text-xs font-extrabold tracking-[0.14em] uppercase text-mint-600">{String(i + 1).padStart(2, '0')}</span>
                 <h3 className="text-lg font-bold tracking-tight">{c.title}</h3>
                 <p className="text-[14px] text-ink-soft leading-relaxed">{c.desc}</p>
               </article>
@@ -65,7 +63,6 @@ export default function About() {
       <section className="py-24 bg-gradient-to-b from-mint-50 to-canvas">
         <div className="max-w-container mx-auto px-6">
           <div className="reveal flex flex-col items-center text-center gap-3.5 mb-14">
-            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-mint-100 text-mint-800 text-xs font-bold tracking-[0.14em] uppercase">{t('about.principles.badge')}</span>
             <h2 className="text-[clamp(28px,4vw,44px)] font-extrabold tracking-tight leading-[1.1] max-w-[780px]">{t('about.principles.title')}</h2>
           </div>
 
@@ -84,7 +81,6 @@ export default function About() {
       <section className="py-24">
         <div className="max-w-container mx-auto px-6">
           <div className="reveal flex flex-col items-center text-center gap-3.5 mb-10">
-            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-100 text-orange-700 text-xs font-bold tracking-[0.14em] uppercase">{t('about.team.badge')}</span>
             <h2 className="text-[clamp(28px,4vw,44px)] font-extrabold tracking-tight leading-[1.1] max-w-[780px]">{t('about.team.title')}</h2>
             <p className="text-[clamp(15px,1.6vw,17px)] text-ink-soft max-w-[640px]">{t('about.team.desc')}</p>
             <LinkButton to="/#contact" className="mt-2">{t('about.team.cta')}</LinkButton>

@@ -58,7 +58,6 @@ export default function Pricing() {
       <section className="py-24" id="tariffs">
         <div className="max-w-container mx-auto px-6">
           <div className="reveal flex flex-col items-center text-center gap-3.5 mb-14">
-            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-mint-100 text-mint-800 text-xs font-bold tracking-[0.14em] uppercase">{t('pricing.tariffs.badge')}</span>
             <h2 className="text-[clamp(28px,4vw,44px)] font-extrabold tracking-tight leading-[1.1] max-w-[780px]">{t('pricing.tariffs.title')}</h2>
             <p className="text-[clamp(15px,1.6vw,17px)] text-ink-soft max-w-[640px]">{t('pricing.tariffs.desc')}</p>
           </div>
@@ -99,7 +98,7 @@ export default function Pricing() {
               <div className="absolute inset-0 rounded-r2xl overflow-hidden pointer-events-none">
                 <div className="absolute -top-24 -right-20 w-[260px] h-[260px] rounded-full bg-[radial-gradient(circle,rgba(116,223,187,0.32),transparent_70%)]"></div>
               </div>
-              <span className="absolute -top-3 left-1/2 -translate-x-1/2 inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-orange-500 text-white text-[11.5px] font-extrabold tracking-wider uppercase shadow-orange-badge whitespace-nowrap z-20">{t('pricing.tariffs.pro.badge')}</span>
+              <span className="absolute -top-3 left-1/2 -translate-x-1/2 inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-mint-500 text-white text-[11.5px] font-extrabold tracking-wider uppercase shadow-mint whitespace-nowrap z-20">{t('pricing.tariffs.pro.badge')}</span>
               <div className="relative z-10">
                 <div className="text-lg font-extrabold tracking-tight mb-1.5">{t('pricing.tariffs.pro.name')}</div>
                 <p className="text-[13.5px] text-white/75 leading-relaxed">{t('pricing.tariffs.pro.desc')}</p>
@@ -137,7 +136,6 @@ export default function Pricing() {
       <section className="py-24 bg-gradient-to-b from-mint-50 to-canvas">
         <div className="max-w-container mx-auto px-6">
           <div className="reveal flex flex-col items-center text-center gap-3.5 mb-12">
-            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-mint-100 text-mint-800 text-xs font-bold tracking-[0.14em] uppercase">{t('pricing.comparison.badge')}</span>
             <h2 className="text-[clamp(28px,4vw,44px)] font-extrabold tracking-tight leading-[1.1] max-w-[780px]">{t('pricing.comparison.title')}</h2>
           </div>
 
@@ -145,9 +143,9 @@ export default function Pricing() {
             <table className="w-full text-sm">
               <thead>
                 <tr className="bg-canvas">
-                  <th className="text-left py-4 px-5 font-bold tracking-tight">{t('pricing.comparison.headers.feature')}</th>
-                  <th className="text-center py-4 px-5 font-bold tracking-tight">{t('pricing.comparison.headers.free')}</th>
-                  <th className="text-center py-4 px-5 font-bold tracking-tight bg-mint-50 text-mint-800">{t('pricing.comparison.headers.pro')}</th>
+                  <th scope="col" className="text-left py-4 px-5 font-bold tracking-tight">{t('pricing.comparison.headers.feature')}</th>
+                  <th scope="col" className="text-center py-4 px-5 font-bold tracking-tight">{t('pricing.comparison.headers.free')}</th>
+                  <th scope="col" className="text-center py-4 px-5 font-bold tracking-tight bg-mint-50 text-mint-800">{t('pricing.comparison.headers.pro')}</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-line">

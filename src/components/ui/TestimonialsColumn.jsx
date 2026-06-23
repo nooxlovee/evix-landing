@@ -1,11 +1,22 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
+
+function initials(name = '') {
+  return name
+    .split(' ')
+    .map((w) => w[0])
+    .filter(Boolean)
+    .slice(0, 2)
+    .join('')
+    .toUpperCase();
+}
 
 export function TestimonialsColumn({ className = '', testimonials, duration = 15 }) {
+  const reduce = useReducedMotion();
   return (
     <div className={className}>
       <motion.div
-        animate={{ translateY: '-50%' }}
+        animate={reduce ? undefined : { translateY: '-50%' }}
         transition={{
           duration,
           repeat: Infinity,
@@ -16,21 +27,19 @@ export function TestimonialsColumn({ className = '', testimonials, duration = 15
       >
         {[...new Array(2)].map((_, index) => (
           <React.Fragment key={index}>
-            {testimonials.map(({ text, image, name, role }, i) => (
+            {testimonials.map(({ text, name, role }, i) => (
               <div
-                key={i}
+                key={`${index}-${name}-${i}`}
                 className="p-8 rounded-r2xl border border-line bg-white shadow-soft max-w-xs w-full"
               >
                 <div className="text-[14.5px] text-ink leading-relaxed">{text}</div>
                 <div className="flex items-center gap-3 mt-5">
-                  <img
-                    width={40}
-                    height={40}
-                    src={image}
-                    alt={name}
-                    loading="lazy"
-                    className="h-10 w-10 rounded-full object-cover"
-                  />
+                  <div
+                    aria-hidden="true"
+                    className="h-10 w-10 shrink-0 rounded-full bg-mint-50 text-mint-700 border border-mint-200 flex items-center justify-center text-[13px] font-bold tracking-tight"
+                  >
+                    {initials(name)}
+                  </div>
                   <div className="flex flex-col">
                     <div className="font-semibold tracking-tight leading-5 text-ink text-sm">
                       {name}

@@ -1,13 +1,21 @@
 import { useEffect, useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { LinkButton } from '../components/ui/Button';
 import TwitterTestimonials from '../components/ui/TwitterTestimonialCards';
 
-const REVIEW_DATES = [
-  '12 янв 2026', '8 янв 2026', '3 янв 2026',
-  '28 дек 2025', '21 дек 2025', '14 дек 2025',
-  '5 дек 2025', '27 ноя 2025', '18 ноя 2025',
-];
+const REVIEW_DATES = {
+  ru: [
+    '12 янв 2026', '8 янв 2026', '3 янв 2026',
+    '28 дек 2025', '21 дек 2025', '14 дек 2025',
+    '5 дек 2025', '27 ноя 2025', '18 ноя 2025',
+  ],
+  en: [
+    'Jan 12, 2026', 'Jan 8, 2026', 'Jan 3, 2026',
+    'Dec 28, 2025', 'Dec 21, 2025', 'Dec 14, 2025',
+    'Dec 5, 2025', 'Nov 27, 2025', 'Nov 18, 2025',
+  ],
+};
 
 const translit = (str) => {
   const map = { 'а':'a','б':'b','в':'v','г':'g','д':'d','е':'e','ё':'e','ж':'zh','з':'z','и':'i','й':'y','к':'k','л':'l','м':'m','н':'n','о':'o','п':'p','р':'r','с':'s','т':'t','у':'u','ф':'f','х':'h','ц':'c','ч':'ch','ш':'sh','щ':'sch','ъ':'','ы':'y','ь':'','э':'e','ю':'yu','я':'ya' };
@@ -34,10 +42,10 @@ const getReviews = (t) => [
 
 const getCases = (t) => [
   { tag: t('clients.cases.items.0.tag'), title: t('clients.cases.items.0.title'), desc: t('clients.cases.items.0.desc'), grad: 'from-mint-400 to-mint-700', stats: [['×3', t('clients.cases.items.0.stats.0.label')], ['−40%', t('clients.cases.items.0.stats.1.label')], ['+28%', t('clients.cases.items.0.stats.2.label')]], statColor: 'mint' },
-  { tag: t('clients.cases.items.1.tag'), title: t('clients.cases.items.1.title'), desc: t('clients.cases.items.1.desc'), grad: 'from-orange-300 to-orange-600', stats: [['+52%', t('clients.cases.items.1.stats.0.label')], ['×6', t('clients.cases.items.1.stats.1.label')], [t('clients.cases.items.1.stats.2.value'), t('clients.cases.items.1.stats.2.label')]], statColor: 'orange' },
+  { tag: t('clients.cases.items.1.tag'), title: t('clients.cases.items.1.title'), desc: t('clients.cases.items.1.desc'), grad: 'from-mint-300 to-mint-600', stats: [['+52%', t('clients.cases.items.1.stats.0.label')], ['×6', t('clients.cases.items.1.stats.1.label')], [t('clients.cases.items.1.stats.2.value'), t('clients.cases.items.1.stats.2.label')]], statColor: 'orange' },
   { tag: t('clients.cases.items.2.tag'), title: t('clients.cases.items.2.title'), desc: t('clients.cases.items.2.desc'), grad: 'from-mint-700 to-ink', stats: [['×4', t('clients.cases.items.2.stats.0.label')], ['−66%', t('clients.cases.items.2.stats.1.label')], ['8', t('clients.cases.items.2.stats.2.label')]], statColor: 'mint' },
   { tag: t('clients.cases.items.3.tag'), title: t('clients.cases.items.3.title'), desc: t('clients.cases.items.3.desc'), grad: 'from-mint-500 to-mint-800', stats: [['−60%', t('clients.cases.items.3.stats.0.label')], ['+25%', t('clients.cases.items.3.stats.1.label')], ['+38%', t('clients.cases.items.3.stats.2.label')]], statColor: 'mint' },
-  { tag: t('clients.cases.items.4.tag'), title: t('clients.cases.items.4.title'), desc: t('clients.cases.items.4.desc'), grad: 'from-orange-400 to-orange-700', stats: [['×5', t('clients.cases.items.4.stats.0.label')], ['+34%', t('clients.cases.items.4.stats.1.label')], [t('clients.cases.items.4.stats.2.value'), t('clients.cases.items.4.stats.2.label')]], statColor: 'orange' },
+  { tag: t('clients.cases.items.4.tag'), title: t('clients.cases.items.4.title'), desc: t('clients.cases.items.4.desc'), grad: 'from-mint-400 to-mint-700', stats: [['×5', t('clients.cases.items.4.stats.0.label')], ['+34%', t('clients.cases.items.4.stats.1.label')], [t('clients.cases.items.4.stats.2.value'), t('clients.cases.items.4.stats.2.label')]], statColor: 'orange' },
   { tag: t('clients.cases.items.5.tag'), title: t('clients.cases.items.5.title'), desc: t('clients.cases.items.5.desc'), grad: 'from-ink to-mint-700', stats: [['4', t('clients.cases.items.5.stats.0.label')], ['+18%', t('clients.cases.items.5.stats.1.label')], ['100%', t('clients.cases.items.5.stats.2.label')]], statColor: 'mint' },
 ];
 
@@ -46,7 +54,7 @@ function Trend({ value, accent }) {
   const negative = /^[−-]/.test(value);
   if (!positive && !negative) return null;
   const colorCls = positive
-    ? (accent === 'orange' ? 'text-orange-500' : 'text-mint-500')
+    ? (accent === 'orange' ? 'text-mint-500' : 'text-mint-500')
     : 'text-ink-mute';
   return (
     <svg
@@ -108,7 +116,7 @@ const CASE_ICONS = [
 ];
 
 export default function Clients() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     document.title = t('clients.meta.title');
@@ -117,13 +125,14 @@ export default function Clients() {
   const REVIEWS = useMemo(() => getReviews(t), [t]);
   const CASES = useMemo(() => getCases(t), [t]);
 
+  const dates = REVIEW_DATES[i18n.language] ?? REVIEW_DATES.ru;
   const TWITTER_CARDS = useMemo(() => REVIEWS.map((r, i) => ({
     initials: r.initials,
     username: r.name,
     handle: makeHandle(r.name),
     content: r.text,
-    date: REVIEW_DATES[i] ?? REVIEW_DATES[REVIEW_DATES.length - 1],
-  })), [REVIEWS]);
+    date: dates[i] ?? dates[dates.length - 1],
+  })), [REVIEWS, dates]);
 
   const featuredBadges = useMemo(() => [
     t('clients.cases.featured.badges.0'),
@@ -163,15 +172,14 @@ export default function Clients() {
       <section className="py-24 overflow-hidden" id="reviews">
         <div className="max-w-container mx-auto px-6">
           <div className="reveal flex flex-col items-center text-center gap-3.5 mb-14">
-            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-mint-100 text-mint-800 text-xs font-bold tracking-[0.14em] uppercase">{t('clients.reviews.badge')}</span>
             <h2 className="text-[clamp(28px,4vw,44px)] font-extrabold tracking-tight leading-[1.1] max-w-[780px]">{t('clients.reviews.title')}</h2>
             <p className="text-[clamp(15px,1.6vw,17px)] text-ink-soft max-w-[640px]">{t('clients.reviews.desc')}</p>
           </div>
 
           <TwitterTestimonials
             cards={TWITTER_CARDS}
-            expandLabel="Увидеть больше"
-            collapseLabel="Свернуть"
+            expandLabel={t('clients.reviews.expandLabel')}
+            collapseLabel={t('clients.reviews.collapseLabel')}
           />
         </div>
       </section>
@@ -179,7 +187,6 @@ export default function Clients() {
       <section className="py-24 bg-gradient-to-b from-mint-50 to-canvas" id="cases">
         <div className="max-w-container mx-auto px-6">
           <div className="reveal flex flex-col items-center text-center gap-3.5 mb-14">
-            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-100 text-orange-700 text-xs font-bold tracking-[0.14em] uppercase">{t('clients.cases.badge')}</span>
             <h2 className="text-[clamp(28px,4vw,44px)] font-extrabold tracking-tight leading-[1.1] max-w-[780px]">{t('clients.cases.title')}</h2>
             <p className="text-[clamp(15px,1.6vw,17px)] text-ink-soft max-w-[640px]">{t('clients.cases.desc')}</p>
           </div>
@@ -236,7 +243,7 @@ export default function Clients() {
                 >
                   <span
                     aria-hidden="true"
-                    className={`pointer-events-none select-none absolute -top-3 right-4 text-[110px] leading-none font-black tracking-tighter transition-all duration-500 group-hover:-translate-y-1 group-hover:scale-105 ${accent === 'orange' ? 'text-orange-50' : 'text-mint-50'}`}
+                    className={`pointer-events-none select-none absolute -top-3 right-4 text-[110px] leading-none font-black tracking-tighter transition-all duration-500 group-hover:-translate-y-1 group-hover:scale-105 ${accent === 'orange' ? 'text-mint-50' : 'text-mint-50'}`}
                   >
                     {num}
                   </span>
@@ -248,10 +255,7 @@ export default function Clients() {
 
                   <div className="relative p-7 flex flex-col gap-5 flex-1">
                     <div className="flex items-center gap-3">
-                      <span className={`inline-flex w-10 h-10 rounded-rmd items-center justify-center bg-gradient-to-br ${c.grad} text-white shrink-0 shadow-soft-sm transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-3`}>
-                        {CASE_ICONS[idx % CASE_ICONS.length]}
-                      </span>
-                      <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-[10.5px] font-bold tracking-[0.14em] uppercase ${accent === 'orange' ? 'bg-orange-50 text-orange-700' : 'bg-mint-50 text-mint-800'}`}>
+                      <span className="inline-flex items-center px-2.5 py-1 rounded-full text-[10.5px] font-bold tracking-[0.14em] uppercase bg-mint-50 text-mint-800">
                         {c.tag}
                       </span>
                     </div>
@@ -264,36 +268,35 @@ export default function Clients() {
                         <div key={label} className="flex flex-col gap-1.5">
                           <div className="flex items-center gap-1">
                             <Trend value={v} accent={accent} />
-                            <span className={`text-[19px] font-extrabold tracking-tight leading-none ${accent === 'orange' ? 'text-orange-700' : 'text-mint-800'}`}>{v}</span>
+                            <span className={`text-[19px] font-extrabold tracking-tight leading-none ${accent === 'orange' ? 'text-mint-700' : 'text-mint-800'}`}>{v}</span>
                           </div>
                           <div className="text-[10px] text-ink-mute uppercase tracking-[0.08em] leading-tight">{label}</div>
                         </div>
                       ))}
                     </div>
 
-                    <a href="#" className={`mt-auto inline-flex items-center gap-1.5 font-semibold text-[13.5px] transition-all group-hover:gap-2.5 ${accent === 'orange' ? 'text-orange-700 hover:text-orange-800' : 'text-mint-700 hover:text-mint-800'}`}>
+                    <Link to="/#contact" className={`mt-auto inline-flex items-center gap-1.5 font-semibold text-[13.5px] transition-all group-hover:gap-2.5 ${accent === 'orange' ? 'text-mint-700 hover:text-mint-800' : 'text-mint-700 hover:text-mint-800'}`}>
                       {t('clients.cases.detailsLink')}
                       <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M5 12h14" /><path d="M13 5l7 7-7 7" />
                       </svg>
-                    </a>
+                    </Link>
                   </div>
                 </article>
               );
             })}
           </div>
 
-          <div className="reveal relative overflow-hidden mt-14 bg-gradient-to-br from-mint-700 to-mint-800 text-white rounded-r2xl p-10 grid lg:grid-cols-[1.2fr_1fr] gap-8 items-center">
-            <div className="absolute -top-24 -right-14 w-[320px] h-[320px] rounded-full bg-[radial-gradient(circle,rgba(116,223,187,0.32),transparent_70%)]"></div>
-            <div className="relative">
-              <h3 className="text-[clamp(22px,2.6vw,28px)] font-extrabold tracking-tight mb-3">{t('clients.cases.summary.title')}</h3>
-              <p className="text-[15px] text-white/80 leading-relaxed">{t('clients.cases.summary.desc')}</p>
+          <div className="reveal mt-14 bg-white border border-line rounded-r2xl p-10 grid lg:grid-cols-[1.2fr_1fr] gap-8 items-center shadow-soft">
+            <div>
+              <h3 className="text-[clamp(22px,2.6vw,28px)] font-extrabold tracking-tight mb-3 text-ink">{t('clients.cases.summary.title')}</h3>
+              <p className="text-[15px] text-ink-soft leading-relaxed">{t('clients.cases.summary.desc')}</p>
             </div>
-            <div className="relative grid grid-cols-2 gap-3.5">
+            <div className="grid grid-cols-2 gap-3.5">
               {summaryStats.map(([v, label]) => (
-                <div key={label} className="bg-white/10 border border-white/15 rounded-rlg p-4">
-                  <div className="text-2xl font-extrabold tracking-tight">{v}</div>
-                  <div className="text-xs text-white/70 uppercase tracking-[0.08em] mt-1">{label}</div>
+                <div key={label} className="bg-mint-50 border border-mint-200 rounded-rlg p-4">
+                  <div className="text-2xl font-extrabold tracking-tight text-mint-700">{v}</div>
+                  <div className="text-xs text-ink-mute uppercase tracking-[0.08em] mt-1">{label}</div>
                 </div>
               ))}
             </div>

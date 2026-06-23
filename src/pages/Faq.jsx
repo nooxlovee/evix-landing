@@ -1,5 +1,4 @@
 import { useEffect, useMemo } from 'react';
-import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { LinkButton } from '../components/ui/Button';
 
@@ -76,6 +75,9 @@ export default function Faq() {
     if (el) {
       const top = el.getBoundingClientRect().top + window.scrollY - 80;
       window.scrollTo({ top, behavior: 'smooth' });
+      // Move focus to the target category so keyboard users follow the jump.
+      el.setAttribute('tabindex', '-1');
+      el.focus({ preventScroll: true });
     }
   };
 
@@ -97,9 +99,9 @@ export default function Faq() {
                   key={p.id}
                   href={`#${p.id}`}
                   onClick={scrollTo(p.id)}
-                  className={p.primary
-                    ? 'px-4 py-2 rounded-full bg-mint-500 text-white text-sm font-semibold shadow-mint'
-                    : 'px-4 py-2 rounded-full bg-white/10 border border-white/15 text-white/85 text-sm font-medium hover:bg-white/20 transition'}
+                  className={`focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mint-400/60 ${p.primary
+                    ? 'px-4 py-2 rounded-[14px] bg-mint-500 text-white text-sm font-semibold shadow-mint'
+                    : 'px-4 py-2 rounded-[14px] bg-white/10 border border-white/15 text-white/85 text-sm font-medium hover:bg-white/20 transition'}`}
                 >
                   {p.label}
                 </a>
@@ -112,12 +114,12 @@ export default function Faq() {
       <section className="py-24">
         <div className="max-w-[940px] mx-auto px-6 flex flex-col gap-14">
           {CATEGORIES.map((cat) => (
-            <div key={cat.id} id={cat.id} className="reveal">
+            <div key={cat.id} id={cat.id} className="reveal scroll-mt-24 focus:outline-none">
               <h2 className="text-2xl font-extrabold tracking-tight mb-6">{cat.title}</h2>
               <div className="flex flex-col gap-3">
                 {cat.items.map(([q, a]) => (
                   <details key={q} className="bg-white border border-line rounded-rxl p-6 group">
-                    <summary className="cursor-pointer flex items-center justify-between gap-4 font-bold text-[15.5px] tracking-tight">
+                    <summary className="cursor-pointer flex items-center justify-between gap-4 font-bold text-[15.5px] tracking-tight rounded-rsm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mint-500/40">
                       {q}
                       <svg className="w-5 h-5 text-mint-700 transition group-open:rotate-45 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M12 5v14M5 12h14" />

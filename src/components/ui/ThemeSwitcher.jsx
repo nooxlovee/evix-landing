@@ -9,7 +9,7 @@ export function ThemeSwitcher({ className = '' }) {
       onClick={toggle}
       aria-label={isDark ? 'Switch to light theme' : 'Switch to dark theme'}
       title={isDark ? 'Switch to light theme' : 'Switch to dark theme'}
-      className={`inline-flex items-center justify-center w-11 h-11 rounded-rmd border border-line bg-white text-ink-soft hover:bg-mint-50 hover:border-mint-300 hover:text-mint-700 transition ${className}`}
+      className={`inline-flex items-center justify-center w-11 h-11 rounded-[14px] border border-line bg-white text-ink-soft hover:bg-mint-50 hover:border-mint-300 hover:text-mint-700 transition ${className}`}
     >
       {isDark ? (
         <svg className="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">

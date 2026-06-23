@@ -64,15 +64,18 @@
         "experts": {
           "title": "Experts and bloggers",
           "quote": "\"I want to post regularly, but I don't have a team\"",
-          "desc": "Evix captures a ToV in your voice, builds scripts with an AI avatar, and manages publishing — all in one dashboard, with no scriptwriter or editor on the team."
+          "desc": "Evix captures a ToV in your voice, builds scripts with an AI avatar, and manages publishing — all in one dashboard, with no scriptwriter or editor on the team.",
+          "short": "Experts"
         },
         "production": {
           "title": "Production studios",
-          "desc": "You spend more time on briefs than on shooting. Scripts split into hook, body, and CTA — instantly tailored to the format you need."
+          "desc": "You spend more time on briefs than on shooting. Scripts split into hook, body, and CTA — instantly tailored to the format you need.",
+          "short": "Production"
         },
         "smm": {
           "title": "SMM agencies",
-          "desc": "You juggle multiple clients and lose hours on approvals. Evix pulls every client's ToV and formats into a single workspace."
+          "desc": "You juggle multiple clients and lose hours on approvals. Evix pulls every client's ToV and formats into a single workspace.",
+          "short": "SMM"
         }
       }
     },
@@ -184,7 +187,10 @@
           }
         }
       },
-      "coreBadge": "Core"
+      "coreBadge": "Core",
+      "stepsLabel": "Steps",
+      "insideLabel": "What's inside",
+      "switchHint": "Click or hover to switch"
     },
     "how": {
       "kicker": "How it works",
@@ -366,8 +372,53 @@
         "message": "A quick note about your task (optional)",
         "submit": "Send request",
         "privacy": "By clicking the button, you agree to the privacy policy.",
-        "success": "Request received. We'll be in touch shortly."
+        "success": "Request received. We'll be in touch shortly.",
+        "intro": "Hello, my name is",
+        "from": "— I'm from",
+        "contactBy": "Reach me by",
+        "or": "or",
+        "discuss": "We'd like to discuss",
+        "successSub": "We'll reply within 24 hours.",
+        "placeholders": {
+          "name": "your name",
+          "company": "studio name",
+          "email": "email",
+          "phone": "phone",
+          "message": "content workflows, integrations, anything else"
+        }
       }
+    },
+    "hero": {
+      "eyebrow": "AI content studio",
+      "specimen": {
+        "label": "One workspace",
+        "caption": "One flow instead of five separate tools.",
+        "badge": "No exports",
+        "steps": [
+          "Script",
+          "Avatar & voice",
+          "Editing",
+          "Cover",
+          "Tracking"
+        ]
+      },
+      "mockup": {
+        "app": "Evix · workspace",
+        "task": "AI script",
+        "step": "Checking brand cores",
+        "ready": "Ready",
+        "trust": "6 cores · 9 modules · one workspace"
+      }
+    },
+    "stats": {
+      "cycle": "Cycle",
+      "satisfaction": "Satisfaction",
+      "support": "Support",
+      "modules": "Modules",
+      "cycleSub": "Average production speed-up across projects",
+      "satisfactionSub": "Of teams are happy with the result after month one",
+      "supportSub": "Chat and email — quick replies",
+      "modulesSub": "9 on the homepage, 16 inside the product"
     }
   },
   "lang": {
@@ -395,6 +446,7 @@
       }
     },
     "allModules": {
+      "badge": "Product map",
       "title": "16 modules already live in the product",
       "subtitle": "Only what's actually in the workspace. Below you can filter modules by a team role."
     },
@@ -468,6 +520,851 @@
       "desc": "Let's set up a demo — we'll show a workspace configured with real data from your niche and help you gauge how many hours a week you'll free up.",
       "primary": "Get a demo",
       "secondary": "How it works"
+    },
+    "badges": {
+      "base": "Core",
+      "ai": "AI",
+      "content": "Content",
+      "team": "Team"
+    },
+    "niches": {
+      "smm": {
+        "name": "SMM agency",
+        "sub": "Client flow and a team",
+        "hero": "SMM agencies",
+        "roles": {
+          "owner": {
+            "name": "Owner",
+            "desc": "Agency overview, client margins, team workload at a glance."
+          },
+          "account": {
+            "name": "Account manager",
+            "desc": "Clients, script approvals, the publication tracker."
+          },
+          "scriptwriter": {
+            "name": "Scriptwriter",
+            "desc": "Scripts, the core library, AI analysis, material from competitors."
+          },
+          "editor": {
+            "name": "Video editor",
+            "desc": "An editing queue with 7 statuses, thumbnails, avatars."
+          }
+        }
+      },
+      "studio": {
+        "name": "Production studio",
+        "sub": "Script → shoot → edit",
+        "hero": "production studios",
+        "roles": {
+          "producer": {
+            "name": "Producer",
+            "desc": "The task queue, editing and publication control across clients."
+          },
+          "scriptwriter": {
+            "name": "Scriptwriter",
+            "desc": "Scripts to a client brief, cores, competitor breakdowns."
+          },
+          "editor": {
+            "name": "Video editor",
+            "desc": "Editing tasks, thumbnails, working with avatars."
+          },
+          "publisher": {
+            "name": "Publishing manager",
+            "desc": "The post tracker by platform, metric refreshes."
+          }
+        }
+      },
+      "blogger": {
+        "name": "Expert / creator",
+        "sub": "Personal brand",
+        "hero": "a personal brand",
+        "roles": {
+          "soloAuthor": {
+            "name": "I'm the author",
+            "desc": "I do it all myself: scripts, thumbnails, publication tracking."
+          },
+          "withAssistant": {
+            "name": "Me + assistant",
+            "desc": "I capture the meaning, the assistant builds the content."
+          },
+          "withProducer": {
+            "name": "Me + producer",
+            "desc": "I delegate part of the work to a producer."
+          },
+          "withTeam": {
+            "name": "Me + team",
+            "desc": "A full team: scriptwriter, editor, publisher."
+          }
+        }
+      },
+      "marketer": {
+        "name": "In-house marketer",
+        "sub": "One product / brand",
+        "hero": "an in-house brand",
+        "roles": {
+          "head": {
+            "name": "Head of marketing",
+            "desc": "An activity dashboard, team control, the core library."
+          },
+          "marketer": {
+            "name": "Marketer",
+            "desc": "Brand content: scripts, cores, competitor parsing."
+          },
+          "contentManager": {
+            "name": "Content manager",
+            "desc": "Scripts, thumbnails, formats, publication tracking."
+          },
+          "smmSpec": {
+            "name": "SMM specialist",
+            "desc": "Competitor parsing, avatars, publications."
+          }
+        }
+      }
+    },
+    "cards": {
+      "dashboard": {
+        "title": "Studio dashboard",
+        "desc": "An overview of scripts, editing and publications, plus KPIs and task tables."
+      },
+      "clients": {
+        "title": "Clients + Workspace",
+        "desc": "The agency client registry, Free / Pro plans, a mini workspace for each one."
+      },
+      "library": {
+        "title": "Core library",
+        "desc": "ToV, marketing, product, account and niche analysis of the client."
+      },
+      "formats": {
+        "title": "Visual formats",
+        "desc": "Evix templates plus your own formats for Reels / Shorts / YouTube."
+      },
+      "scripts": {
+        "title": "AI scripts",
+        "desc": "A 5-step wizard: type → script → avatar → result → editing."
+      },
+      "scriptsAnalysis": {
+        "title": "AI script analysis",
+        "desc": "10 criteria: hook + retention, ToV, the editing brief and recommendations."
+      },
+      "covers": {
+        "title": "AI thumbnails",
+        "desc": "A 5-step wizard: copy → score → concept → finished thumbnail 9:16 / 16:9."
+      },
+      "avatar": {
+        "title": "Avatars and voices",
+        "desc": "A catalog of photo avatars and voices with 6 tones and emotions."
+      },
+      "edits": {
+        "title": "Editing queue",
+        "desc": "7 statuses: assigned / in progress / with the editor / done. Manual editing on Pro."
+      },
+      "publish": {
+        "title": "Publication tracker",
+        "desc": "Post tracking across Instagram, TikTok, YouTube and VKontakte, plus post metrics."
+      },
+      "competitors": {
+        "title": "Competitor parsing",
+        "desc": "Auto-discovery, scraping of accounts and videos by period and reach filters."
+      },
+      "transcribe": {
+        "title": "Clip transcription",
+        "desc": "Competitors' viral clips: hook, triggers, structure, timeline."
+      },
+      "core": {
+        "title": "Competitor analysis",
+        "desc": "Topics, hooks, structures, what to borrow / avoid — export to .md."
+      },
+      "favorites": {
+        "title": "Breakout clips",
+        "desc": "Competitors' top videos in the team's favorites — a stash of references."
+      },
+      "quiz": {
+        "title": "ToV quiz (onboarding)",
+        "desc": "12 questions → analysis → segments → a ready ToV file for the client."
+      },
+      "team": {
+        "title": "Team and roles",
+        "desc": "9 roles: owner, scriptwriters, editors, publishers, client."
+      }
+    },
+    "modules": {
+      "dashboard": {
+        "title": "Studio dashboard",
+        "perNiche": {
+          "smm": {
+            "desc": "An agency overview: the status of scripts, editing and publications across every client in one window.",
+            "list": [
+              "KPIs: total scripts, done, in editing, drafts",
+              "The team's latest scripts",
+              "Active editing tasks",
+              "Analytics on scripts and publications"
+            ]
+          },
+          "studio": {
+            "desc": "An overview of the production cycle: what the scriptwriter, editor and publisher have in progress.",
+            "list": [
+              "KPIs by project",
+              "The editing queue",
+              "Finished clips and ones delivered to the client",
+              "Activity over the last 30 days"
+            ]
+          },
+          "blogger": {
+            "desc": "A personal overview: what's in progress, what's done, what's published.",
+            "list": [
+              "Active scripts",
+              "Editing statuses",
+              "Latest publications and metrics",
+              "What needs doing today"
+            ]
+          },
+          "marketer": {
+            "desc": "An overview of the brand's content activity: scripts, editing, publications.",
+            "list": [
+              "Team KPIs",
+              "Active scripts and publications",
+              "Latest posts and reach",
+              "Urgent tasks"
+            ]
+          }
+        }
+      },
+      "clients": {
+        "title": "Clients + Workspace",
+        "perNiche": {
+          "smm": {
+            "desc": "The agency's client registry with statuses (active / paused / overdue), Free/Pro plan and team.",
+            "list": [
+              "Client statuses: active / paused / overdue",
+              "Free / Pro plans (Pro gets manual editing)",
+              "The team is tied to a client",
+              "A workspace with sections per client"
+            ]
+          },
+          "studio": {
+            "title": "Commissioning clients",
+            "desc": "Every commissioning client with their own briefs, scripts, edits and publications.",
+            "list": [
+              "A commissioning-client card",
+              "Linking the team to a project",
+              "A workspace with publications and editing",
+              "Statuses and a work history"
+            ]
+          },
+          "blogger": {
+            "title": "Partner contacts",
+            "desc": "Tracking partners and advertisers — a separate workspace for each collaboration.",
+            "list": [
+              "A partner card",
+              "A history of collaborations",
+              "Integration status",
+              "A project workspace"
+            ]
+          },
+          "marketer": {
+            "title": "Brand workspace",
+            "desc": "One workspace for the brand: team, scripts, editing, publications.",
+            "list": [
+              "A brand / product-line card",
+              "The content production team",
+              "Every section inside the workspace",
+              "An activity history"
+            ]
+          }
+        }
+      },
+      "library": {
+        "title": "Core library",
+        "perNiche": {
+          "smm": {
+            "desc": "Each client has their own 5 cores: ToV, marketing, product, account and niche analysis.",
+            "list": [
+              "The client's ToV — their signature voice",
+              "Marketing analysis: audience, pains, triggers",
+              "Product analysis: USP, pricing, advantages",
+              "Account core: positioning on social",
+              "Niche core: the segment's shared rules"
+            ]
+          },
+          "studio": {
+            "desc": "5 cores for each commissioning client — the basis for the brief and the scriptwriter.",
+            "list": [
+              "The client's ToV",
+              "Marketing and product analysis",
+              "Account and niche cores",
+              "Used by the scriptwriter and producer"
+            ]
+          },
+          "blogger": {
+            "desc": "Your own ToV plus marketing and product analysis, just like a brand's.",
+            "list": [
+              "A ToV in your way of speaking",
+              "Marketing analysis of your audience",
+              "Product analysis of your expertise",
+              "Account and niche cores"
+            ]
+          },
+          "marketer": {
+            "desc": "The brand's 5 cores — a single source of truth for the whole content team.",
+            "list": [
+              "The brand ToV",
+              "Marketing analysis of the ICP",
+              "Product analysis of the line-up",
+              "Account and niche cores",
+              "Applied by AI at every step"
+            ]
+          }
+        }
+      },
+      "formats": {
+        "title": "Visual formats",
+        "perNiche": {
+          "smm": {
+            "desc": "Evix templates plus custom formats for each client.",
+            "list": [
+              "A ready Evix template base",
+              "The client's own formats",
+              "Reels 9:16, Shorts 9:16, YouTube 16:9",
+              "Square 1:1"
+            ]
+          },
+          "studio": {
+            "desc": "A format catalog for every type of commission: promotional, educational, image.",
+            "list": [
+              "Studio templates",
+              "Formats to the client brief",
+              "Every screen size",
+              "Linked to editing templates"
+            ]
+          },
+          "blogger": {
+            "desc": "Your own signature visual style for reels and YouTube.",
+            "list": [
+              "Evix templates",
+              "Your own formats",
+              "Reels / Shorts / YouTube",
+              "Applied in thumbnails"
+            ]
+          },
+          "marketer": {
+            "desc": "A brand book of visual formats: every size and post type.",
+            "list": [
+              "Brand templates",
+              "Custom formats",
+              "Every size (9:16, 1:1, 16:9)",
+              "A single style for the teams"
+            ]
+          }
+        }
+      },
+      "scripts": {
+        "title": "AI scripts",
+        "perNiche": {
+          "smm": {
+            "desc": "A 5-step wizard: type → script → avatar → result → editing. AI assembles the copy to the client's ToV.",
+            "list": [
+              "8 statuses: draft / in review / rejected / generated / in editing / done / published",
+              "Linked to an avatar and voice",
+              "A finished video from the media library",
+              "Handoff to editing"
+            ]
+          },
+          "studio": {
+            "desc": "A script to the client brief, with the option to adapt it before the shoot.",
+            "list": [
+              "Script structure by type",
+              "Linked to the brief",
+              "Approval statuses",
+              "Handoff to editing"
+            ]
+          },
+          "blogger": {
+            "desc": "A script in your voice through a link to your personal ToV.",
+            "list": [
+              "A script to your ToV",
+              "A hook + body + CTA structure",
+              "8 progression statuses",
+              "From draft to publication"
+            ]
+          },
+          "marketer": {
+            "desc": "Scripts for the brand with a check against the cores and standards.",
+            "list": [
+              "A script to the brand ToV",
+              "Structure by content type",
+              "8 statuses with approval",
+              "Linked to the product line"
+            ]
+          }
+        }
+      },
+      "scriptsAnalysis": {
+        "title": "AI script analysis",
+        "perNiche": {
+          "smm": {
+            "desc": "10 analysis criteria: overall score, hook + retention, fit to the client's ToV, the editing brief, recommendations.",
+            "list": [
+              "The script's overall score",
+              "Hook and retention",
+              "Fit to the client's ToV",
+              "Comparison with a competitor",
+              "Editing brief: scenes and transitions",
+              "Recommendations for revision"
+            ]
+          },
+          "studio": {
+            "desc": "Analysis of the script before it goes into the shoot: what to strengthen, what to watch.",
+            "list": [
+              "A score and rating by criteria",
+              "Hook, retention, CTA",
+              "A brief for the editor",
+              "Recommendations for the shoot"
+            ]
+          },
+          "blogger": {
+            "desc": "A check of the script before the shoot: how strong the hook is, whether retention holds, whether it's your voice.",
+            "list": [
+              "An overall score",
+              "Fit to your ToV",
+              "Hook strength and retention",
+              "An editing brief",
+              "What to improve"
+            ]
+          },
+          "marketer": {
+            "desc": "Quality control of the script before publication: fit to the brand and standards.",
+            "list": [
+              "A score by criteria",
+              "Fit to the ToV and cores",
+              "Hook + retention",
+              "An editing brief",
+              "Recommendations"
+            ]
+          }
+        }
+      },
+      "covers": {
+        "title": "AI thumbnails",
+        "perNiche": {
+          "smm": {
+            "desc": "A 5-step wizard: source → copy → score → concept → result. Thumbnails in 9:16 and 16:9.",
+            "list": [
+              "Source: a script or a new idea",
+              "4 copy treatments",
+              "A score across 5 criteria",
+              "3 design concepts",
+              "A finished thumbnail ready to post"
+            ]
+          },
+          "studio": {
+            "desc": "Thumbnails for commercial projects in the client's branding.",
+            "list": [
+              "The commissioning client's branding",
+              "A 5-step wizard",
+              "9:16 and 16:9 formats",
+              "Ready for handoff to the client"
+            ]
+          },
+          "blogger": {
+            "desc": "A recognizable thumbnail in your style for reels and YouTube.",
+            "list": [
+              "Your signature style",
+              "A/B treatments",
+              "A 5-criteria score",
+              "Reels and YouTube formats"
+            ]
+          },
+          "marketer": {
+            "desc": "Thumbnails in a single brand style — every channel looks the same.",
+            "list": [
+              "The brand book is applied automatically",
+              "A 5-step wizard",
+              "A/B treatments",
+              "9:16 and 16:9"
+            ]
+          }
+        }
+      },
+      "avatar": {
+        "title": "Avatars and voices",
+        "perNiche": {
+          "smm": {
+            "desc": "A catalog of photo avatars and voices with tones. Used when creating scripts.",
+            "list": [
+              "A photo avatar of the client or host",
+              "Tones: friendly, direct, expert, provocative, motivating, humorous",
+              "Emotions: warm / neutral / serious / playful / energetic / friendly",
+              "Voice demo phrases"
+            ]
+          },
+          "studio": {
+            "desc": "A catalog of hosts and voices for commercial projects.",
+            "list": [
+              "Several hosts in the catalog",
+              "A voice palette by type",
+              "Demo voiceovers",
+              "Linked to a script"
+            ]
+          },
+          "blogger": {
+            "desc": "Your avatar and voice as a preset — chosen when creating a script.",
+            "list": [
+              "Your avatar preset",
+              "Your own voice with emotions",
+              "Demo phrases",
+              "Linked to a script"
+            ]
+          },
+          "marketer": {
+            "desc": "The brand's avatars and voices — a single set for the whole team.",
+            "list": [
+              "A brand ambassador avatar",
+              "A branded voice",
+              "Demo phrases",
+              "Applied in scripts"
+            ]
+          }
+        }
+      },
+      "edits": {
+        "title": "Editing queue",
+        "perNiche": {
+          "smm": {
+            "desc": "A workflow for the editor: 7 statuses from \"assigned\" to \"done\". Pro clients get manual editing.",
+            "list": [
+              "7 statuses: assigned / no edit / in progress / with the editor / in review / rejected / done",
+              "Pro plan: a live editor does the cut",
+              "Free: auto-editing from a template",
+              "Approval and rejection with a reason"
+            ]
+          },
+          "studio": {
+            "desc": "A production editing workflow with client approvals.",
+            "list": [
+              "7 task statuses",
+              "Assignment to a specific editor",
+              "Approval with the client",
+              "Rejection with a reason"
+            ]
+          },
+          "blogger": {
+            "desc": "Editing tasks: what's done, what's in progress, what needs approving.",
+            "list": [
+              "A list of editing tasks",
+              "7 statuses",
+              "Approving finished clips",
+              "Handoff to publishing"
+            ]
+          },
+          "marketer": {
+            "desc": "Control over the editing queue: what's done, what needs approving.",
+            "list": [
+              "The editing team's tasks",
+              "7 statuses",
+              "Approving clips",
+              "Handoff to the publisher"
+            ]
+          }
+        }
+      },
+      "publish": {
+        "title": "Publication tracker",
+        "perNiche": {
+          "smm": {
+            "desc": "Publication tracking by client: Instagram, TikTok, YouTube, VKontakte. A person posts the clip; metrics live in the product.",
+            "list": [
+              "4 main platforms + 6 spares",
+              "Date, time, a caption up to 2,200 characters",
+              "Linked to the finished edit",
+              "Simulated refresh of views and likes",
+              "\"Best post of the week\" analytics"
+            ]
+          },
+          "studio": {
+            "desc": "Tracking of delivered and published clips by client.",
+            "list": [
+              "Publication tracking by project",
+              "4 platforms",
+              "Clip metrics",
+              "A report for the client"
+            ]
+          },
+          "blogger": {
+            "desc": "Tracking your publications across social with metrics and a best post.",
+            "list": [
+              "A publication calendar",
+              "4 platforms",
+              "Post metrics",
+              "Top posts of the week"
+            ]
+          },
+          "marketer": {
+            "desc": "Tracking the brand's publications across social with aggregated analytics.",
+            "list": [
+              "Post tracking across every line",
+              "4 main platforms",
+              "Views / likes / ER metrics",
+              "Top posts for reports"
+            ]
+          }
+        }
+      },
+      "competitors": {
+        "title": "Competitor parsing",
+        "perNiche": {
+          "smm": {
+            "desc": "Auto-discovery, manual and bulk account adding. Scraping with filters for period, reach and views.",
+            "list": [
+              "Direct and indirect competitors",
+              "Platforms: Instagram, TikTok, VK, YouTube, Facebook + 4 spares",
+              "Period and reach filters",
+              "A \"breakout videos\" grid",
+              "Scheduled regular updates"
+            ]
+          },
+          "studio": {
+            "desc": "The client's competitors for briefing the scriptwriter.",
+            "list": [
+              "Parsing the client's competitors",
+              "Reach filters",
+              "Breakout videos into the catalog",
+              "Used when preparing for the shoot"
+            ]
+          },
+          "blogger": {
+            "desc": "What's coming out in your niche — without manual scraping.",
+            "list": [
+              "Competitor parsing by hand and auto-discovery",
+              "Reach filters",
+              "Breakout clips into favorites",
+              "Topics for your own videos"
+            ]
+          },
+          "marketer": {
+            "desc": "The brand's competitors: accounts, formats, viral clips.",
+            "list": [
+              "Direct and indirect competitors",
+              "Every main platform",
+              "Period and reach filters",
+              "A source of ideas for the content plan"
+            ]
+          }
+        }
+      },
+      "transcribe": {
+        "title": "Clip transcription",
+        "perNiche": {
+          "smm": {
+            "desc": "Analysis of competitors' viral clips: transcription, virality, timeline, hook, triggers, template.",
+            "list": [
+              "Filters: min duration, views, ER",
+              "Hook and virality triggers",
+              "A timeline with scene markup",
+              "A ready template for your own script"
+            ]
+          },
+          "studio": {
+            "desc": "A deep breakdown of a reference before going into the shoot.",
+            "list": [
+              "Clip transcription",
+              "Structure markup",
+              "What to take into the script",
+              "What to avoid"
+            ]
+          },
+          "blogger": {
+            "desc": "Understand why a peer's clip took off, and reshoot it your way.",
+            "list": [
+              "Transcription and breakdown",
+              "Hook and triggers",
+              "Structure and timeline",
+              "A ready clip template"
+            ]
+          },
+          "marketer": {
+            "desc": "A breakdown of viral clips in the niche as a source of insights.",
+            "list": [
+              "Transcription with filters",
+              "Analysis of hook and retention",
+              "Clip structure",
+              "A template for your own content"
+            ]
+          }
+        }
+      },
+      "core": {
+        "title": "Competitor analysis",
+        "perNiche": {
+          "smm": {
+            "desc": "An aggregate core built from all of the client's competitors: topics, hooks, structures, what to borrow / avoid. Export to .md.",
+            "list": [
+              "Competitors' key topics",
+              "Strong hooks",
+              "Typical clip structures",
+              "What to borrow into your content",
+              "What to avoid",
+              "Download as .md"
+            ]
+          },
+          "studio": {
+            "desc": "An assembly of insights from the client's competitors for the scriptwriting department.",
+            "list": [
+              "Analysis of all competitors",
+              "Topics and hooks",
+              "Clip structures",
+              "Export to .md"
+            ]
+          },
+          "blogger": {
+            "desc": "An aggregate analysis of the niche: what definitely works for others.",
+            "list": [
+              "The niche's top topics",
+              "Strong hooks",
+              "Structures",
+              "What to copy, what to avoid",
+              "Download as .md"
+            ]
+          },
+          "marketer": {
+            "desc": "A strategic view of the niche for the brand's content plan.",
+            "list": [
+              "Competitors' topics",
+              "Strong hooks",
+              "Clip structures",
+              "What to take into the content plan",
+              "Export to .md"
+            ]
+          }
+        }
+      },
+      "favorites": {
+        "title": "Breakout clips",
+        "perNiche": {
+          "smm": {
+            "desc": "Competitors' top videos into the team's favorites — a shared stash of references.",
+            "list": [
+              "A grid of breakout videos",
+              "Add to favorites in one click",
+              "Available to the whole client team",
+              "A source for scripts"
+            ]
+          },
+          "studio": {
+            "desc": "Saved references for the scriptwriter's and producer's brief.",
+            "list": [
+              "A reference catalog",
+              "Previews with metrics",
+              "Used in the brief",
+              "Access for the whole team"
+            ]
+          },
+          "blogger": {
+            "desc": "Your personal collection of references — what lands in the niche.",
+            "list": [
+              "Favorited viral clips",
+              "Saved in one click",
+              "Post metrics",
+              "Used as ideas"
+            ]
+          },
+          "marketer": {
+            "desc": "References for the brand's content-marketing team.",
+            "list": [
+              "A reference catalog",
+              "Clip metrics",
+              "A source of ideas",
+              "Access for the whole team"
+            ]
+          }
+        }
+      },
+      "quiz": {
+        "title": "ToV quiz (onboarding)",
+        "perNiche": {
+          "smm": {
+            "desc": "12 short questions about the client → analysis → segmentation → a ready ToV file. Runs when adding a client.",
+            "list": [
+              "12 questions about the client's brand",
+              "AI analysis of the answers",
+              "Audience segmentation",
+              "A ready ToV in the library",
+              "Applied in scripts right away"
+            ]
+          },
+          "studio": {
+            "desc": "The client brief as a quiz → a ToV for the scriptwriter.",
+            "list": [
+              "A structured brief",
+              "Audience segments",
+              "ToV assembly",
+              "Handoff to the scriptwriting department"
+            ]
+          },
+          "blogger": {
+            "desc": "Onboarding on first sign-in: answer 12 questions about yourself → your ToV file is ready.",
+            "list": [
+              "12 questions about your content",
+              "Segments of your audience",
+              "A ready personal ToV",
+              "Works in AI scripts right away"
+            ]
+          },
+          "marketer": {
+            "desc": "A quiz to refine the brand ToV — once every six months for a positioning update.",
+            "list": [
+              "12 questions",
+              "Analysis and segmentation",
+              "Assembly of an updated ToV",
+              "Applied by the team right away"
+            ]
+          }
+        }
+      },
+      "team": {
+        "title": "Team and roles",
+        "perNiche": {
+          "smm": {
+            "desc": "9 ready-made roles for the agency process: owner, leads and contributors by track, a guest client.",
+            "list": [
+              "Owner",
+              "Head of scriptwriters + scriptwriter",
+              "Head of editing + editor",
+              "Head of publishing + publisher",
+              "Tech department",
+              "Guest access for the client"
+            ]
+          },
+          "studio": {
+            "desc": "Production-cycle roles: producer, scriptwriter, editor, publisher, guest client.",
+            "list": [
+              "Producer (lead)",
+              "Scriptwriting department",
+              "Editing department",
+              "Publishing manager",
+              "Guest client"
+            ]
+          },
+          "blogger": {
+            "desc": "Bring on an assistant, a producer or a small team with the right access level.",
+            "list": [
+              "Me, the author + assistant",
+              "A producer with full rights",
+              "A freelance scriptwriter and editor",
+              "An activity log"
+            ]
+          },
+          "marketer": {
+            "desc": "In-house roles: head of marketing, content manager, SMM, designer / editor.",
+            "list": [
+              "Head of marketing",
+              "Content manager",
+              "SMM and copywriter",
+              "Designer and editor",
+              "An activity log"
+            ]
+          }
+        }
+      }
     }
   },
   "pricing": {
@@ -674,7 +1571,9 @@
     "subscribe": {
       "title": "Get new posts first",
       "desc": "Leave your email — we'll send you the first breakdowns and guides as soon as they're out.",
-      "cta": "Subscribe"
+      "cta": "Subscribe",
+      "placeholder": "Your email",
+      "success": "Done — we'll email you when the first materials are out."
     }
   },
   "clients": {
@@ -683,7 +1582,7 @@
     },
     "hero": {
       "titlePart1": "Teams building a",
-      "titleEm": "content conveyor",
+      "titleEm": "content pipeline",
       "titlePart2": "on Evix",
       "desc": "Studios, agencies and experts — each niche has its own case. A selection of stories and testimonials from those already working in the product."
     },
@@ -756,7 +1655,9 @@
           "role": "Marketing Director, Etazh fitness network",
           "tag": "Fitness"
         }
-      }
+      },
+      "expandLabel": "Read full",
+      "collapseLabel": "Collapse"
     },
     "cases": {
       "badge": "Use cases",
@@ -770,7 +1671,7 @@
         "badges": {
           "0": "Rolled out in 12 days",
           "1": "Team of 6",
-          "2": "Studio plan"
+          "2": "Pro plan"
         },
         "stats": {
           "0": {
@@ -957,7 +1858,11 @@
       },
       "submit": "Send",
       "consent": "By clicking the button, you agree to the personal data processing policy.",
-      "success": "Request received. We'll get in touch shortly."
+      "success": "Request received. We'll get in touch shortly.",
+      "errors": {
+        "name": "Please enter your name",
+        "email": "Please enter a valid email"
+      }
     }
   },
   "faq": {
@@ -1054,11 +1959,11 @@
         "items": {
           "0": {
             "q": "What roles are available in the product?",
-            "a": "Owner, technical department, script / editing / publication managers, performers (scriptwriter, editor, publisher), and guest client access. Staff have a separate internal login with demo access."
+            "a": "Owner, technical department, script / editing / publication managers, contributors (scriptwriter, editor, publisher), and guest client access. Staff have a separate internal login with demo access."
           },
           "1": {
             "q": "How do I assign a client to a staff member?",
-            "a": "When creating a client, the owner immediately selects managers (for scripts, editing, and publications). They in turn assign their own performers. A staff member sees their own clients and locked cards of the others — for team transparency."
+            "a": "When creating a client, the owner immediately selects managers (for scripts, editing, and publications). They in turn assign their own contributors. A staff member sees their own clients and locked cards of the others — for team transparency."
           },
           "2": {
             "q": "Can I reject a script with a comment?",
@@ -1192,7 +2097,11 @@
         },
         "submit": "Send request",
         "privacy": "By clicking the button, you agree to the personal data processing policy.",
-        "success": "Request received. We'll be in touch shortly."
+        "success": "Request received. We'll be in touch shortly.",
+        "errors": {
+          "name": "Please enter your name",
+          "email": "Please enter a valid email"
+        }
       }
     }
   },
@@ -1339,7 +2248,18 @@
       },
       "submit": "Send request",
       "consent": "By clicking the button, you agree to the personal data processing policy.",
-      "success": "Request received. We'll get back to you shortly."
+      "success": "Request received. We'll get back to you shortly.",
+      "labels": {
+        "name": "Name",
+        "company": "Company",
+        "email": "Email",
+        "phone": "Phone",
+        "message": "Message"
+      },
+      "errors": {
+        "name": "Please enter your name",
+        "email": "Please enter a valid email"
+      }
     }
   },
   "knowledgeBase": {
@@ -1468,7 +2388,8 @@
     },
     "footer": {
       "note": "The base grows as new features ship. If the guide you need isn't here yet — send your question through the form and the team will help directly."
-    }
+    },
+    "soon": "Soon"
   },
   "training": {
     "meta": {
@@ -1567,7 +2488,9 @@
       },
       "submit": "Send request",
       "policy": "By clicking the button, you agree to the personal data processing policy.",
-      "success": "Request received. We'll be in touch shortly."
+      "success": "Request received. We'll be in touch shortly.",
+      "error": "Please fill in this field",
+      "emailError": "Please enter a valid email"
     }
   }
 }

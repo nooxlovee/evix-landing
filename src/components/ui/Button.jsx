@@ -4,11 +4,12 @@ const BASE =
   'inline-flex items-center justify-center gap-2 transition duration-[180ms] ' +
   'focus:outline-none focus-visible:ring-4 disabled:pointer-events-none';
 
+/* One consistent corner radius across every button size. */
 const SIZE = {
-  sm: 'h-[38px] px-4 rounded-[10px] text-[13px] font-semibold',
-  md: 'h-[46px] px-5 rounded-rmd text-[15px] font-bold',
+  sm: 'h-[38px] px-4 rounded-[14px] text-[13px] font-semibold',
+  md: 'h-[46px] px-5 rounded-[14px] text-[15px] font-bold',
   lg: 'h-[54px] px-[26px] rounded-[14px] text-[16px] font-bold',
-  xl: 'h-[62px] px-8 rounded-[18px] text-[18px] font-bold',
+  xl: 'h-[62px] px-8 rounded-[14px] text-[18px] font-bold',
 };
 
 const VARIANT_PRIMARY =
@@ -34,10 +35,10 @@ const VARIANT_GHOST =
   'active:bg-mint-100 active:translate-y-px';
 
 const VARIANT_STOP =
-  'bg-stop text-white shadow-orange focus-visible:ring-orange-500/25 ' +
-  'hover:bg-stop-hover hover:shadow-orange-hover hover:-translate-y-0.5 ' +
+  'bg-stop text-white shadow-mint focus-visible:ring-mint-500/25 ' +
+  'hover:bg-stop-hover hover:shadow-mint-hover hover:-translate-y-0.5 ' +
   'active:bg-stop-pressed active:translate-y-px ' +
-  'disabled:bg-orange-50 disabled:text-orange-500/40 disabled:shadow-none disabled:translate-y-0';
+  'disabled:bg-mint-50 disabled:text-mint-500/40 disabled:shadow-none disabled:translate-y-0';
 
 function variantClasses(variant, tone) {
   switch (variant) {

@@ -165,7 +165,7 @@ export default function TwitterTestimonials({
             setActiveIndex(null);
             setExpanded((v) => !v);
           }}
-          className="mt-10 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-ink text-white text-sm font-semibold tracking-tight hover:bg-mint-700 transition-colors shadow-soft"
+          className="mt-10 inline-flex items-center gap-2 px-6 py-3 rounded-[14px] bg-ink text-white text-sm font-semibold tracking-tight hover:bg-mint-700 transition-colors shadow-soft"
         >
           {expanded ? collapseLabel : expandLabel}
           <svg

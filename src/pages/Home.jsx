@@ -1,11 +1,11 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { Fragment, useEffect, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { EditorialHero } from '../components/ui/EditorialHero';
 import { InfiniteSlider } from '../components/ui/InfiniteSlider';
 import { TestimonialsColumn } from '../components/ui/TestimonialsColumn';
-import { Button } from '../components/ui/Button';
+import { MagneticButton } from '../components/ui/MagneticButton';
 import { AnimatedCounter } from '../components/ui/AnimatedCounter';
 
 /* ─── DATA SHAPES ───────────────────────────────────────────────── */
@@ -18,15 +18,15 @@ const getHowSteps = (t) => [
 ];
 
 const getReviewsData = (t) => [
-  { text: t('home.reviews.items.0.text'), image: 'https://randomuser.me/api/portraits/women/44.jpg', name: t('home.reviews.items.0.name'), role: t('home.reviews.items.0.role') },
-  { text: t('home.reviews.items.1.text'), image: 'https://randomuser.me/api/portraits/men/32.jpg',   name: t('home.reviews.items.1.name'), role: t('home.reviews.items.1.role') },
-  { text: t('home.reviews.items.2.text'), image: 'https://randomuser.me/api/portraits/women/68.jpg', name: t('home.reviews.items.2.name'), role: t('home.reviews.items.2.role') },
-  { text: t('home.reviews.items.3.text'), image: 'https://randomuser.me/api/portraits/men/45.jpg',   name: t('home.reviews.items.3.name'), role: t('home.reviews.items.3.role') },
-  { text: t('home.reviews.items.4.text'), image: 'https://randomuser.me/api/portraits/women/22.jpg', name: t('home.reviews.items.4.name'), role: t('home.reviews.items.4.role') },
-  { text: t('home.reviews.items.5.text'), image: 'https://randomuser.me/api/portraits/men/76.jpg',   name: t('home.reviews.items.5.name'), role: t('home.reviews.items.5.role') },
-  { text: t('home.reviews.items.6.text'), image: 'https://randomuser.me/api/portraits/women/12.jpg', name: t('home.reviews.items.6.name'), role: t('home.reviews.items.6.role') },
-  { text: t('home.reviews.items.7.text'), image: 'https://randomuser.me/api/portraits/men/14.jpg',   name: t('home.reviews.items.7.name'), role: t('home.reviews.items.7.role') },
-  { text: t('home.reviews.items.8.text'), image: 'https://randomuser.me/api/portraits/women/55.jpg', name: t('home.reviews.items.8.name'), role: t('home.reviews.items.8.role') },
+  { text: t('home.reviews.items.0.text'), name: t('home.reviews.items.0.name'), role: t('home.reviews.items.0.role') },
+  { text: t('home.reviews.items.1.text'), name: t('home.reviews.items.1.name'), role: t('home.reviews.items.1.role') },
+  { text: t('home.reviews.items.2.text'), name: t('home.reviews.items.2.name'), role: t('home.reviews.items.2.role') },
+  { text: t('home.reviews.items.3.text'), name: t('home.reviews.items.3.name'), role: t('home.reviews.items.3.role') },
+  { text: t('home.reviews.items.4.text'), name: t('home.reviews.items.4.name'), role: t('home.reviews.items.4.role') },
+  { text: t('home.reviews.items.5.text'), name: t('home.reviews.items.5.name'), role: t('home.reviews.items.5.role') },
+  { text: t('home.reviews.items.6.text'), name: t('home.reviews.items.6.name'), role: t('home.reviews.items.6.role') },
+  { text: t('home.reviews.items.7.text'), name: t('home.reviews.items.7.name'), role: t('home.reviews.items.7.role') },
+  { text: t('home.reviews.items.8.text'), name: t('home.reviews.items.8.name'), role: t('home.reviews.items.8.role') },
 ];
 
 const clientsData = [
@@ -98,7 +98,7 @@ const clientsData = [
     name: 'Pulse',
     logo: (
       <span className="brand-logo">
-        <svg className="w-6 h-4 text-orange-500" viewBox="0 0 24 16" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <svg className="w-6 h-4 text-mint-500" viewBox="0 0 24 16" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
           <path d="M1 8 L6 8 L9 2 L13 14 L17 8 L23 8" />
         </svg>
         <span className="text-[22px] font-extrabold tracking-[-0.02em] italic">Pulse.</span>
@@ -109,7 +109,7 @@ const clientsData = [
     name: 'Stellar',
     logo: (
       <span className="brand-logo">
-        <svg className="w-5 h-5 text-orange-500" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <svg className="w-5 h-5 text-mint-500" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2" />
         </svg>
         <span className="text-[19px] font-extrabold tracking-[0.16em] uppercase">STELLAR</span>
@@ -129,15 +129,15 @@ export default function Home() {
   const reviewsData = useMemo(() => getReviewsData(t), [t]);
 
   const modulesData = useMemo(() => [
-    { title: t('home.modules.items.0.title'), desc: t('home.modules.items.0.desc'), tag: t('home.modules.legend.inLabel'),   bullets: [t('home.modules.items.0.bullets.0'), t('home.modules.items.0.bullets.1'), t('home.modules.items.0.bullets.2')] },
-    { title: t('home.modules.items.1.title'), desc: t('home.modules.items.1.desc'), tag: t('home.modules.legend.coreLabel'), core: true, steps: [t('home.modules.items.1.steps.0'), t('home.modules.items.1.steps.1'), t('home.modules.items.1.steps.2'), t('home.modules.items.1.steps.3'), t('home.modules.items.1.steps.4')], bullets: [t('home.modules.items.1.bullets.0'), t('home.modules.items.1.bullets.1'), t('home.modules.items.1.bullets.2')] },
-    { title: t('home.modules.items.2.title'), desc: t('home.modules.items.2.desc'), tag: t('home.modules.legend.coreLabel'), bullets: [t('home.modules.items.2.bullets.0'), t('home.modules.items.2.bullets.1'), t('home.modules.items.2.bullets.2')] },
-    { title: t('home.modules.items.3.title'), desc: t('home.modules.items.3.desc'), tag: t('home.modules.legend.coreLabel'), bullets: [t('home.modules.items.3.bullets.0'), t('home.modules.items.3.bullets.1'), t('home.modules.items.3.bullets.2')] },
-    { title: t('home.modules.items.4.title'), desc: t('home.modules.items.4.desc'), tag: t('home.modules.legend.coreLabel'), bullets: [t('home.modules.items.4.bullets.0'), t('home.modules.items.4.bullets.1'), t('home.modules.items.4.bullets.2')] },
-    { title: t('home.modules.items.5.title'), desc: t('home.modules.items.5.desc'), tag: t('home.modules.legend.outLabel'),  bullets: [t('home.modules.items.5.bullets.0'), t('home.modules.items.5.bullets.1'), t('home.modules.items.5.bullets.2')] },
-    { title: t('home.modules.items.6.title'), desc: t('home.modules.items.6.desc'), tag: t('home.modules.legend.outLabel'),  bullets: [t('home.modules.items.6.bullets.0'), t('home.modules.items.6.bullets.1'), t('home.modules.items.6.bullets.2')] },
-    { title: t('home.modules.items.7.title'), desc: t('home.modules.items.7.desc'), tag: t('home.modules.legend.outLabel'),  bullets: [t('home.modules.items.7.bullets.0'), t('home.modules.items.7.bullets.1'), t('home.modules.items.7.bullets.2')] },
-    { title: t('home.modules.items.8.title'), desc: t('home.modules.items.8.desc'), tag: t('home.modules.legend.outLabel'),  bullets: [t('home.modules.items.8.bullets.0'), t('home.modules.items.8.bullets.1'), t('home.modules.items.8.bullets.2')] },
+    { title: t('home.modules.items.0.title'), desc: t('home.modules.items.0.desc'), tag: t('home.modules.legend.inLabel'),   kind: 'in',   bullets: [t('home.modules.items.0.bullets.0'), t('home.modules.items.0.bullets.1'), t('home.modules.items.0.bullets.2')] },
+    { title: t('home.modules.items.1.title'), desc: t('home.modules.items.1.desc'), tag: t('home.modules.legend.coreLabel'), kind: 'core', core: true, steps: [t('home.modules.items.1.steps.0'), t('home.modules.items.1.steps.1'), t('home.modules.items.1.steps.2'), t('home.modules.items.1.steps.3'), t('home.modules.items.1.steps.4')], bullets: [t('home.modules.items.1.bullets.0'), t('home.modules.items.1.bullets.1'), t('home.modules.items.1.bullets.2')] },
+    { title: t('home.modules.items.2.title'), desc: t('home.modules.items.2.desc'), tag: t('home.modules.legend.coreLabel'), kind: 'core', bullets: [t('home.modules.items.2.bullets.0'), t('home.modules.items.2.bullets.1'), t('home.modules.items.2.bullets.2')] },
+    { title: t('home.modules.items.3.title'), desc: t('home.modules.items.3.desc'), tag: t('home.modules.legend.coreLabel'), kind: 'core', bullets: [t('home.modules.items.3.bullets.0'), t('home.modules.items.3.bullets.1'), t('home.modules.items.3.bullets.2')] },
+    { title: t('home.modules.items.4.title'), desc: t('home.modules.items.4.desc'), tag: t('home.modules.legend.coreLabel'), kind: 'core', bullets: [t('home.modules.items.4.bullets.0'), t('home.modules.items.4.bullets.1'), t('home.modules.items.4.bullets.2')] },
+    { title: t('home.modules.items.5.title'), desc: t('home.modules.items.5.desc'), tag: t('home.modules.legend.outLabel'),  kind: 'out',  bullets: [t('home.modules.items.5.bullets.0'), t('home.modules.items.5.bullets.1'), t('home.modules.items.5.bullets.2')] },
+    { title: t('home.modules.items.6.title'), desc: t('home.modules.items.6.desc'), tag: t('home.modules.legend.outLabel'),  kind: 'out',  bullets: [t('home.modules.items.6.bullets.0'), t('home.modules.items.6.bullets.1'), t('home.modules.items.6.bullets.2')] },
+    { title: t('home.modules.items.7.title'), desc: t('home.modules.items.7.desc'), tag: t('home.modules.legend.outLabel'),  kind: 'out',  bullets: [t('home.modules.items.7.bullets.0'), t('home.modules.items.7.bullets.1'), t('home.modules.items.7.bullets.2')] },
+    { title: t('home.modules.items.8.title'), desc: t('home.modules.items.8.desc'), tag: t('home.modules.legend.outLabel'),  kind: 'out',  bullets: [t('home.modules.items.8.bullets.0'), t('home.modules.items.8.bullets.1'), t('home.modules.items.8.bullets.2')] },
   ], [t]);
 
   const advantagesData = useMemo(() => [
@@ -178,9 +178,9 @@ export default function Home() {
 
   /* ── audience tabs ── */
   const audienceCards = useMemo(() => [
-    { short: 'Эксперты',  title: t('home.audience.cards.experts.title'),    quote: t('home.audience.cards.experts.quote'),    desc: t('home.audience.cards.experts.desc'),    accent: 'mint'   },
-    { short: 'Продакшен', title: t('home.audience.cards.production.title'), desc: t('home.audience.cards.production.desc'), accent: 'mint'   },
-    { short: 'SMM',       title: t('home.audience.cards.smm.title'),        desc: t('home.audience.cards.smm.desc'),         accent: 'orange' },
+    { short: t('home.audience.cards.experts.short'),    title: t('home.audience.cards.experts.title'),    quote: t('home.audience.cards.experts.quote'),    desc: t('home.audience.cards.experts.desc'),    accent: 'mint'   },
+    { short: t('home.audience.cards.production.short'), title: t('home.audience.cards.production.title'), desc: t('home.audience.cards.production.desc'), accent: 'mint'   },
+    { short: t('home.audience.cards.smm.short'),        title: t('home.audience.cards.smm.title'),        desc: t('home.audience.cards.smm.desc'),         accent: 'orange' },
   ], [t]);
   const [audienceIdx, setAudienceIdx] = useState(0);
   const audActive = audienceCards[audienceIdx];
@@ -194,11 +194,19 @@ export default function Home() {
     <>
       {/* ═══════════════════ 01 · COVER ═══════════════════ */}
       <EditorialHero
+        eyebrow={t('home.hero.eyebrow')}
         highlight={t('home.heroTitle')}
         post={t('home.heroHighlight')}
         description={t('home.heroDesc')}
         buttonText={t('home.leaveRequest')}
         secondaryText={t('home.modules.allLink')}
+        specimen={{
+          label: t('home.hero.specimen.label'),
+          caption: t('home.hero.specimen.caption'),
+          badge: t('home.hero.specimen.badge'),
+          steps: t('home.hero.specimen.steps', { returnObjects: true }),
+          mockup: t('home.hero.mockup', { returnObjects: true }),
+        }}
         onPrimaryClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
         onSecondaryClick={() => document.getElementById('modules')?.scrollIntoView({ behavior: 'smooth' })}
       />
@@ -209,24 +217,24 @@ export default function Home() {
 
           <div className="data-strip">
             <div>
-              <span className="data-strip__label">Цикл</span>
+              <span className="data-strip__label">{t('home.stats.cycle')}</span>
               <div className="data-strip__value"><AnimatedCounter value={4} /><span className="unit">×</span></div>
-              <p className="data-strip__sub">{t('home.audience.lead')}</p>
+              <p className="data-strip__sub">{t('home.stats.cycleSub')}</p>
             </div>
             <div>
-              <span className="data-strip__label">Удовлетворённость</span>
+              <span className="data-strip__label">{t('home.stats.satisfaction')}</span>
               <div className="data-strip__value"><AnimatedCounter value={93} /><span className="unit">%</span></div>
-              <p className="data-strip__sub">{contactBenefits[0]}</p>
+              <p className="data-strip__sub">{t('home.stats.satisfactionSub')}</p>
             </div>
             <div>
-              <span className="data-strip__label">Поддержка</span>
+              <span className="data-strip__label">{t('home.stats.support')}</span>
               <div className="data-strip__value"><AnimatedCounter value={24} /><span className="unit">/7</span></div>
-              <p className="data-strip__sub">{contactBenefits[1]}</p>
+              <p className="data-strip__sub">{t('home.stats.supportSub')}</p>
             </div>
             <div>
-              <span className="data-strip__label">Модули</span>
+              <span className="data-strip__label">{t('home.stats.modules')}</span>
               <div className="data-strip__value"><AnimatedCounter value={9} /><span className="unit">+</span></div>
-              <p className="data-strip__sub">{t('home.modules.lead')}</p>
+              <p className="data-strip__sub">{t('home.stats.modulesSub')}</p>
             </div>
           </div>
         </div>
@@ -249,7 +257,7 @@ export default function Home() {
           <div className="audience-tabs reveal">
             {audienceCards.map((c, i) => (
               <button
-                key={c.short}
+                key={i}
                 type="button"
                 onClick={() => setAudienceIdx(i)}
                 onMouseEnter={() => setAudienceIdx(i)}
@@ -319,10 +327,12 @@ export default function Home() {
                     <button
                       type="button"
                       key={m.title}
+                      aria-pressed={isActive}
+                      aria-controls="module-preview"
                       onMouseEnter={() => setActiveModule(i)}
                       onFocus={() => setActiveModule(i)}
                       onClick={() => setActiveModule(i)}
-                      className={`index-row w-full text-left ${isActive ? 'is-active' : ''} ${m.core ? 'is-core' : ''}`}
+                      className={`index-row w-full text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mint-500/40 ${isActive ? 'is-active' : ''} ${m.core ? 'is-core' : ''}`}
                     >
                       <span className="index-row__num">{idx}</span>
                       <span className="index-row__title">{m.title}</span>
@@ -344,41 +354,59 @@ export default function Home() {
               </Link>
             </div>
 
-            {/* Preview (right, sticky) */}
+            {/* Preview (right, sticky) — editorial module sheet */}
             <aside className="reveal lg:sticky lg:top-28">
-              <div key={activeModule} className="module-appear bg-white border border-line rounded-r2xl p-8 md:p-10 shadow-soft-sm">
-                <h3 className="text-[clamp(26px,3vw,38px)] font-extrabold tracking-[-0.02em] leading-[1.08] text-ink">
+              <div
+                key={activeModule}
+                id="module-preview"
+                role="region"
+                aria-live="polite"
+                aria-label={active.title}
+                className="module-appear relative bg-white border border-line rounded-r2xl p-8 md:p-10 shadow-soft"
+              >
+                {/* meta: oversized index + stage label (plain text) */}
+                <div className="flex items-center gap-4">
+                  <span className="text-[40px] md:text-[52px] font-extrabold text-mint-500 leading-none tabular-nums">
+                    {String(activeModule + 1).padStart(2, '0')}
+                  </span>
+                  <span className="h-px flex-1 bg-line" />
+                  <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-ink-mute">{active.tag}</span>
+                </div>
+
+                <h3 className="mt-6 text-[clamp(27px,3.1vw,40px)] font-extrabold tracking-[-0.025em] leading-[1.05] text-ink">
                   {active.title}
                 </h3>
-
-                <p className="mt-5 text-[15px] text-ink-soft leading-relaxed max-w-[460px]">
+                <p className="mt-4 text-[15.5px] text-ink-soft leading-relaxed max-w-[470px]">
                   {active.desc}
                 </p>
 
+                {/* core: numbered pipeline */}
                 {active.core && active.steps && (
-                  <div className="mt-6">
-                    <div className="marginalia mb-2.5"><span className="marker">▸</span>Этапы</div>
-                    <div className="flex flex-wrap items-center gap-1.5">
-                      {active.steps.map((s, si) => (
-                        <span key={s} className="inline-flex items-center gap-1.5">
-                          <span className="px-2.5 py-1 rounded-md bg-mint-50 text-mint-800 text-[11px] font-semibold border border-mint-200">{s}</span>
-                          {si < active.steps.length - 1 && <span className="text-mint-400">›</span>}
-                        </span>
-                      ))}
-                    </div>
+                  <div className="mt-8 flex items-start">
+                    {active.steps.map((s, si) => (
+                      <Fragment key={s}>
+                        <div className="flex flex-col items-center gap-2 w-[58px] shrink-0">
+                          <span className="grid place-items-center w-9 h-9 rounded-full bg-mint-500 text-white text-[13px] font-bold">{si + 1}</span>
+                          <span className="text-[10.5px] font-semibold text-ink-soft text-center leading-tight">{s}</span>
+                        </div>
+                        {si < active.steps.length - 1 && <span className="flex-1 h-px bg-mint-200 mt-[18px]" aria-hidden="true" />}
+                      </Fragment>
+                    ))}
                   </div>
                 )}
 
-                <div className="mt-7 border-t border-line pt-6">
-                  <div className="marginalia mb-3"><span className="marker">✓</span>Что внутри</div>
-                  <ul className="list-none p-0 list-check text-[13.5px] flex flex-col gap-1.5">
-                    {active.bullets.map((b) => <li key={b}>{b}</li>)}
-                  </ul>
+                {/* details: numbered strip (no checklist) */}
+                <div className="mt-9 grid grid-cols-1 sm:grid-cols-3 gap-x-7 gap-y-5 pt-7 border-t border-line">
+                  {active.bullets.map((b, i) => (
+                    <div key={b}>
+                      <div className="text-[19px] font-extrabold text-mint-500 leading-none tabular-nums">{String(i + 1).padStart(2, '0')}</div>
+                      <div className="mt-2.5 text-[13.5px] text-ink leading-snug">{b}</div>
+                    </div>
+                  ))}
                 </div>
               </div>
 
-              <div className="mt-4 flex justify-between marginalia">
-                <span><span className="marker">⌂</span>Клик или наведи, чтобы переключить</span>
+              <div className="mt-4 flex justify-end marginalia">
                 <span>{String(activeModule + 1).padStart(2, '0')} / {modulesData.length}</span>
               </div>
             </aside>
@@ -464,18 +492,25 @@ export default function Home() {
         </div>
 
         {/* Dual marquee rows */}
-        <div className="reveal relative flex flex-col gap-4">
-          <InfiniteSlider gap={16} duration={42} durationOnHover={90}>
-            {clientsData.map((c) => (
-              <div key={c.name} className="brand-chip">{c.logo}</div>
-            ))}
-          </InfiniteSlider>
+        <div
+          role="group"
+          aria-label={t('home.clients.marqueeAria')}
+          className="reveal relative flex flex-col gap-4"
+        >
+          {/* Decorative branding loop — hidden from AT (names repeat 4×) */}
+          <div aria-hidden="true" className="flex flex-col gap-4">
+            <InfiniteSlider gap={16} duration={42} durationOnHover={90}>
+              {clientsData.map((c) => (
+                <div key={c.name} className="brand-chip">{c.logo}</div>
+              ))}
+            </InfiniteSlider>
 
-          <InfiniteSlider gap={16} duration={48} durationOnHover={100} reverse>
-            {clientsData.map((c) => (
-              <div key={c.name} className="brand-chip brand-chip--alt">{c.logo}</div>
-            ))}
-          </InfiniteSlider>
+            <InfiniteSlider gap={16} duration={48} durationOnHover={100} reverse>
+              {clientsData.map((c) => (
+                <div key={c.name} className="brand-chip brand-chip--alt">{c.logo}</div>
+              ))}
+            </InfiniteSlider>
+          </div>
 
           {/* Side fades */}
           <div className="pointer-events-none absolute inset-y-0 left-0 w-24 md:w-40 clients-fade clients-fade-left" />
@@ -546,23 +581,24 @@ export default function Home() {
             {!submitted ? (
               <form className="conv-form" onSubmit={onSubmit} noValidate>
                 <p className="conv-form__line">
-                  Здравствуйте, меня зовут{' '}
+                  {t('home.contact.form.intro')}{' '}
                   <input
                     name="name"
                     type="text"
-                    placeholder="Ваше имя"
-                    aria-label="Имя"
+                    placeholder={t('home.contact.form.placeholders.name')}
+                    aria-label={t('home.contact.form.name')}
+                    aria-invalid={errors.name || undefined}
                     value={form.name}
                     onChange={onChange}
                     className={`conv-form__input ${errors.name ? 'is-error' : ''}`}
                     required
                   />
-                  {' '}— я из{' '}
+                  {' '}{t('home.contact.form.from')}{' '}
                   <input
                     name="company"
                     type="text"
-                    placeholder="название студии"
-                    aria-label="Компания"
+                    placeholder={t('home.contact.form.placeholders.company')}
+                    aria-label={t('home.contact.form.company')}
                     value={form.company}
                     onChange={onChange}
                     className="conv-form__input"
@@ -571,23 +607,24 @@ export default function Home() {
                 </p>
 
                 <p className="conv-form__line">
-                  Свяжитесь по{' '}
+                  {t('home.contact.form.contactBy')}{' '}
                   <input
                     name="email"
                     type="email"
-                    placeholder="почте"
-                    aria-label="Email"
+                    placeholder={t('home.contact.form.placeholders.email')}
+                    aria-label={t('home.contact.form.email')}
+                    aria-invalid={errors.email || undefined}
                     value={form.email}
                     onChange={onChange}
                     className={`conv-form__input ${errors.email ? 'is-error' : ''}`}
                     required
                   />
-                  {' '}или{' '}
+                  {' '}{t('home.contact.form.or')}{' '}
                   <input
                     name="phone"
                     type="tel"
-                    placeholder="телефону"
-                    aria-label="Телефон"
+                    placeholder={t('home.contact.form.placeholders.phone')}
+                    aria-label={t('home.contact.form.phone')}
                     value={form.phone}
                     onChange={onChange}
                     className="conv-form__input"
@@ -596,12 +633,12 @@ export default function Home() {
                 </p>
 
                 <p className="conv-form__line">
-                  Хотим обсудить
+                  {t('home.contact.form.discuss')}
                   <textarea
                     name="message"
                     rows={2}
-                    placeholder="контентные процессы, интеграции, что-то ещё"
-                    aria-label="Сообщение"
+                    placeholder={t('home.contact.form.placeholders.message')}
+                    aria-label={t('home.contact.form.message')}
                     value={form.message}
                     onChange={onChange}
                     className="conv-form__input conv-form__input--block"
@@ -609,26 +646,26 @@ export default function Home() {
                 </p>
 
                 <div className="conv-form__cta">
-                  <Button type="submit" size="xl" className="btn-shine">
+                  <MagneticButton type="submit" size="xl" className="btn-shine">
                     {t('home.contact.form.submit')}
                     <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                       <path d="M5 12h14" /><path d="M13 6l6 6-6 6" />
                     </svg>
-                  </Button>
+                  </MagneticButton>
                   <p className="conv-form__privacy">{t('home.contact.form.privacy')}</p>
                 </div>
               </form>
             ) : (
-              <div className="text-center py-12">
+              <div className="text-center py-12" role="status" aria-live="polite">
                 <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-mint-50 text-mint-700 mx-auto mb-6">
-                  <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
                 </div>
                 <h3 className="text-[clamp(24px,3vw,32px)] font-extrabold tracking-tight leading-[1.1]">
                   {t('home.contact.form.success')}
                 </h3>
-                <p className="mt-3 text-[15px] text-ink-soft">Ответим в течение 24 часов.</p>
+                <p className="mt-3 text-[15px] text-ink-soft">{t('home.contact.form.successSub')}</p>
               </div>
             )}
           </div>

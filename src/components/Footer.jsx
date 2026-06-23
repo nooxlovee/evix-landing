@@ -1,17 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-
-function BrandMark() {
-  return (
-    <div className="flex items-center gap-2.5">
-      <span aria-hidden="true" className="relative inline-flex">
-        <span className="block w-7 h-7 rounded-[8px] bg-gradient-to-br from-mint-300 via-mint-500 to-mint-700 shadow-[0_6px_18px_rgba(43,191,139,0.25)]" />
-        <span className="absolute inset-0 grid place-items-center text-white font-black text-[14px] leading-none">Э</span>
-      </span>
-      <span className="text-ink font-extrabold text-lg tracking-[0.18em] uppercase">Эвикс</span>
-    </div>
-  );
-}
+import { BrandMark } from './ui/BrandMark';
 
 export default function Footer() {
   const { t } = useTranslation();
@@ -35,7 +24,7 @@ export default function Footer() {
           <div className="relative flex lg:justify-end">
             <Link
               to="/#contact"
-              className="group inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-brand text-white text-sm font-bold tracking-tight hover:bg-brand-deep shadow-mint hover:shadow-mint-hover transition-all"
+              className="group inline-flex items-center gap-2 px-6 py-3.5 rounded-[14px] bg-brand text-white text-sm font-bold tracking-tight hover:bg-brand-deep shadow-mint hover:shadow-mint-hover transition-all"
             >
               {t('footer.cta.button')}
               <svg className="w-4 h-4 transition-transform group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -122,6 +111,10 @@ export default function Footer() {
             <span>{t('footer.rights')}</span>
             <span className="hidden sm:inline text-line-strong">·</span>
             <span className="hidden sm:inline">{t('footer.madeIn')}</span>
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-mint-50 text-brand-deep text-[11px] font-semibold border border-mint-300/40">
+              <span aria-hidden="true" className="w-1.5 h-1.5 rounded-full bg-mint-500 animate-pulse" />
+              {t('footer.status')}
+            </span>
           </div>
           <div className="flex gap-5">
             <a href="#" className="text-ink-mute hover:text-brand-deep transition">{t('footer.privacy')}</a>

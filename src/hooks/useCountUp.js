@@ -9,6 +9,8 @@ export default function useCountUp(target, { duration = 1600, decimals = 0, star
     if (!when) return;
     const node = ref.current;
     if (!node) return;
+    // Reset so a changed target/start re-triggers the count-up.
+    startedRef.current = false;
     if (typeof IntersectionObserver === 'undefined') {
       setValue(target);
       return;

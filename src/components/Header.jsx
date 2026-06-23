@@ -1,12 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { LinkButton } from './ui/Button';
 import { LanguageSwitcher } from './ui/LanguageSwitcher';
 import { ThemeSwitcher } from './ui/ThemeSwitcher';
+import { BrandMark } from './ui/BrandMark';
 
 const navLinkBase =
-  'px-2.5 py-2 rounded-[10px] text-sm font-medium whitespace-nowrap transition';
+  'px-2.5 py-2 rounded-[14px] text-sm font-medium whitespace-nowrap transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mint-500/40';
 const navLinkIdle = 'text-ink-soft hover:bg-mint-50 hover:text-mint-800';
 const navLinkActive = 'bg-mint-100 text-mint-800 font-semibold';
 
@@ -14,16 +15,17 @@ function navCls({ isActive }) {
   return `${navLinkBase} ${isActive ? navLinkActive : navLinkIdle}`;
 }
 
-function DropdownTrigger({ label }) {
+function DropdownTrigger({ label, isOpen, controls }) {
   return (
     <button
-      className="inline-flex items-center gap-1 px-2.5 py-2 rounded-[10px] text-ink-soft text-sm font-medium whitespace-nowrap hover:bg-mint-50 hover:text-mint-800 transition"
+      className="inline-flex items-center gap-1 px-2.5 py-2 rounded-[14px] text-ink-soft text-sm font-medium whitespace-nowrap hover:bg-mint-50 hover:text-mint-800 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mint-500/40"
       type="button"
       aria-haspopup="menu"
-      aria-expanded="false"
+      aria-expanded={isOpen}
+      aria-controls={controls}
     >
       {label}
-      <svg className="nav-chevron w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <svg className="nav-chevron w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <polyline points="6 9 12 15 18 9" />
       </svg>
     </button>
@@ -34,7 +36,7 @@ function DropdownItem({ to, title, subtitle, icon }) {
   return (
     <Link
       to={to}
-      className="flex items-start gap-3.5 p-3.5 rounded-rmd hover:bg-mint-50 transition group"
+      className="flex items-start gap-3.5 p-3.5 rounded-rmd hover:bg-mint-50 transition group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mint-500/40"
       role="menuitem"
     >
       <div className="w-10 h-10 rounded-[11px] bg-mint-50 text-mint-700 grid place-items-center shrink-0 group-hover:bg-mint-500 group-hover:text-white transition">
@@ -55,6 +57,10 @@ export default function Header() {
   const location = useLocation();
   const { t } = useTranslation();
 
+  const navRef = useRef(null);
+  const toggleRef = useRef(null);
+  const lastFocused = useRef(null);
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
     onScroll();
@@ -72,9 +78,43 @@ export default function Header() {
     setOpenGroup(null);
   }, [location.pathname]);
 
+  // Focus management for the mobile overlay: move focus in on open,
+  // restore to the toggle on close.
+  useEffect(() => {
+    if (menuOpen) {
+      lastFocused.current = document.activeElement;
+      const first = navRef.current?.querySelector('a, button');
+      first?.focus();
+    } else if (lastFocused.current instanceof HTMLElement) {
+      lastFocused.current.focus();
+      lastFocused.current = null;
+    }
+  }, [menuOpen]);
+
   useEffect(() => {
     const onKey = (e) => {
-      if (e.key === 'Escape' && menuOpen) setMenuOpen(false);
+      if (e.key === 'Escape') {
+        if (menuOpen) setMenuOpen(false);
+        else if (openGroup) setOpenGroup(null);
+        return;
+      }
+      // Focus trap inside the open mobile menu.
+      if (e.key === 'Tab' && menuOpen && navRef.current) {
+        const nodes = navRef.current.querySelectorAll(
+          'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        );
+        if (!nodes.length) return;
+        const list = Array.from(nodes);
+        const first = list[0];
+        const last = list[list.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
     };
     const onResize = () => {
       if (window.innerWidth >= 1180 && menuOpen) setMenuOpen(false);
@@ -85,37 +125,43 @@ export default function Header() {
       document.removeEventListener('keydown', onKey);
       window.removeEventListener('resize', onResize);
     };
-  }, [menuOpen]);
+  }, [menuOpen, openGroup]);
 
   const toggleGroup = (key) => {
-    if (!menuOpen) return;
     setOpenGroup((cur) => (cur === key ? null : key));
   };
 
   return (
     <header className={`site-header fixed inset-x-0 top-0 h-[72px] z-50 ${scrolled ? 'is-scrolled' : ''}`} id="siteHeader">
       <div className="max-w-container mx-auto px-6 h-full flex items-center justify-between gap-4">
-        <Link to="/" className="inline-flex items-center text-ink font-extrabold text-xl tracking-tight">
-          Эвикс
+        <Link to="/" className="inline-flex items-center rounded-[14px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mint-500/40" aria-label="Эвикс">
+          <BrandMark size="sm" />
         </Link>
 
-        <nav className="site-nav flex items-center gap-0.5 flex-nowrap" aria-label={t('nav.mainNav')}>
+        <nav
+          ref={navRef}
+          id="primary-navigation"
+          className="site-nav flex items-center gap-0.5 flex-nowrap"
+          aria-label={t('nav.mainNav')}
+          {...(menuOpen ? { role: 'dialog', 'aria-modal': 'true' } : {})}
+        >
           <NavLink to="/functions" className={navCls}>{t('nav.functions')}</NavLink>
 
           <div
             className={`nav-group ${openGroup === 'product' ? 'is-open' : ''}`}
+            onMouseLeave={() => setOpenGroup((cur) => (cur === 'product' ? null : cur))}
             onClick={(e) => {
               if (e.target.closest('button')) toggleGroup('product');
             }}
           >
-            <DropdownTrigger label={t('nav.product')} />
-            <div className="nav-dropdown absolute top-[calc(100%+10px)] left-1/2 w-[440px] bg-white border border-line rounded-rxl p-2 shadow-soft-lg z-[60]" role="menu">
+            <DropdownTrigger label={t('nav.product')} isOpen={openGroup === 'product'} controls="nav-product-menu" />
+            <div id="nav-product-menu" className="nav-dropdown absolute top-[calc(100%+10px)] left-1/2 w-[440px] bg-white border border-line rounded-rxl p-2 shadow-soft-lg z-[60]" role="menu">
               <DropdownItem
                 to="/implementation"
                 title={t('nav.implementation')}
                 subtitle={t('nav.implementationSub')}
                 icon={
-                  <svg className="w-[19px] h-[19px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg className="w-[19px] h-[19px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                     <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91-.78-.79-2.07-.79-2.91-.09z" />
                     <path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
                     <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
@@ -127,7 +173,7 @@ export default function Header() {
                 title={t('nav.training')}
                 subtitle={t('nav.trainingSub')}
                 icon={
-                  <svg className="w-[19px] h-[19px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg className="w-[19px] h-[19px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                     <path d="M22 10v6" />
                     <path d="M2 10l10-5 10 5-10 5z" />
                     <path d="M6 12v5c0 1 4 3 6 3s6-2 6-3v-5" />
@@ -139,7 +185,7 @@ export default function Header() {
                 title={t('nav.integrations')}
                 subtitle={t('nav.integrationsSub')}
                 icon={
-                  <svg className="w-[19px] h-[19px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg className="w-[19px] h-[19px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                     <rect x="9" y="2" width="6" height="6" rx="1" />
                     <rect x="2" y="14" width="6" height="6" rx="1" />
                     <rect x="16" y="14" width="6" height="6" rx="1" />
@@ -158,18 +204,19 @@ export default function Header() {
 
           <div
             className={`nav-group ${openGroup === 'support' ? 'is-open' : ''}`}
+            onMouseLeave={() => setOpenGroup((cur) => (cur === 'support' ? null : cur))}
             onClick={(e) => {
               if (e.target.closest('button')) toggleGroup('support');
             }}
           >
-            <DropdownTrigger label={t('nav.support')} />
-            <div className="nav-dropdown absolute top-[calc(100%+10px)] left-1/2 w-[400px] bg-white border border-line rounded-rxl p-2 shadow-soft-lg z-[60]" role="menu">
+            <DropdownTrigger label={t('nav.support')} isOpen={openGroup === 'support'} controls="nav-support-menu" />
+            <div id="nav-support-menu" className="nav-dropdown absolute top-[calc(100%+10px)] left-1/2 w-[400px] bg-white border border-line rounded-rxl p-2 shadow-soft-lg z-[60]" role="menu">
               <DropdownItem
                 to="/knowledge-base"
                 title={t('nav.knowledgeBase')}
                 subtitle={t('nav.knowledgeBaseSub')}
                 icon={
-                  <svg className="w-[19px] h-[19px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg className="w-[19px] h-[19px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                     <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
                     <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
                   </svg>
@@ -180,7 +227,7 @@ export default function Header() {
                 title={t('nav.faq')}
                 subtitle={t('nav.faqSub')}
                 icon={
-                  <svg className="w-[19px] h-[19px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg className="w-[19px] h-[19px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                     <circle cx="12" cy="12" r="10" />
                     <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
                     <line x1="12" y1="17" x2="12.01" y2="17" />
@@ -192,12 +239,33 @@ export default function Header() {
                 title={t('nav.contacts')}
                 subtitle={t('nav.contactsSub')}
                 icon={
-                  <svg className="w-[19px] h-[19px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg className="w-[19px] h-[19px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                   </svg>
                 }
               />
             </div>
+          </div>
+
+          {/* Controls surfaced inside the mobile overlay only (theme/lang/CTA) */}
+          <div className="site-nav-mobile-actions">
+            <div className="flex items-center gap-2">
+              <ThemeSwitcher />
+              <LanguageSwitcher />
+            </div>
+            <LinkButton
+              to="/#contact"
+              variant="secondary"
+              size="sm"
+              className="whitespace-nowrap"
+              onClick={() => setMenuOpen(false)}
+            >
+              {t('nav.requestDemo')}
+              <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M7 17L17 7" />
+                <path d="M7 7h10v10" />
+              </svg>
+            </LinkButton>
           </div>
         </nav>
 
@@ -211,28 +279,30 @@ export default function Header() {
             className="hidden md:inline-flex whitespace-nowrap"
           >
             {t('nav.requestDemo')}
-            <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="M7 17L17 7" />
               <path d="M7 7h10v10" />
             </svg>
           </LinkButton>
           <button
-            className="menu-toggle hidden w-[42px] h-[42px] rounded-rmd border border-line bg-white text-ink place-items-center relative"
+            ref={toggleRef}
+            className="menu-toggle hidden w-[42px] h-[42px] rounded-[14px] border border-line bg-white text-ink place-items-center relative focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mint-500/40"
             type="button"
             aria-label={menuOpen ? t('nav.closeMenu') : t('nav.menu')}
             aria-expanded={menuOpen}
+            aria-controls="primary-navigation"
             onClick={(e) => {
               e.stopPropagation();
               setMenuOpen((v) => !v);
             }}
           >
             {menuOpen ? (
-              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <line x1="6" y1="6" x2="18" y2="18" />
                 <line x1="18" y1="6" x2="6" y2="18" />
               </svg>
             ) : (
-              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <line x1="3" y1="6" x2="21" y2="6" />
                 <line x1="3" y1="12" x2="21" y2="12" />
                 <line x1="3" y1="18" x2="21" y2="18" />

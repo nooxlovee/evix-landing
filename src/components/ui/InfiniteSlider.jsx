@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { animate, motion, useMotionValue } from 'framer-motion';
+import { animate, motion, useMotionValue, useReducedMotion } from 'framer-motion';
 import useMeasure from 'react-use-measure';
 
 export function InfiniteSlider({
@@ -11,6 +11,7 @@ export function InfiniteSlider({
   reverse = false,
   className = '',
 }) {
+  const reduce = useReducedMotion();
   const [currentDuration, setCurrentDuration] = useState(duration);
   const [ref, { width, height }] = useMeasure();
   const translation = useMotionValue(0);
@@ -18,6 +19,10 @@ export function InfiniteSlider({
   const [key, setKey] = useState(0);
 
   useEffect(() => {
+    if (reduce) {
+      translation.set(0);
+      return undefined;
+    }
     let controls;
     const size = direction === 'horizontal' ? width : height;
     const contentSize = size + gap;
@@ -58,9 +63,12 @@ export function InfiniteSlider({
     isTransitioning,
     direction,
     reverse,
+    reduce,
   ]);
 
-  const hoverProps = durationOnHover
+  const hoverPropsActive = durationOnHover && !reduce;
+
+  const hoverProps = hoverPropsActive
     ? {
         onHoverStart: () => {
           setIsTransitioning(true);

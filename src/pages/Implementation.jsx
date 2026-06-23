@@ -2,6 +2,15 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button, AnchorButton } from '../components/ui/Button';
 
+const getAudience = (t) => [
+  { title: t('implementation.audience.cards.smm.title'), desc: t('implementation.audience.cards.smm.desc') },
+  { title: t('implementation.audience.cards.production.title'), desc: t('implementation.audience.cards.production.desc') },
+  { title: t('implementation.audience.cards.inhouse.title'), desc: t('implementation.audience.cards.inhouse.desc') },
+  { title: t('implementation.audience.cards.tov.title'), desc: t('implementation.audience.cards.tov.desc') },
+  { title: t('implementation.audience.cards.competitors.title'), desc: t('implementation.audience.cards.competitors.desc') },
+  { title: t('implementation.audience.cards.collab.title'), desc: t('implementation.audience.cards.collab.desc') },
+];
+
 export default function Implementation() {
   const { t } = useTranslation();
 
@@ -29,7 +38,9 @@ export default function Implementation() {
   };
 
   const input = (errorKey) =>
-    `h-[50px] px-4 border bg-white rounded-rmd text-[15px] hover:border-line-strong focus:border-mint-400 focus:outline-none focus:ring-4 focus:ring-mint-500/20 transition ${errors[errorKey] ? 'border-orange-500' : 'border-line'}`;
+    `h-[50px] px-4 border bg-white rounded-rmd text-[15px] hover:border-line-strong focus:border-mint-400 focus:outline-none focus:ring-4 focus:ring-mint-500/20 transition ${errors[errorKey] ? 'border-red-500' : 'border-line'}`;
+
+  const AUDIENCE = getAudience(t);
 
   return (
     <>
@@ -56,59 +67,28 @@ export default function Implementation() {
       <section className="py-24" id="audience">
         <div className="max-w-container mx-auto px-6">
           <div className="reveal flex flex-col items-center text-center gap-3.5 mb-14">
-            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-mint-100 text-mint-800 text-xs font-bold tracking-[0.14em] uppercase">{t('implementation.audience.badge')}</span>
             <h2 className="text-[clamp(28px,4vw,44px)] font-extrabold tracking-tight leading-[1.1] max-w-[780px]">{t('implementation.audience.title')}</h2>
             <p className="text-[clamp(15px,1.6vw,17px)] text-ink-soft max-w-[640px]">{t('implementation.audience.desc')}</p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-[1080px] mx-auto">
-            <article className="reveal bg-white border border-line rounded-rxl p-7 flex flex-col gap-3.5">
-              <div className="w-12 h-12 rounded-rmd bg-mint-50 text-mint-700 grid place-items-center">
-                <svg className="w-[22px] h-[22px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="7" height="7" /><rect x="14" y="3" width="7" height="7" /><rect x="3" y="14" width="7" height="7" /><rect x="14" y="14" width="7" height="7" /></svg>
-              </div>
-              <h3 className="text-lg font-bold tracking-tight">{t('implementation.audience.cards.smm.title')}</h3>
-              <p className="text-[14px] text-ink-soft leading-relaxed">{t('implementation.audience.cards.smm.desc')}</p>
-            </article>
-
-            <article className="reveal bg-white border border-line rounded-rxl p-7 flex flex-col gap-3.5">
-              <div className="w-12 h-12 rounded-rmd bg-mint-50 text-mint-700 grid place-items-center">
-                <svg className="w-[22px] h-[22px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="23 7 16 12 23 17 23 7" /><rect x="1" y="5" width="15" height="14" rx="2" /></svg>
-              </div>
-              <h3 className="text-lg font-bold tracking-tight">{t('implementation.audience.cards.production.title')}</h3>
-              <p className="text-[14px] text-ink-soft leading-relaxed">{t('implementation.audience.cards.production.desc')}</p>
-            </article>
-
-            <article className="reveal bg-white border border-line rounded-rxl p-7 flex flex-col gap-3.5">
-              <div className="w-12 h-12 rounded-rmd bg-mint-50 text-mint-700 grid place-items-center">
-                <svg className="w-[22px] h-[22px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="7" r="4" /><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" /><circle cx="17" cy="7" r="3" /><path d="M21 21v-2a3 3 0 0 0-3-3" /></svg>
-              </div>
-              <h3 className="text-lg font-bold tracking-tight">{t('implementation.audience.cards.inhouse.title')}</h3>
-              <p className="text-[14px] text-ink-soft leading-relaxed">{t('implementation.audience.cards.inhouse.desc')}</p>
-            </article>
-
-            <article className="reveal bg-white border border-line rounded-rxl p-7 flex flex-col gap-3.5">
-              <div className="w-12 h-12 rounded-rmd bg-mint-50 text-mint-700 grid place-items-center">
-                <svg className="w-[22px] h-[22px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" /></svg>
-              </div>
-              <h3 className="text-lg font-bold tracking-tight">{t('implementation.audience.cards.tov.title')}</h3>
-              <p className="text-[14px] text-ink-soft leading-relaxed">{t('implementation.audience.cards.tov.desc')}</p>
-            </article>
-
-            <article className="reveal bg-white border border-line rounded-rxl p-7 flex flex-col gap-3.5">
-              <div className="w-12 h-12 rounded-rmd bg-mint-50 text-mint-700 grid place-items-center">
-                <svg className="w-[22px] h-[22px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8" /><path d="M21 21l-4.35-4.35" /></svg>
-              </div>
-              <h3 className="text-lg font-bold tracking-tight">{t('implementation.audience.cards.competitors.title')}</h3>
-              <p className="text-[14px] text-ink-soft leading-relaxed">{t('implementation.audience.cards.competitors.desc')}</p>
-            </article>
-
-            <article className="reveal bg-white border border-line rounded-rxl p-7 flex flex-col gap-3.5">
-              <div className="w-12 h-12 rounded-rmd bg-mint-50 text-mint-700 grid place-items-center">
-                <svg className="w-[22px] h-[22px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2a10 10 0 1 0 10 10" /><path d="M22 2L12 12" /></svg>
-              </div>
-              <h3 className="text-lg font-bold tracking-tight">{t('implementation.audience.cards.collab.title')}</h3>
-              <p className="text-[14px] text-ink-soft leading-relaxed">{t('implementation.audience.cards.collab.desc')}</p>
-            </article>
+          {/* Registry — numbered index, no icons */}
+          <div className="reveal max-w-[900px] mx-auto grid md:grid-cols-2 md:gap-x-14">
+            {[AUDIENCE.slice(0, 3), AUDIENCE.slice(3)].map((col, ci) => (
+              <ul key={ci} className="list-none m-0 p-0 border-t border-ink/15">
+                {col.map((a, i) => {
+                  const n = ci * 3 + i + 1;
+                  return (
+                    <li key={a.title} className="flex items-baseline gap-5 py-5 border-b border-line">
+                      <span className="text-[13px] font-extrabold tabular-nums text-mint-500 shrink-0 w-7 pt-0.5">{String(n).padStart(2, '0')}</span>
+                      <div className="min-w-0">
+                        <h3 className="text-[15.5px] font-bold tracking-tight text-ink">{a.title}</h3>
+                        <p className="text-[13px] text-ink-soft leading-snug mt-1">{a.desc}</p>
+                      </div>
+                    </li>
+                  );
+                })}
+              </ul>
+            ))}
           </div>
         </div>
       </section>
@@ -116,7 +96,6 @@ export default function Implementation() {
       <section className="py-24 bg-gradient-to-b from-mint-50 to-canvas">
         <div className="max-w-container mx-auto px-6">
           <div className="reveal flex flex-col items-center text-center gap-3.5 mb-14">
-            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-mint-100 text-mint-800 text-xs font-bold tracking-[0.14em] uppercase">{t('implementation.requirements.badge')}</span>
             <h2 className="text-[clamp(28px,4vw,44px)] font-extrabold tracking-tight leading-[1.1] max-w-[780px]">{t('implementation.requirements.title')}</h2>
             <p className="text-[clamp(15px,1.6vw,17px)] text-ink-soft max-w-[640px]">{t('implementation.requirements.desc')}</p>
           </div>
@@ -149,7 +128,6 @@ export default function Implementation() {
       <section className="py-24" id="stages">
         <div className="max-w-container mx-auto px-6">
           <div className="reveal flex flex-col items-center text-center gap-3.5 mb-14">
-            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-mint-100 text-mint-800 text-xs font-bold tracking-[0.14em] uppercase">{t('implementation.stages.badge')}</span>
             <h2 className="text-[clamp(28px,4vw,44px)] font-extrabold tracking-tight leading-[1.1] max-w-[780px]">{t('implementation.stages.title')}</h2>
             <p className="text-[clamp(15px,1.6vw,17px)] text-ink-soft max-w-[640px]">{t('implementation.stages.desc')}</p>
           </div>
@@ -204,7 +182,6 @@ export default function Implementation() {
         <div className="max-w-container mx-auto px-6">
           <div className="grid lg:grid-cols-[1fr_1.1fr] gap-14 items-center">
             <div className="reveal">
-              <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-mint-300/20 text-mint-300 text-xs font-bold tracking-[0.14em] uppercase">{t('implementation.contact.badge')}</span>
               <h2 className="text-[clamp(28px,4vw,40px)] font-extrabold tracking-tight leading-[1.1] mt-4.5 mb-4.5">{t('implementation.contact.title')}</h2>
               <p className="text-base text-white/75 leading-relaxed max-w-[460px] mb-7">{t('implementation.contact.desc')}</p>
             </div>
@@ -214,21 +191,27 @@ export default function Implementation() {
               <p className="text-[13.5px] text-ink-soft mb-5">{t('implementation.contact.form.subtitle')}</p>
               {!submitted ? (
                 <form className="flex flex-col gap-3.5" onSubmit={onSubmit} noValidate>
-                  <div className="grid grid-cols-2 gap-3">
-                    <input className={input('name')} type="text" name="name" placeholder={t('implementation.contact.form.placeholders.name')} value={form.name} onChange={onChange} required />
-                    <input className={input('company')} type="text" name="company" placeholder={t('implementation.contact.form.placeholders.company')} value={form.company} onChange={onChange} />
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div className="flex flex-col">
+                      <input className={input('name')} type="text" name="name" placeholder={t('implementation.contact.form.placeholders.name')} aria-label={t('implementation.contact.form.placeholders.name')} aria-invalid={!!errors.name} aria-describedby={errors.name ? 'impl-name-error' : undefined} value={form.name} onChange={onChange} required />
+                      {errors.name && <p id="impl-name-error" role="alert" className="mt-1.5 text-[12px] text-red-600">{t('implementation.contact.form.errors.name')}</p>}
+                    </div>
+                    <input className={input('company')} type="text" name="company" placeholder={t('implementation.contact.form.placeholders.company')} aria-label={t('implementation.contact.form.placeholders.company')} value={form.company} onChange={onChange} />
                   </div>
-                  <div className="grid grid-cols-2 gap-3">
-                    <input className={input('email')} type="email" name="email" placeholder={t('implementation.contact.form.placeholders.email')} value={form.email} onChange={onChange} required />
-                    <input className={input('phone')} type="tel" name="phone" placeholder={t('implementation.contact.form.placeholders.phone')} value={form.phone} onChange={onChange} />
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div className="flex flex-col">
+                      <input className={input('email')} type="email" name="email" placeholder={t('implementation.contact.form.placeholders.email')} aria-label={t('implementation.contact.form.placeholders.email')} aria-invalid={!!errors.email} aria-describedby={errors.email ? 'impl-email-error' : undefined} value={form.email} onChange={onChange} required />
+                      {errors.email && <p id="impl-email-error" role="alert" className="mt-1.5 text-[12px] text-red-600">{t('implementation.contact.form.errors.email')}</p>}
+                    </div>
+                    <input className={input('phone')} type="tel" name="phone" placeholder={t('implementation.contact.form.placeholders.phone')} aria-label={t('implementation.contact.form.placeholders.phone')} value={form.phone} onChange={onChange} />
                   </div>
-                  <textarea className="min-h-[110px] px-4 py-3.5 border border-line bg-white rounded-rmd text-[15px] hover:border-line-strong focus:border-mint-400 focus:outline-none focus:ring-4 focus:ring-mint-500/20 transition resize-y leading-relaxed" name="message" placeholder={t('implementation.contact.form.placeholders.message')} value={form.message} onChange={onChange}></textarea>
+                  <textarea className="min-h-[110px] px-4 py-3.5 border border-line bg-white rounded-rmd text-[15px] hover:border-line-strong focus:border-mint-400 focus:outline-none focus:ring-4 focus:ring-mint-500/20 transition resize-y leading-relaxed" name="message" placeholder={t('implementation.contact.form.placeholders.message')} aria-label={t('implementation.contact.form.placeholders.message')} value={form.message} onChange={onChange}></textarea>
                   <Button type="submit" fullWidth>{t('implementation.contact.form.submit')}</Button>
                   <p className="text-[11.5px] text-ink-mute text-center">{t('implementation.contact.form.privacy')}</p>
                 </form>
               ) : (
-                <div className="bg-mint-50 border border-mint-200 rounded-rmd px-4 py-3.5 flex gap-3 items-center text-mint-800 text-[13.5px] font-semibold mt-4">
-                  <svg className="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <div role="status" aria-live="polite" className="bg-mint-50 border border-mint-200 rounded-rmd px-4 py-3.5 flex gap-3 items-center text-mint-800 text-[13.5px] font-semibold mt-4">
+                  <svg className="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
                   {t('implementation.contact.form.success')}

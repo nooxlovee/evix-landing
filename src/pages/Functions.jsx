@@ -1,17 +1,20 @@
-import { useEffect, useMemo } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useMemo, useRef, useState, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { NICHES, MODULES, ALL_MODULES_CARDS, badgeColors } from '../data/functionsData.js';
 import { LinkButton } from '../components/ui/Button';
+import { AnimatedCounter } from '../components/ui/AnimatedCounter';
+import { SpotlightCard } from '../components/ui/SpotlightCard';
 
 function RawSvg({ html, className }) {
   return <div className={className} dangerouslySetInnerHTML={{ __html: html }} />;
 }
 
+const NICHE_KEYS = Object.keys(NICHES);
+
 const getHeroStats = (t) => [
-  { v: '16', l: t('functions.hero.stats.0.label') },
-  { v: '4', l: t('functions.hero.stats.1.label') },
-  { v: '9', l: t('functions.hero.stats.2.label') },
+  { v: 16, l: t('functions.hero.stats.0.label') },
+  { v: 4, l: t('functions.hero.stats.1.label') },
+  { v: 9, l: t('functions.hero.stats.2.label') },
 ];
 
 const getHowSteps = (t) => [
@@ -105,15 +108,57 @@ export default function Functions() {
     document.title = t('functions.meta.title');
   }, [t]);
 
-  const niche = 'smm';
-  const role = 'owner';
+  const [niche, setNiche] = useState('smm');
+  const [role, setRole] = useState('owner');
+  const [swapping, setSwapping] = useState(false);
 
   const currentNiche = NICHES[niche];
-  const currentRole = currentNiche.roles[role];
+  const roleKeys = useMemo(() => Object.keys(currentNiche.roles), [currentNiche]);
+  // Guard against a stale role key after a niche change.
+  const activeRole = currentNiche.roles[role] ? role : roleKeys[0];
+  const currentRole = currentNiche.roles[activeRole];
+
+  const nicheTabsRef = useRef([]);
+  const roleTabsRef = useRef([]);
+  const swapTimer = useRef(0);
 
   const heroStats = useMemo(() => getHeroStats(t), [t]);
   const howSteps = useMemo(() => getHowSteps(t), [t]);
   const coreCards = useMemo(() => getCoreCards(t), [t]);
+
+  const selectNiche = useCallback((key) => {
+    if (key === niche) return;
+    // Briefly fade the hero word, then swap.
+    setSwapping(true);
+    clearTimeout(swapTimer.current);
+    swapTimer.current = setTimeout(() => setSwapping(false), 280);
+    setNiche(key);
+    // Role keys differ per niche — reset to the first role of the new niche.
+    setRole(Object.keys(NICHES[key].roles)[0]);
+  }, [niche]);
+
+  useEffect(() => () => clearTimeout(swapTimer.current), []);
+
+  // Roving-tabindex keyboard handler for a horizontal tablist.
+  const onTabKeyDown = useCallback((event, keys, index, onSelect, refs) => {
+    let next = null;
+    if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
+      next = (index + 1) % keys.length;
+    } else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
+      next = (index - 1 + keys.length) % keys.length;
+    } else if (event.key === 'Home') {
+      next = 0;
+    } else if (event.key === 'End') {
+      next = keys.length - 1;
+    } else {
+      return;
+    }
+    event.preventDefault();
+    onSelect(keys[next]);
+    refs.current[next]?.focus();
+  }, []);
+
+  const heroWord = t(`functions.niches.${niche}.hero`);
 
   return (
     <>
@@ -123,8 +168,8 @@ export default function Functions() {
           <div className="flex flex-col items-center text-center gap-7 max-w-[880px] mx-auto">
             <h1 className="text-[clamp(32px,5vw,56px)] leading-[1.06] font-extrabold tracking-tight max-w-[820px]">
               {t('functions.hero.titlePart1')}<br />{t('functions.hero.titlePart2')}{' '}
-              <em className="hero-em not-italic inline-block text-grad-mint min-w-[1ch]">
-                {currentNiche.hero}
+              <em className={`hero-em not-italic inline-block text-grad-mint min-w-[1ch] ${swapping ? 'is-swapping' : ''}`}>
+                {heroWord}
               </em>
             </h1>
             <p className="text-[clamp(15px,1.6vw,17px)] text-white/75 leading-relaxed max-w-[660px]">
@@ -133,7 +178,9 @@ export default function Functions() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-[640px] mt-2">
               {heroStats.map((m) => (
                 <div key={m.l} className="p-4.5 px-4 bg-white/[0.06] border border-white/10 rounded-rlg backdrop-blur-sm">
-                  <div className="text-2xl font-extrabold tracking-tight text-white">{m.v}</div>
+                  <div className="text-2xl font-extrabold tracking-tight text-white">
+                    <AnimatedCounter value={m.v} />
+                  </div>
                   <div className="text-[11.5px] text-white/60 uppercase tracking-[0.1em] mt-1">{m.l}</div>
                 </div>
               ))}
@@ -150,24 +197,33 @@ export default function Functions() {
             <p className="text-[clamp(15px,1.6vw,17px)] text-ink-soft max-w-[640px]">{t('functions.allModules.subtitle')}</p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3.5">
-            {ALL_MODULES_CARDS.map((m) => (
-              <article key={m.key} className="reveal relative bg-white border border-line rounded-rlg p-5 flex flex-col gap-2.5 hover:border-mint-300 hover:shadow-soft hover:-translate-y-0.5 transition">
-                <RawSvg html={MODULES[m.key].icon} className="w-10 h-10 rounded-[11px] bg-mint-50 text-mint-700 grid place-items-center [&_svg]:w-[19px] [&_svg]:h-[19px]" />
-                <div className="text-sm font-bold tracking-tight">{m.title}</div>
-                <div className="text-[12.5px] text-ink-soft leading-snug">{m.desc}</div>
-              </article>
+          {/* Registry — typographic index, no icons */}
+          <div className="reveal max-w-[1000px] mx-auto grid md:grid-cols-2 md:gap-x-14">
+            {[ALL_MODULES_CARDS.slice(0, 8), ALL_MODULES_CARDS.slice(8)].map((col, ci) => (
+              <ul key={ci} className="list-none m-0 p-0 border-t border-ink/15">
+                {col.map((key, i) => {
+                  const n = ci * 8 + i + 1;
+                  return (
+                    <li key={key} className="group flex items-baseline gap-5 py-4.5 border-b border-line">
+                      <span className="text-[13px] font-extrabold tabular-nums text-mint-500 shrink-0 w-7 pt-0.5">{String(n).padStart(2, '0')}</span>
+                      <div className="min-w-0">
+                        <h3 className="text-[15.5px] font-bold tracking-tight text-ink transition-colors group-hover:text-mint-700">{t(`functions.cards.${key}.title`)}</h3>
+                        <p className="text-[13px] text-ink-soft leading-snug mt-1">{t(`functions.cards.${key}.desc`)}</p>
+                      </div>
+                    </li>
+                  );
+                })}
+              </ul>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ADAPTATION (replaces niche-picker) */}
+      {/* ADAPTATION + NICHE SELECTOR */}
       <section className="py-24 bg-gradient-to-b from-mint-50 to-canvas" id="niches">
         <div className="max-w-container mx-auto px-6">
           {/* Header */}
           <div className="reveal flex flex-col items-center text-center gap-3.5 mb-14">
-            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-mint-100 text-mint-800 text-xs font-bold tracking-[0.14em] uppercase">{t('functions.adaptation.badge')}</span>
             <h2 className="text-[clamp(28px,4vw,44px)] font-extrabold tracking-tight leading-[1.1] max-w-[780px]">
               {t('functions.adaptation.title')}
             </h2>
@@ -204,20 +260,18 @@ export default function Functions() {
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
-            {coreCards.map((c) => (
+            {coreCards.map((c, i) => (
               <article
                 key={c.title}
                 className={`reveal relative bg-white border rounded-rxl p-5 flex flex-col gap-2 transition ${
                   c.wip ? 'border-dashed border-line-strong' : 'border-line hover:border-mint-200 hover:shadow-soft'
                 }`}
               >
-                <div className="flex items-center gap-2.5">
-                  <span className="shrink-0 w-9 h-9 rounded-rmd bg-mint-50 text-mint-700 grid place-items-center [&_svg]:w-[18px] [&_svg]:h-[18px]">
-                    {c.icon}
-                  </span>
+                <div className="flex items-center gap-3">
+                  <span className="shrink-0 w-6 text-[13px] font-extrabold tabular-nums text-mint-500">{String(i + 1).padStart(2, '0')}</span>
                   <h4 className="text-[15px] font-extrabold tracking-tight leading-tight flex-1">{c.title}</h4>
                   {c.wip && (
-                    <span className="text-[9.5px] font-bold tracking-[0.14em] uppercase text-orange-700 bg-orange-50 border border-orange-100 px-2 py-0.5 rounded-full whitespace-nowrap">
+                    <span className="text-[9.5px] font-bold tracking-[0.14em] uppercase text-ink-mute bg-canvas-soft border border-line px-2 py-0.5 rounded-full whitespace-nowrap">
                       {t('functions.adaptation.wipBadge')}
                     </span>
                   )}
@@ -230,71 +284,126 @@ export default function Functions() {
         </div>
       </section>
 
-      {/* ROLES */}
+      {/* ROLES — role selector */}
       <section className="py-24" id="roles">
         <div className="max-w-container mx-auto px-6">
-          <div className="reveal flex flex-col items-center text-center gap-3.5 mb-14">
-            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-mint-100 text-mint-800 text-xs font-bold tracking-[0.14em] uppercase">{t('functions.roles.badge')}</span>
+          <div className="reveal flex flex-col items-center text-center gap-3.5 mb-9">
             <h2 className="text-[clamp(28px,4vw,44px)] font-extrabold tracking-tight leading-[1.1] max-w-[780px]">{t('functions.roles.title')}</h2>
             <p className="text-[clamp(15px,1.6vw,17px)] text-ink-soft max-w-[640px]">{t('functions.roles.subtitle')}</p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {Object.entries(currentNiche.roles).map(([, r], idx) => (
-              <div
-                key={r.name}
-                className="reveal relative font-sans rounded-rxl p-6 flex flex-col gap-4 overflow-hidden bg-white border border-line"
-              >
-                {/* Top row: numeral */}
-                <div className="relative flex items-start justify-between">
-                  <span className="font-extrabold tabular-nums leading-none tracking-tight text-[40px] text-mint-200">
-                    {String(idx + 1).padStart(2, '0')}
-                  </span>
-                </div>
-
-                {/* Name + description */}
-                <div className="relative">
-                  <h3 className="text-[18px] font-extrabold tracking-tight leading-tight text-ink">
-                    {r.name}
-                  </h3>
-                  <p className="mt-2 text-[13px] leading-snug text-ink-soft">{r.desc}</p>
-                </div>
-
-                {/* Footer: module count */}
-                <div className="relative mt-auto pt-3.5 flex items-center gap-2 border-t border-line">
-                  <span className="inline-flex items-center gap-1.5 text-[12px] font-bold text-mint-700">
-                    <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <rect x="3" y="3" width="7" height="7" rx="1" />
-                      <rect x="14" y="3" width="7" height="7" rx="1" />
-                      <rect x="3" y="14" width="7" height="7" rx="1" />
-                      <rect x="14" y="14" width="7" height="7" rx="1" />
-                    </svg>
-                    {r.modules.length} {t('functions.roles.modulesSuffix')}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* MODULES DETAIL */}
-      <section className="py-24 bg-gradient-to-b from-mint-50 to-canvas" id="modulesDetail">
-        <div className="max-w-container mx-auto px-6">
-          <div className="reveal flex flex-col items-center text-center gap-3.5 mb-14">
-            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-mint-100 text-mint-800 text-xs font-bold tracking-[0.14em] uppercase">{t('functions.modulesDetail.badge')}</span>
-            <h2 className="text-[clamp(28px,4vw,44px)] font-extrabold tracking-tight leading-[1.1] max-w-[780px]">{t('functions.modulesDetail.title')}</h2>
-            <p className="text-[clamp(15px,1.6vw,17px)] text-ink-soft max-w-[640px]">{t('functions.modulesDetail.subtitle')}</p>
+          {/* Niche selector — drives the role set + module list below */}
+          <div className="reveal flex flex-col items-center gap-3 mb-9">
+            <span className="text-[11.5px] font-bold tracking-[0.14em] uppercase text-ink-mute">{t('functions.modulesDetail.contextLabel')}</span>
+            <div
+              role="tablist"
+              aria-label={t('functions.adaptation.badge')}
+              className="inline-flex flex-wrap justify-center gap-2 p-1.5 bg-white border border-line rounded-rxl shadow-soft-sm"
+            >
+              {NICHE_KEYS.map((key, idx) => {
+                const selected = key === niche;
+                return (
+                  <button
+                    key={key}
+                    ref={(el) => (nicheTabsRef.current[idx] = el)}
+                    role="tab"
+                    id={`niche-tab-${key}`}
+                    aria-selected={selected}
+                    aria-controls="niche-roles"
+                    tabIndex={selected ? 0 : -1}
+                    onClick={() => selectNiche(key)}
+                    onKeyDown={(e) => onTabKeyDown(e, NICHE_KEYS, idx, selectNiche, nicheTabsRef)}
+                    className={`inline-flex items-center gap-2.5 px-4 py-2.5 rounded-rmd text-sm font-bold tracking-tight transition focus:outline-none focus-visible:ring-4 focus-visible:ring-mint-500/20 ${
+                      selected
+                        ? 'bg-mint-600 text-white shadow-mint'
+                        : 'text-ink-soft hover:text-ink hover:bg-mint-50'
+                    }`}
+                  >
+                    <span className={`shrink-0 w-5 h-5 [&_svg]:w-full [&_svg]:h-full ${selected ? 'text-white' : 'text-mint-600'}`} dangerouslySetInnerHTML={{ __html: NICHES[key].icon }} />
+                    <span className="flex flex-col items-start leading-tight">
+                      <span>{t(`functions.niches.${key}.name`)}</span>
+                      <span className={`text-[10.5px] font-semibold tracking-normal ${selected ? 'text-white/70' : 'text-ink-mute'}`}>{t(`functions.niches.${key}.sub`)}</span>
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
           </div>
 
-          <div className="bg-white border border-line rounded-rxl px-6 py-4.5 flex flex-wrap items-center gap-3.5 mb-7">
+          <div
+            id="niche-roles"
+            role="tablist"
+            aria-label={t('functions.roles.title')}
+            className="reveal grid sm:grid-cols-2 lg:grid-cols-4 gap-4"
+          >
+            {roleKeys.map((roleKey, idx) => {
+              const r = currentNiche.roles[roleKey];
+              const selected = roleKey === activeRole;
+              return (
+                <button
+                  key={roleKey}
+                  ref={(el) => (roleTabsRef.current[idx] = el)}
+                  type="button"
+                  role="tab"
+                  aria-selected={selected}
+                  aria-controls="modulesDetailGrid"
+                  tabIndex={selected ? 0 : -1}
+                  onClick={() => setRole(roleKey)}
+                  onKeyDown={(e) => onTabKeyDown(e, roleKeys, idx, setRole, roleTabsRef)}
+                  className={`relative text-left font-sans rounded-rxl p-6 flex flex-col gap-4 overflow-hidden transition focus:outline-none focus-visible:ring-4 focus-visible:ring-mint-500/20 ${
+                    selected
+                      ? 'bg-mint-50 border-2 border-mint-500 shadow-soft -translate-y-0.5'
+                      : 'bg-white border-2 border-line hover:border-mint-300 hover:shadow-soft-sm'
+                  }`}
+                >
+                  {/* Top row: numeral + checkmark when selected */}
+                  <div className="relative flex items-start justify-between">
+                    <span className={`font-extrabold tabular-nums leading-none tracking-tight text-[40px] ${selected ? 'text-mint-400' : 'text-mint-200'}`}>
+                      {String(idx + 1).padStart(2, '0')}
+                    </span>
+                    {selected && (
+                      <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-mint-600 text-white" aria-hidden="true">
+                        <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                          <polyline points="20 6 9 17 4 12" />
+                        </svg>
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Name + description */}
+                  <div className="relative">
+                    <h3 className="text-[18px] font-extrabold tracking-tight leading-tight text-ink">
+                      {t(`functions.niches.${niche}.roles.${roleKey}.name`)}
+                    </h3>
+                    <p className="mt-2 text-[13px] leading-snug text-ink-soft">{t(`functions.niches.${niche}.roles.${roleKey}.desc`)}</p>
+                  </div>
+
+                  {/* Footer: module count */}
+                  <div className="relative mt-auto pt-3.5 flex items-center gap-2 border-t border-line">
+                    <span className="inline-flex items-center gap-1.5 text-[12px] font-bold text-mint-700">
+                      <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <rect x="3" y="3" width="7" height="7" rx="1" />
+                        <rect x="14" y="3" width="7" height="7" rx="1" />
+                        <rect x="3" y="14" width="7" height="7" rx="1" />
+                        <rect x="14" y="14" width="7" height="7" rx="1" />
+                      </svg>
+                      {r.modules.length} {t('functions.roles.modulesSuffix')}
+                    </span>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Live result — updates instantly on niche/role select */}
+          <div className="mt-12 bg-white border border-line rounded-rxl px-6 py-4.5 flex flex-wrap items-center gap-3.5 mb-7">
             <span className="text-[11.5px] font-bold tracking-[0.1em] uppercase text-ink-mute">{t('functions.modulesDetail.contextLabel')}</span>
-            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-mint-100 text-mint-800 text-sm font-semibold">{currentNiche.name}</span>
-            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-100 text-orange-700 text-sm font-semibold">{currentRole.name}</span>
+            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-mint-100 text-mint-800 text-sm font-semibold">{t(`functions.niches.${niche}.name`)}</span>
+            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-mint-100 text-mint-700 text-sm font-semibold">{t(`functions.niches.${niche}.roles.${activeRole}.name`)}</span>
             <span className="ml-auto text-sm text-ink-soft">{t('functions.modulesDetail.matchedPrefix')} <strong className="text-ink">{currentRole.modules.length}</strong></span>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-4.5">
+          <div id="modulesDetailGrid" className="grid lg:grid-cols-2 gap-4.5">
             {currentRole.modules.length === 0 && (
               <div className="col-span-full p-10 bg-white border border-dashed border-line-strong rounded-rxl text-center text-ink-soft">
                 {t('functions.modulesDetail.emptyState')}
@@ -303,28 +412,29 @@ export default function Functions() {
             {currentRole.modules.map((modKey, idx) => {
               const m = MODULES[modKey];
               if (!m) return null;
-              const perNiche = m.perNiche[niche] || {};
-              const title = perNiche.title || m.base.title;
-              const desc = perNiche.desc || '';
-              const list = perNiche.list || [];
+              const base = `functions.modules.${modKey}`;
+              const perNiche = `${base}.perNiche.${niche}`;
+              // Per-niche title override falls back to the module's base title.
+              const title = t(`${perNiche}.title`, { defaultValue: t(`${base}.title`) });
+              const desc = t(`${perNiche}.desc`);
+              const list = t(`${perNiche}.list`, { returnObjects: true });
+              const items = Array.isArray(list) ? list : [];
               return (
-                <article
-                  key={`${role}-${modKey}`}
-                  className="module-appear bg-white border border-line rounded-rxl p-7 grid grid-cols-[56px_1fr] gap-5 hover:border-mint-200 hover:shadow-soft hover:-translate-y-0.5 transition"
+                <SpotlightCard
+                  as="article"
+                  key={`${activeRole}-${modKey}`}
+                  className="module-appear bg-white border border-line rounded-rxl p-7 hover:border-mint-200 hover:shadow-soft hover:-translate-y-0.5 transition"
                   style={{ animationDelay: `${idx * 60}ms` }}
                 >
-                  <RawSvg html={m.icon} className="module-icon w-14 h-14 rounded-[14px] bg-gradient-to-br from-mint-100 to-mint-50 text-mint-700 grid place-items-center" />
-                  <div>
-                    <div className="flex items-center flex-wrap gap-2 mb-2">
-                      <h3 className="text-lg font-bold tracking-tight">{title}</h3>
-                      <span className={`inline-flex text-[10.5px] font-bold tracking-wider uppercase px-2.5 py-0.5 rounded-full ${badgeColors(m.base.badge)}`}>{m.base.badge}</span>
-                    </div>
-                    <p className="text-sm text-ink-soft leading-relaxed mb-3.5">{desc}</p>
-                    <ul className="list-none m-0 p-0 flex flex-col gap-2 list-check text-[13.5px]">
-                      {list.map((item) => <li key={item}>{item}</li>)}
-                    </ul>
+                  <div className="flex items-center flex-wrap gap-2.5 mb-2.5">
+                    <h3 className="text-lg font-bold tracking-tight">{title}</h3>
+                    <span className={`inline-flex text-[10.5px] font-bold tracking-wider uppercase px-2.5 py-0.5 rounded-full ${badgeColors(m.badge)}`}>{t(`functions.badges.${m.badge}`)}</span>
                   </div>
-                </article>
+                  <p className="text-sm text-ink-soft leading-relaxed mb-3.5">{desc}</p>
+                  <ul className="list-none m-0 p-0 flex flex-col gap-2 list-check text-[13.5px]">
+                    {items.map((item) => <li key={item}>{item}</li>)}
+                  </ul>
+                </SpotlightCard>
               );
             })}
           </div>
