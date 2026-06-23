@@ -362,6 +362,27 @@
         "1": "A walkthrough of the pipeline from ToV to publishing",
         "2": "Answers about the Free / Pro plans"
       },
+      "details": {
+        "heading": "Contacts",
+        "address": {
+          "label": "Address",
+          "value": "25 Pokrovka St., Pokrovka-Hall business center"
+        },
+        "hours": {
+          "label": "Working hours",
+          "value": "Mon–Fri · 10:00–20:00 MSK",
+          "note": "Visits by prior arrangement"
+        },
+        "phone": {
+          "label": "Phone",
+          "value": "+7 (981) 050-87-46"
+        },
+        "legal": {
+          "label": "Legal details",
+          "value": "Sole proprietor Mikhail N. Kucher",
+          "note": "INN 472600438229 · OGRNIP 326470400079233"
+        }
+      },
       "form": {
         "title": "Book a demo",
         "subtitle": "Direct contacts will be added later — for now, send a request through the form.",

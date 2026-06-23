@@ -153,6 +153,16 @@ export default function Home() {
     t('home.contact.benefits.2'),
   ], [t]);
 
+  const contactDetails = useMemo(() => {
+    const phone = t('home.contact.details.phone.value');
+    return [
+      { key: 'address', label: t('home.contact.details.address.label'), value: t('home.contact.details.address.value') },
+      { key: 'hours',   label: t('home.contact.details.hours.label'),   value: t('home.contact.details.hours.value'), note: t('home.contact.details.hours.note') },
+      { key: 'phone',   label: t('home.contact.details.phone.label'),   value: phone, href: `tel:${phone.replace(/[^\d+]/g, '')}` },
+      { key: 'legal',   label: t('home.contact.details.legal.label'),   value: t('home.contact.details.legal.value'), note: t('home.contact.details.legal.note'), fine: true },
+    ];
+  }, [t]);
+
   /* ── form state ── */
   const [form, setForm] = useState({ name: '', company: '', email: '', phone: '', message: '' });
   const [errors, setErrors] = useState({});
@@ -668,6 +678,36 @@ export default function Home() {
                 <p className="mt-3 text-[15px] text-ink-soft">{t('home.contact.form.successSub')}</p>
               </div>
             )}
+          </div>
+
+          {/* Contact coordinates — address / hours / phone / legal */}
+          <div className="reveal max-w-[960px] mx-auto mt-14">
+            <div className="bg-white border border-line rounded-r2xl shadow-soft p-8 sm:p-10">
+              <div className="grid sm:grid-cols-2 gap-x-12 gap-y-9">
+                {contactDetails.map((d) => (
+                  <div key={d.key}>
+                    <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-ink-mute">{d.label}</div>
+                    {d.href ? (
+                      <a
+                        href={d.href}
+                        className="mt-2.5 inline-block text-[18px] font-bold tracking-tight tabular-nums text-ink hover:text-brand-deep transition-colors"
+                      >
+                        {d.value}
+                      </a>
+                    ) : (
+                      <div className={`mt-2.5 leading-snug text-ink ${d.fine ? 'text-[14.5px] font-semibold' : 'text-[18px] font-bold tracking-tight'}`}>
+                        {d.value}
+                      </div>
+                    )}
+                    {d.note && (
+                      <div className={`mt-1.5 leading-relaxed text-ink-soft ${d.fine ? 'text-[12.5px] tabular-nums' : 'text-[13.5px]'}`}>
+                        {d.note}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
           {/* 3 benefits inline below — no pills, just text with dot separators */}
