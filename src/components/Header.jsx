@@ -157,6 +157,17 @@ export default function Header() {
             <DropdownTrigger label={t('nav.product')} isOpen={openGroup === 'product'} controls="nav-product-menu" />
             <div id="nav-product-menu" className="nav-dropdown absolute top-[calc(100%+10px)] left-1/2 w-[440px] bg-white border border-line rounded-rxl p-2 shadow-soft-lg z-[60]" role="menu">
               <DropdownItem
+                to="/how-it-works"
+                title={t('nav.howItWorks')}
+                subtitle={t('nav.howItWorksSub')}
+                icon={
+                  <svg className="w-[19px] h-[19px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10" />
+                    <polygon points="10 8 16 12 10 16 10 8" />
+                  </svg>
+                }
+              />
+              <DropdownItem
                 to="/implementation"
                 title={t('nav.implementation')}
                 subtitle={t('nav.implementationSub')}

@@ -1,5 +1,4 @@
 import { useEffect, useMemo } from 'react';
-import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { LinkButton } from '../components/ui/Button';
 import TwitterTestimonials from '../components/ui/TwitterTestimonialCards';
@@ -40,80 +39,98 @@ const getReviews = (t) => [
   { text: t('clients.reviews.items.8.text'), initials: t('clients.reviews.items.8.initials'), name: t('clients.reviews.items.8.name'), role: t('clients.reviews.items.8.role'), tag: t('clients.reviews.items.8.tag') },
 ];
 
-const getCases = (t) => [
-  { tag: t('clients.cases.items.0.tag'), title: t('clients.cases.items.0.title'), desc: t('clients.cases.items.0.desc'), grad: 'from-mint-400 to-mint-700', stats: [['×3', t('clients.cases.items.0.stats.0.label')], ['−40%', t('clients.cases.items.0.stats.1.label')], ['+28%', t('clients.cases.items.0.stats.2.label')]], statColor: 'mint' },
-  { tag: t('clients.cases.items.1.tag'), title: t('clients.cases.items.1.title'), desc: t('clients.cases.items.1.desc'), grad: 'from-mint-300 to-mint-600', stats: [['+52%', t('clients.cases.items.1.stats.0.label')], ['×6', t('clients.cases.items.1.stats.1.label')], [t('clients.cases.items.1.stats.2.value'), t('clients.cases.items.1.stats.2.label')]], statColor: 'orange' },
-  { tag: t('clients.cases.items.2.tag'), title: t('clients.cases.items.2.title'), desc: t('clients.cases.items.2.desc'), grad: 'from-mint-700 to-ink', stats: [['×4', t('clients.cases.items.2.stats.0.label')], ['−66%', t('clients.cases.items.2.stats.1.label')], ['8', t('clients.cases.items.2.stats.2.label')]], statColor: 'mint' },
-  { tag: t('clients.cases.items.3.tag'), title: t('clients.cases.items.3.title'), desc: t('clients.cases.items.3.desc'), grad: 'from-mint-500 to-mint-800', stats: [['−60%', t('clients.cases.items.3.stats.0.label')], ['+25%', t('clients.cases.items.3.stats.1.label')], ['+38%', t('clients.cases.items.3.stats.2.label')]], statColor: 'mint' },
-  { tag: t('clients.cases.items.4.tag'), title: t('clients.cases.items.4.title'), desc: t('clients.cases.items.4.desc'), grad: 'from-mint-400 to-mint-700', stats: [['×5', t('clients.cases.items.4.stats.0.label')], ['+34%', t('clients.cases.items.4.stats.1.label')], [t('clients.cases.items.4.stats.2.value'), t('clients.cases.items.4.stats.2.label')]], statColor: 'orange' },
-  { tag: t('clients.cases.items.5.tag'), title: t('clients.cases.items.5.title'), desc: t('clients.cases.items.5.desc'), grad: 'from-ink to-mint-700', stats: [['4', t('clients.cases.items.5.stats.0.label')], ['+18%', t('clients.cases.items.5.stats.1.label')], ['100%', t('clients.cases.items.5.stats.2.label')]], statColor: 'mint' },
+// Social platform glyphs (size-agnostic, inherit currentColor).
+const PLATFORM = {
+  youtube: { name: 'YouTube', icon: (
+    <svg viewBox="0 0 24 24" className="w-full h-full" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.3 31.3 0 0 0 0 12a31.3 31.3 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.3 31.3 0 0 0 24 12a31.3 31.3 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z" /></svg>
+  ) },
+  tiktok: { name: 'TikTok', icon: (
+    <svg viewBox="0 0 24 24" className="w-full h-full" fill="currentColor" aria-hidden="true"><path d="M16.5 3c.4 2.3 1.8 3.8 4 3.9v2.9c-1.4.1-2.8-.3-4-1.1v6.1c0 3.4-2.9 6.1-6.3 5.8-3-.3-5.2-2.8-5.2-5.7 0-3.3 2.9-5.9 6.2-5.6v3c-.3-.1-.6-.1-.9-.1-1.5 0-2.7 1.3-2.6 2.9.1 1.4 1.3 2.5 2.7 2.5 1.5 0 2.7-1.2 2.7-2.7V3h3.4z" /></svg>
+  ) },
+  vk: { name: 'VK', icon: (
+    <svg viewBox="0 0 24 24" className="w-full h-full" aria-hidden="true"><text x="12" y="16" textAnchor="middle" fontSize="10" fontWeight="800" fill="currentColor" fontFamily="inherit">VK</text></svg>
+  ) },
+  instagram: { name: 'Instagram', icon: (
+    <svg viewBox="0 0 24 24" className="w-full h-full" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none" /></svg>
+  ) },
+  facebook: { name: 'Facebook', icon: (
+    <svg viewBox="0 0 24 24" className="w-full h-full" fill="currentColor" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.8 3.7-3.8 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.5V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z" /></svg>
+  ) },
+};
+
+// Flagship case — NOMOS Clinic. Links are the client's real public profiles.
+const FEATURED = {
+  name: 'NOMOS Clinic',
+  links: [
+    { p: 'youtube', url: 'https://www.youtube.com/@nomos_clinic', handle: '@nomos_clinic' },
+    { p: 'tiktok', url: 'http://www.tiktok.com/@nomos_clinic', handle: '@nomos_clinic' },
+    { p: 'vk', url: 'https://vk.com/nomos.clinic', handle: 'vk.com/nomos.clinic' },
+  ],
+};
+
+// Other clients on Evix — names/niches via i18n, links are real public profiles.
+const ROSTER = [
+  { key: 'institut', links: [
+    { p: 'youtube', url: 'https://www.youtube.com/@institut.plastiki' },
+    { p: 'tiktok', url: 'https://www.tiktok.com/@institut_plastiki1' },
+  ] },
+  { key: 'genetic', links: [
+    { p: 'instagram', url: 'https://www.instagram.com/kristina_genetic' },
+    { p: 'tiktok', url: 'https://www.tiktok.com/@kuznetsova_genetic' },
+    { p: 'youtube', url: 'https://youtube.com/channel/UCV2Hwj4xKe5XMd118lhyIZg' },
+    { p: 'youtube', url: 'https://youtube.com/channel/UCtjCcNl8gGOCTNYUaiaZkGQ' },
+    { p: 'vk', url: 'https://vk.com/krisrina_kuznetsova' },
+    { p: 'facebook', url: 'https://www.facebook.com/share/1Ah2KYmt7e/' },
+  ] },
+  { key: 'inmedos', links: [
+    { p: 'instagram', url: 'https://www.instagram.com/inmedos' },
+    { p: 'vk', url: 'https://vk.com/inmedos' },
+    { p: 'tiktok', url: 'https://www.tiktok.com/@inmedos' },
+  ] },
+  { key: 'volos', links: [
+    { p: 'tiktok', url: 'https://www.tiktok.com/@doctor__volos' },
+  ] },
 ];
 
-function Trend({ value, accent }) {
-  const positive = /^[+×x]/i.test(value);
-  const negative = /^[−-]/.test(value);
-  if (!positive && !negative) return null;
-  const colorCls = positive
-    ? (accent === 'orange' ? 'text-mint-500' : 'text-mint-500')
-    : 'text-ink-mute';
+function PlatformTile({ link, clientName }) {
+  const meta = PLATFORM[link.p];
   return (
-    <svg
-      className={`w-3 h-3 shrink-0 ${colorCls}`}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="3"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
+    <a
+      href={link.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`${clientName} — ${meta.name}`}
+      className="group flex items-center gap-3.5 rounded-rmd bg-white/10 hover:bg-white/[0.16] border border-white/15 px-4 py-3 transition"
     >
-      {positive ? (
-        <>
-          <path d="M7 17L17 7" />
-          <polyline points="7 7 17 7 17 17" />
-        </>
-      ) : (
-        <>
-          <path d="M7 7L17 17" />
-          <polyline points="17 7 17 17 7 17" />
-        </>
-      )}
-    </svg>
+      <span className="w-9 h-9 rounded-[10px] bg-white/15 grid place-items-center text-white shrink-0">
+        <span className="w-[18px] h-[18px] block">{meta.icon}</span>
+      </span>
+      <span className="min-w-0 flex-1">
+        <span className="block text-[13.5px] font-bold leading-tight">{meta.name}</span>
+        <span className="block text-[12px] text-mint-200 truncate">{link.handle}</span>
+      </span>
+      <svg className="w-4 h-4 text-white/55 group-hover:text-white transition shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M7 17L17 7" /><path d="M7 7h10v10" />
+      </svg>
+    </a>
   );
 }
 
-const CASE_ICONS = [
-  <svg key="i0" className="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M12 4v16M4 12h16" />
-  </svg>,
-  <svg key="i1" className="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M17 8h1a3 3 0 0 1 0 6h-1" />
-    <path d="M3 8h14v9a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3z" />
-    <line x1="6" y1="2" x2="6" y2="4" />
-    <line x1="10" y1="2" x2="10" y2="4" />
-    <line x1="14" y1="2" x2="14" y2="4" />
-  </svg>,
-  <svg key="i2" className="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M22 10v6" />
-    <path d="M2 10l10-5 10 5-10 5z" />
-    <path d="M6 12v5c0 1 4 3 6 3s6-2 6-3v-5" />
-  </svg>,
-  <svg key="i3" className="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-    <polygon points="23 7 16 12 23 17 23 7" />
-    <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
-  </svg>,
-  <svg key="i4" className="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-    <circle cx="12" cy="7" r="4" />
-  </svg>,
-  <svg key="i5" className="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M6 8v8" />
-    <path d="M18 8v8" />
-    <path d="M3 10v4" />
-    <path d="M21 10v4" />
-    <path d="M6 12h12" />
-  </svg>,
-];
+function PlatformChip({ link, clientName }) {
+  const meta = PLATFORM[link.p];
+  return (
+    <a
+      href={link.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`${clientName} — ${meta.name}`}
+      title={meta.name}
+      className="w-9 h-9 rounded-[10px] bg-mint-50 text-mint-700 grid place-items-center hover:bg-mint-500 hover:text-white transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mint-500/40"
+    >
+      <span className="w-[17px] h-[17px] block">{meta.icon}</span>
+    </a>
+  );
+}
 
 export default function Clients() {
   const { t, i18n } = useTranslation();
@@ -123,7 +140,6 @@ export default function Clients() {
   }, [t]);
 
   const REVIEWS = useMemo(() => getReviews(t), [t]);
-  const CASES = useMemo(() => getCases(t), [t]);
 
   const dates = REVIEW_DATES[i18n.language] ?? REVIEW_DATES.ru;
   const TWITTER_CARDS = useMemo(() => REVIEWS.map((r, i) => ({
@@ -133,26 +149,6 @@ export default function Clients() {
     content: r.text,
     date: dates[i] ?? dates[dates.length - 1],
   })), [REVIEWS, dates]);
-
-  const featuredBadges = useMemo(() => [
-    t('clients.cases.featured.badges.0'),
-    t('clients.cases.featured.badges.1'),
-    t('clients.cases.featured.badges.2'),
-  ], [t]);
-
-  const featuredStats = useMemo(() => [
-    ['×3', t('clients.cases.featured.stats.0.label'), t('clients.cases.featured.stats.0.note')],
-    ['+47%', t('clients.cases.featured.stats.1.label'), t('clients.cases.featured.stats.1.note')],
-    ['−72%', t('clients.cases.featured.stats.2.label'), t('clients.cases.featured.stats.2.note')],
-    [t('clients.cases.featured.stats.3.value'), t('clients.cases.featured.stats.3.label'), t('clients.cases.featured.stats.3.note')],
-  ], [t]);
-
-  const summaryStats = useMemo(() => [
-    ['×2.4', t('clients.cases.summary.stats.0.label')],
-    ['+31%', t('clients.cases.summary.stats.1.label')],
-    ['−54%', t('clients.cases.summary.stats.2.label')],
-    [t('clients.cases.summary.stats.3.value'), t('clients.cases.summary.stats.3.label')],
-  ], [t]);
 
   return (
     <>
@@ -191,115 +187,65 @@ export default function Clients() {
             <p className="text-[clamp(15px,1.6vw,17px)] text-ink-soft max-w-[640px]">{t('clients.cases.desc')}</p>
           </div>
 
-          <article className="reveal mb-7 bg-gradient-to-br from-mint-700 to-mint-800 rounded-r2xl overflow-hidden text-white relative">
-            <div className="absolute -top-32 -right-20 w-[440px] h-[440px] rounded-full bg-[radial-gradient(circle,rgba(116,223,187,0.32),transparent_70%)]"></div>
-            <div className="relative grid lg:grid-cols-[1.3fr_1fr] gap-0 lg:gap-10">
-              <div className="p-10 lg:p-12">
-                <div className="flex items-center gap-3 mb-5">
-                  <span className="inline-flex px-3 py-1 rounded-full bg-white/15 border border-white/20 text-mint-200 text-[11px] font-bold tracking-wider uppercase">{t('clients.cases.featured.bestCase')}</span>
-                  <span className="inline-flex px-3 py-1 rounded-full bg-white/15 border border-white/20 text-white/80 text-[11px] font-bold tracking-wider uppercase">{t('clients.cases.featured.tag')}</span>
-                </div>
-                <h3 className="text-[clamp(24px,3vw,32px)] font-extrabold tracking-tight leading-tight mb-4">{t('clients.cases.featured.title')}</h3>
-                <p className="text-base text-white/80 leading-relaxed mb-7">{t('clients.cases.featured.desc')}</p>
-                <div className="flex flex-wrap gap-2">
-                  {featuredBadges.map((b) => (
-                    <span key={b} className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/15 text-white text-[12.5px] font-semibold">
-                      <svg className="w-3.5 h-3.5 text-mint-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                        <polyline points="20 6 9 17 4 12" />
-                      </svg>
-                      {b}
-                    </span>
-                  ))}
-                </div>
-              </div>
-              <div className="bg-black/15 p-10 lg:p-12 flex flex-col gap-4 justify-center">
-                {featuredStats.map(([v, label, s], i) => (
-                  <div key={label} className={`flex items-baseline gap-3 ${i < 3 ? 'pb-4 border-b border-white/10' : ''}`}>
-                    <span className="text-5xl font-extrabold tracking-tight leading-none text-grad-price-white">{v}</span>
-                    <div>
-                      <div className="text-sm font-bold">{label}</div>
-                      <div className="text-xs text-white/60">{s}</div>
-                    </div>
-                  </div>
-                ))}
-                <LinkButton to="/#contact" size="sm" className="mt-4 self-start">
+          {/* Flagship growth case — NOMOS */}
+          <article className="reveal bg-white border border-line rounded-r2xl overflow-hidden shadow-soft">
+            <div className="grid lg:grid-cols-[1.3fr_1fr]">
+              <div className="p-9 lg:p-11">
+                <h3 className="text-[clamp(22px,2.8vw,30px)] font-extrabold tracking-tight leading-tight mb-4">{t('clients.cases.featured.title')}</h3>
+                <p className="text-[15px] text-ink-soft leading-relaxed mb-6">{t('clients.cases.featured.desc')}</p>
+                <ul className="list-none m-0 p-0 flex flex-col gap-2.5 list-check text-[14px] text-ink">
+                  {[0, 1, 2, 3].map((i) => <li key={i}>{t(`clients.cases.featured.points.${i}`)}</li>)}
+                </ul>
+                <LinkButton to="/#contact" size="md" className="mt-8">
                   {t('clients.cases.featured.cta')}
-                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M5 12h14" /><path d="M13 5l7 7-7 7" />
-                  </svg>
+                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="M13 5l7 7-7 7" /></svg>
                 </LinkButton>
               </div>
+
+              <div className="relative bg-gradient-to-br from-mint-700 to-mint-800 text-white p-9 lg:p-11 flex flex-col justify-center overflow-hidden">
+                <div className="absolute -top-24 -right-16 w-[360px] h-[360px] rounded-full bg-[radial-gradient(circle,rgba(116,223,187,0.28),transparent_70%)]" aria-hidden="true" />
+                <div className="relative">
+                  <div className="text-2xl font-extrabold tracking-tight">NOMOS Clinic</div>
+                  <div className="text-[11.5px] uppercase tracking-[0.14em] text-mint-200 font-bold mt-1 mb-5">{t('clients.cases.featured.platformsLabel')}</div>
+                  <div className="flex flex-col gap-3">
+                    {FEATURED.links.map((l) => <PlatformTile key={l.p + l.url} link={l} clientName={FEATURED.name} />)}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Real results — numbers from the client's public profiles */}
+            <div className="grid grid-cols-2 md:grid-cols-4 border-t border-line bg-mint-50/40">
+              {[0, 1, 2, 3].map((i) => (
+                <div key={i} className="p-6 lg:p-7 border-line md:border-l md:first:border-l-0">
+                  <div className="text-[clamp(24px,2.8vw,32px)] font-extrabold tracking-tight text-mint-700 leading-none">{t(`clients.cases.featured.stats.${i}.value`)}</div>
+                  <div className="text-[11px] text-ink-mute uppercase tracking-[0.08em] mt-2 leading-tight">{t(`clients.cases.featured.stats.${i}.label`)}</div>
+                </div>
+              ))}
             </div>
           </article>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {CASES.map((c, idx) => {
-              const accent = c.statColor === 'orange' ? 'orange' : 'mint';
-              const num = String(idx + 1).padStart(2, '0');
+          {/* Roster */}
+          <div className="reveal mt-16 mb-8 text-center">
+            <h3 className="text-[clamp(20px,2.4vw,26px)] font-extrabold tracking-tight">{t('clients.cases.roster.title')}</h3>
+            <p className="text-[14.5px] text-ink-soft mt-2 max-w-[560px] mx-auto">{t('clients.cases.roster.desc')}</p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {ROSTER.map((c) => {
+              const name = t(`clients.cases.roster.items.${c.key}.name`);
+              const note = t(`clients.cases.roster.items.${c.key}.note`);
               return (
-                <article
-                  key={c.title}
-                  className="reveal group relative bg-white border border-line rounded-r2xl overflow-hidden flex flex-col hover:border-mint-300 hover:shadow-soft-lg hover:-translate-y-1 transition-all duration-300"
-                >
-                  <span
-                    aria-hidden="true"
-                    className={`pointer-events-none select-none absolute -top-3 right-4 text-[110px] leading-none font-black tracking-tighter transition-all duration-500 group-hover:-translate-y-1 group-hover:scale-105 ${accent === 'orange' ? 'text-mint-50' : 'text-mint-50'}`}
-                  >
-                    {num}
-                  </span>
-
-                  <span
-                    aria-hidden="true"
-                    className={`absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b ${c.grad} opacity-60 group-hover:opacity-100 transition-opacity duration-300`}
-                  />
-
-                  <div className="relative p-7 flex flex-col gap-5 flex-1">
-                    <div className="flex items-center gap-3">
-                      <span className="inline-flex items-center px-2.5 py-1 rounded-full text-[10.5px] font-bold tracking-[0.14em] uppercase bg-mint-50 text-mint-800">
-                        {c.tag}
-                      </span>
-                    </div>
-
-                    <h3 className="text-[20px] font-extrabold tracking-tight leading-[1.2]">{c.title}</h3>
-                    <p className="text-[13.5px] text-ink-soft leading-relaxed">{c.desc}</p>
-
-                    <div className="grid grid-cols-3 gap-3 pt-5 mt-1 border-t border-line">
-                      {c.stats.map(([v, label]) => (
-                        <div key={label} className="flex flex-col gap-1.5">
-                          <div className="flex items-center gap-1">
-                            <Trend value={v} accent={accent} />
-                            <span className={`text-[19px] font-extrabold tracking-tight leading-none ${accent === 'orange' ? 'text-mint-700' : 'text-mint-800'}`}>{v}</span>
-                          </div>
-                          <div className="text-[10px] text-ink-mute uppercase tracking-[0.08em] leading-tight">{label}</div>
-                        </div>
-                      ))}
-                    </div>
-
-                    <Link to="/#contact" className={`mt-auto inline-flex items-center gap-1.5 font-semibold text-[13.5px] transition-all group-hover:gap-2.5 ${accent === 'orange' ? 'text-mint-700 hover:text-mint-800' : 'text-mint-700 hover:text-mint-800'}`}>
-                      {t('clients.cases.detailsLink')}
-                      <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M5 12h14" /><path d="M13 5l7 7-7 7" />
-                      </svg>
-                    </Link>
+                <article key={c.key} className="reveal bg-white border border-line rounded-r2xl p-6 flex flex-col gap-2.5 hover:border-mint-300 hover:shadow-soft hover:-translate-y-1 transition-all duration-300">
+                  <h4 className="text-[17px] font-bold tracking-tight">{name}</h4>
+                  <p className="text-[12px] text-ink-mute uppercase tracking-[0.08em]">{t(`clients.cases.roster.items.${c.key}.niche`)}</p>
+                  {note && <p className="text-[13px] text-ink-soft leading-snug">{note}</p>}
+                  <div className="flex flex-wrap gap-2 mt-auto pt-2">
+                    {c.links.map((l, i) => <PlatformChip key={l.p + i} link={l} clientName={name} />)}
                   </div>
                 </article>
               );
             })}
-          </div>
-
-          <div className="reveal mt-14 bg-white border border-line rounded-r2xl p-10 grid lg:grid-cols-[1.2fr_1fr] gap-8 items-center shadow-soft">
-            <div>
-              <h3 className="text-[clamp(22px,2.6vw,28px)] font-extrabold tracking-tight mb-3 text-ink">{t('clients.cases.summary.title')}</h3>
-              <p className="text-[15px] text-ink-soft leading-relaxed">{t('clients.cases.summary.desc')}</p>
-            </div>
-            <div className="grid grid-cols-2 gap-3.5">
-              {summaryStats.map(([v, label]) => (
-                <div key={label} className="bg-mint-50 border border-mint-200 rounded-rlg p-4">
-                  <div className="text-2xl font-extrabold tracking-tight text-mint-700">{v}</div>
-                  <div className="text-xs text-ink-mute uppercase tracking-[0.08em] mt-1">{label}</div>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </section>

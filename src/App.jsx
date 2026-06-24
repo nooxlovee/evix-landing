@@ -12,6 +12,7 @@ import Implementation from './pages/Implementation.jsx';
 import Integrations from './pages/Integrations.jsx';
 import KnowledgeBase from './pages/KnowledgeBase.jsx';
 import Training from './pages/Training.jsx';
+import HowItWorks from './pages/HowItWorks.jsx';
 
 export default function App() {
   return (
@@ -25,6 +26,7 @@ export default function App() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/contacts" element={<Contacts />} />
         <Route path="/faq" element={<Faq />} />
+        <Route path="/how-it-works" element={<HowItWorks />} />
         <Route path="/implementation" element={<Implementation />} />
         <Route path="/integrations" element={<Integrations />} />
         <Route path="/knowledge-base" element={<KnowledgeBase />} />

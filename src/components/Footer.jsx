@@ -82,7 +82,7 @@ export default function Footer() {
             <ul className="list-none m-0 p-0 flex flex-col gap-2.5">
               <li><Link to="/functions" className="footer-link">{t('footer.functions')}</Link></li>
               <li><Link to="/pricing" className="footer-link">{t('footer.pricing')}</Link></li>
-              <li><Link to="/#how" className="footer-link">{t('footer.howWorks')}</Link></li>
+              <li><Link to="/how-it-works" className="footer-link">{t('footer.howWorks')}</Link></li>
               <li><Link to="/clients" className="footer-link">{t('footer.clients')}</Link></li>
             </ul>
           </div>

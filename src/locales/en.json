@@ -7,6 +7,8 @@
     "about": "About",
     "blog": "Blog",
     "support": "Support",
+    "howItWorks": "How it works",
+    "howItWorksSub": "The full cycle in the product — with screenshots",
     "implementation": "Implementation",
     "implementationSub": "How we embed Evix in your studio's workflow",
     "training": "Training",
@@ -23,6 +25,148 @@
     "menu": "Menu",
     "closeMenu": "Close menu",
     "mainNav": "Main navigation"
+  },
+  "howItWorks": {
+    "meta": {
+      "title": "How it works — Evix"
+    },
+    "hero": {
+      "title": "The whole workflow in Evix —",
+      "titleHighlight": "from sign-up to publishing",
+      "desc": "Evix replaces the scriptwriter, host, editor, social media manager and analyst — and carries one brand context through every step. Below is the full loop: from the quiz to a finished video in the feed.",
+      "ctaPrimary": "Request demo",
+      "ctaSecondary": "See the cycle",
+      "shotAlt": "Scenario list in the Evix workspace: type, avatar, voice and publishing status"
+    },
+    "cycle": {
+      "title": "Nine steps, one cycle",
+      "desc": "Each step builds on the last: the quiz sets the brand voice, parsing decides what to film, the library holds both. Then come the script, voiceover, cover, editing and publishing."
+    },
+    "steps": {
+      "register": {
+        "title": "Sign-up and login",
+        "desc": "An account takes half a minute: first name, last name, email and password — no SMS, no long forms. One account is one brand workspace, home to scenarios, avatars, edits and connected social accounts.",
+        "list": [
+          "Sign up with email and password, no SMS",
+          "One account — one brand",
+          "Inside: scenarios, avatars, editing and social accounts",
+          "The session lives in your browser — log in and go"
+        ],
+        "alt": "Evix sign-up screen"
+      },
+      "quiz": {
+        "title": "Brand quiz — the foundation of every module",
+        "desc": "Twelve short questions: name, niche, audience profile and pain points, tone of voice, formal or informal address, how you monetize, key topics, restrictions, expertise, platforms and the main call to action. The answers build a Tone of Voice document.",
+        "list": [
+          "12 questions about the brand and audience",
+          "The output is a Tone of Voice document",
+          "ToV is woven into every piece of copy automatically",
+          "You can rewrite the answers at any time"
+        ],
+        "alt": "Brand quiz: question 1 of 12"
+      },
+      "competitors": {
+        "title": "Competitor parsing — a map of demand",
+        "desc": "Add competitor accounts by hand or hit “Find automatically” — the system collects their videos from 19+ platforms: Instagram, TikTok, YouTube and Shorts, VK, Telegram, Zen, RuTube. Every video shows views, likes, comments, engagement, date and a direct link.",
+        "list": [
+          "Content collected from 19+ platforms",
+          "Metrics for every competitor video",
+          "The data folds into a “niche core”: hooks, formats, sound design",
+          "Anti-patterns too — what doesn't work in the niche"
+        ],
+        "alt": "Competitor list with metrics and statuses"
+      },
+      "library": {
+        "title": "Data library — your brand's brain",
+        "desc": "Everything the system knows about the brand lives in six cores. Three are built automatically — Tone of Voice, marketing and product analysis. Three accumulate as you work — the account, niche and competitor cores. Scenarios pull context from here, not thin air.",
+        "list": [
+          "3 cores automatically: ToV, marketing, product",
+          "3 cores from practice: account, niche, competitors",
+          "Cores can be cleaned and edited by hand",
+          "The visual-format library and favorites live here too"
+        ],
+        "alt": "Brand data cores in the library"
+      },
+      "scenario": {
+        "title": "Creating a scenario: pick a type",
+        "desc": "A scenario comes together in five steps: type → text → avatar and voice → result → editing. It all starts with the generation logic — where the system gets the idea. There are four types:",
+        "alt": "Step 1 — choosing a scenario type from four options",
+        "types": {
+          "competitor": {
+            "title": "Competitor",
+            "desc": "Breaks down the hooks of competitors' best videos from the niche core and writes a script along their logic."
+          },
+          "repackage": {
+            "title": "Repackaging",
+            "desc": "Takes your existing video and rewrites it around a new angle."
+          },
+          "custom": {
+            "title": "Own topic",
+            "desc": "Generates from your prompt — informed by the Tone of Voice and the analytics gathered."
+          },
+          "formats": {
+            "title": "Visual formats (PRO)",
+            "desc": "Auto-assembled from the viral-format library. Available on the Pro plan."
+          }
+        }
+      },
+      "result": {
+        "title": "Text, avatar, voiceover — and a finished video",
+        "desc": "The system writes the monologue and immediately strips stage directions, emoji and stray symbols: what's left is the hook, the body and a closing call to action. Regenerate as many times as you like. Then pick an avatar (7 hosts or your own), a voice to match its character, emotion, format and speed — the output is a 2–4 minute MP4 of your avatar speaking.",
+        "list": [
+          "Text self-cleans of stage directions, emoji and symbols",
+          "7 host avatars plus your own; voice matched to character",
+          "Formats 9:16, 16:9 and 1:1, speed 0.75×–1.5×",
+          "A finished MP4 with no watermarks or filler music"
+        ],
+        "alt": "Scenario parameters and the generated video"
+      },
+      "covers": {
+        "title": "Covers — a hook, not a video frame",
+        "desc": "The system reads the script text and proposes covers around four emotions: shock, pain, fear and mystery. Each angle gets 3–4 concepts with a score, so there's something to A/B test. In two sizes at once: 9:16 and 16:9.",
+        "list": [
+          "4 emotional angles: shock, pain, fear, mystery",
+          "3–4 scored concepts per angle",
+          "Ready for an A/B test",
+          "Sizes 9:16 and 16:9"
+        ],
+        "alt": "Grid of generated covers"
+      },
+      "montage": {
+        "title": "Editing — automatic or manual",
+        "desc": "A scenario with a finished video moves to editing — trims, cuts, subtitles, cover. The status is always visible: no edit, in progress, with the editor, done. From here, two paths:",
+        "alt": "Editing queue with video statuses",
+        "options": {
+          "auto": {
+            "title": "Evix auto-edit",
+            "desc": "Transitions, subtitles and a cover added automatically. Ready in 5–10 minutes.",
+            "meta": "On every plan"
+          },
+          "pro": {
+            "title": "Evix editing PRO",
+            "desc": "A real editor: custom effects and b-roll tailored to the specific video.",
+            "meta": "Pro · 24–48 hours"
+          }
+        }
+      },
+      "publish": {
+        "title": "Publishing, profile and plans",
+        "desc": "The finished video publishes to your connected social accounts — the same brand context reaches up to 19 platforms. In the profile you edit brand details and photo, connect social accounts for parsing and publishing, and switch between Free and Pro.",
+        "list": [
+          "Publishing to connected social accounts — up to 19 platforms",
+          "Social accounts connect for both parsing and posting",
+          "Free: auto-edit, basic formats, scenario limits",
+          "Pro: editing PRO, queue priority, visual formats, expanded covers"
+        ],
+        "alt": "Profile, social accounts and plan settings"
+      }
+    },
+    "cta": {
+      "title": "Want to see the whole cycle on your own brand?",
+      "desc": "We'll show the workspace in a live demo: run the quiz, build the cores and generate your first scenario for your niche.",
+      "primary": "Request demo",
+      "secondary": "View pricing"
+    }
   },
   "footer": {
     "tagline": "AI content studio: scripts, avatars, editing and publication tracking in one workspace. For studios, agencies and creators.",
@@ -361,27 +505,6 @@
         "0": "A demo built around your use case",
         "1": "A walkthrough of the pipeline from ToV to publishing",
         "2": "Answers about the Free / Pro plans"
-      },
-      "details": {
-        "heading": "Contacts",
-        "address": {
-          "label": "Address",
-          "value": "25 Pokrovka St., Pokrovka-Hall business center"
-        },
-        "hours": {
-          "label": "Working hours",
-          "value": "Mon–Fri · 10:00–20:00 MSK",
-          "note": "Visits by prior arrangement"
-        },
-        "phone": {
-          "label": "Phone",
-          "value": "+7 (981) 050-87-46"
-        },
-        "legal": {
-          "label": "Legal details",
-          "value": "Sole proprietor Mikhail N. Kucher",
-          "note": "INN 472600438229 · OGRNIP 326470400079233"
-        }
       },
       "form": {
         "title": "Book a demo",
@@ -1681,157 +1804,64 @@
       "collapseLabel": "Collapse"
     },
     "cases": {
-      "badge": "Use cases",
-      "title": "Real-world business use cases",
-      "desc": "Short cases with before-and-after numbers. What hurt, what we changed, and what we got 3 months in.",
+      "title": "Real Evix clients",
+      "desc": "Clinics and experts in aesthetic medicine running their content on Evix. Below — the NOMOS Clinic growth case and the other clients' platforms.",
+      "realBadge": "Evix client",
       "featured": {
-        "bestCase": "Best case",
-        "tag": "SMM agency",
-        "title": "How Layers SMM grew from 10 to 30 clients in a quarter",
-        "desc": "The agency was stuck at 10 clients for two years because the scriptwriter spent 4 hours per video. After rolling out Evix they moved 100% of the client library into the workspace and switched on AI scripts and avatars. The team didn't grow — productivity did.",
-        "badges": {
-          "0": "Rolled out in 12 days",
-          "1": "Team of 6",
-          "2": "Pro plan"
-        },
+        "niche": "Cosmetology · trichology",
+        "title": "How NOMOS Clinic grows on content with Evix",
+        "desc": "NOMOS Clinic is a Moscow clinic of aesthetic cosmetology and trichology, 15+ years on the market. The clinic runs its short-form content on Evix: AI avatars, scripts built on niche hooks, auto-editing and publishing. That's how it built an audience on YouTube and TikTok and steadily ships videos — with up to 130K views each.",
+        "statsLabel": "Results across platforms",
         "stats": {
           "0": {
-            "label": "Active clients",
-            "note": "from 10 → to 30"
+            "value": "523",
+            "label": "videos on Evix"
           },
           "1": {
-            "label": "Margin",
-            "note": "per client"
+            "value": "72.5K",
+            "label": "subscribers · YouTube"
           },
           "2": {
-            "label": "Time per script",
-            "note": "from 4 hours to 1 hour"
+            "value": "161.8K",
+            "label": "followers · TikTok"
           },
           "3": {
-            "value": "1 day",
-            "label": "For approval",
-            "note": "was 3 days"
+            "value": "2.2M",
+            "label": "likes · TikTok"
           }
         },
-        "cta": "Get a case like this"
+        "points": {
+          "0": "Tone of Voice quiz and cores tuned to the cosmetology niche",
+          "1": "Competitor parsing in the niche and hook collection",
+          "2": "Scripts, AI-avatar voiceover and auto-editing",
+          "3": "Publishing to YouTube, TikTok and VK from one workspace"
+        },
+        "platformsLabel": "Client's platforms",
+        "cta": "I want the same"
       },
-      "items": {
-        "0": {
-          "tag": "Clinic",
-          "title": "Adamant dental clinic",
-          "desc": "The marketer was spending 4 hours a day on scripts and stories. We added the doctor library, the clinic's ToV and AI avatars — freeing up half the day for other work.",
-          "stats": {
-            "0": {
-              "label": "posts/wk"
-            },
-            "1": {
-              "label": "for approval"
-            },
-            "2": {
-              "label": "bookings/mo"
-            }
-          }
-        },
-        "1": {
-          "tag": "HoReCa",
-          "title": "Svet cafe",
-          "desc": "No in-house marketer — the owner made content herself in the evenings. Evix generates posts about dishes and promos — it now takes 20 minutes a day instead of 2 hours.",
-          "stats": {
-            "0": {
-              "label": "bookings"
-            },
-            "1": {
-              "label": "posts/wk"
-            },
-            "2": {
-              "value": "+12 h",
-              "label": "per week"
-            }
-          }
-        },
-        "2": {
-          "tag": "Education",
-          "title": "Liniya design school",
-          "desc": "A content team of 3 couldn't keep up with materials for 8 cohorts. Evix sped production up 4x — without growing the team.",
-          "stats": {
-            "0": {
-              "label": "lead streams"
-            },
-            "1": {
-              "label": "CAC per lead"
-            },
-            "2": {
-              "label": "programs"
-            }
-          }
-        },
-        "3": {
-          "tag": "Production",
-          "title": "Nomos studio",
-          "desc": "A production company doing 12 commercial shoots a month. Briefs now take 20 minutes instead of 4 hours — the team fits in one extra shoot every week.",
-          "stats": {
-            "0": {
-              "label": "hours per brief"
-            },
-            "1": {
-              "label": "shoots/mo"
-            },
-            "2": {
-              "label": "reach"
-            }
-          }
-        },
-        "4": {
-          "tag": "Expert",
-          "title": "Maria Lebedeva",
-          "desc": "A nutritionist with 80k followers. Shooting on camera every day is impossible — now she publishes via an AI avatar. Content goes out regularly and subscribers don't spot the switch.",
-          "stats": {
-            "0": {
-              "label": "videos/wk"
-            },
-            "1": {
-              "label": "reach"
-            },
-            "2": {
-              "value": "2 h",
-              "label": "filming/mo"
-            }
-          }
-        },
-        "5": {
-          "tag": "Fitness network",
-          "title": "Etazh — 4 locations",
-          "desc": "Each location used to make content separately and the brand drifted. Now all content flows through a single workspace — with local branding for every club.",
-          "stats": {
-            "0": {
-              "label": "locations"
-            },
-            "1": {
-              "label": "new clients"
-            },
-            "2": {
-              "label": "brand consistency"
-            }
-          }
-        }
-      },
-      "detailsLink": "Read full case",
-      "summary": {
-        "title": "These results aren't exceptions — they're the average across our clients",
-        "desc": "We collect metrics every quarter and publish them without rounding. Want a similar case — tell us about your team and we'll run the numbers for your business.",
-        "stats": {
-          "0": {
-            "label": "Average speedup"
+      "roster": {
+        "title": "Who we work with",
+        "desc": "A few more clinics and experts on Evix. Click a social icon to open the profile.",
+        "items": {
+          "institut": {
+            "name": "Institut Plastiki",
+            "niche": "Plastic surgery",
+            "note": ""
           },
-          "1": {
-            "label": "Average reach growth"
+          "genetic": {
+            "name": "Kristina Kuznetsova",
+            "niche": "Genetics · nutrition",
+            "note": ""
           },
-          "2": {
-            "label": "Hours on approvals"
+          "inmedos": {
+            "name": "Inmedos",
+            "niche": "Medical center",
+            "note": ""
           },
-          "3": {
-            "value": "1.7 mo",
-            "label": "Plan payback"
+          "volos": {
+            "name": "doctor__volos",
+            "niche": "Trichology",
+            "note": ""
           }
         }
       }
@@ -1851,21 +1881,6 @@
       "form": {
         "title": "Contact form",
         "desc": "Submit a request — we'll get in touch shortly."
-      },
-      "soonBadge": "Soon",
-      "soon": {
-        "phone": {
-          "title": "Phone",
-          "desc": "A contact number will appear later."
-        },
-        "email": {
-          "title": "Email",
-          "desc": "Addresses for different needs (sales, support, partnerships) will appear later."
-        },
-        "office": {
-          "title": "Office",
-          "desc": "Legal and physical addresses will appear later."
-        }
       }
     },
     "form": {
@@ -1883,6 +1898,27 @@
       "errors": {
         "name": "Please enter your name",
         "email": "Please enter a valid email"
+      }
+    },
+    "details": {
+      "heading": "Contacts",
+      "address": {
+        "label": "Address",
+        "value": "25 Pokrovka St., Pokrovka-Hall business center"
+      },
+      "hours": {
+        "label": "Working hours",
+        "value": "Mon–Fri · 10:00–20:00 MSK",
+        "note": "Visits by prior arrangement"
+      },
+      "phone": {
+        "label": "Phone",
+        "value": "+7 (981) 050-87-46"
+      },
+      "legal": {
+        "label": "Legal details",
+        "value": "Sole proprietor Mikhail N. Kucher",
+        "note": "INN 472600438229 · OGRNIP 326470400079233"
       }
     }
   },

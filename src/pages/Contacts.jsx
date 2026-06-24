@@ -2,12 +2,6 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from '../components/ui/Button';
 
-const getSoonCards = (t) => [
-  { key: 'phone', title: t('contacts.channels.soon.phone.title'), desc: t('contacts.channels.soon.phone.desc'), icon: (<svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>) },
-  { key: 'email', title: t('contacts.channels.soon.email.title'), desc: t('contacts.channels.soon.email.desc'), icon: (<svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z" /><path d="M4 4l8 8 8-8" /></svg>) },
-  { key: 'office', title: t('contacts.channels.soon.office.title'), desc: t('contacts.channels.soon.office.desc'), icon: (<svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg>) },
-];
-
 export default function Contacts() {
   const { t } = useTranslation();
 
@@ -15,7 +9,15 @@ export default function Contacts() {
     document.title = t('contacts.meta.title');
   }, [t]);
 
-  const SOON_CARDS = useMemo(() => getSoonCards(t), [t]);
+  const DETAILS = useMemo(() => {
+    const phone = t('contacts.details.phone.value');
+    return [
+      { key: 'address', label: t('contacts.details.address.label'), value: t('contacts.details.address.value') },
+      { key: 'hours',   label: t('contacts.details.hours.label'),   value: t('contacts.details.hours.value'), note: t('contacts.details.hours.note') },
+      { key: 'phone',   label: t('contacts.details.phone.label'),   value: phone, href: `tel:${phone.replace(/[^\d+]/g, '')}` },
+      { key: 'legal',   label: t('contacts.details.legal.label'),   value: t('contacts.details.legal.value'), note: t('contacts.details.legal.note'), fine: true },
+    ];
+  }, [t]);
 
   const [form, setForm] = useState({ name: '', company: '', email: '', message: '' });
   const [errors, setErrors] = useState({});
@@ -72,16 +74,23 @@ export default function Contacts() {
                   </div>
                 </div>
 
-                {SOON_CARDS.map((c) => (
-                  <div key={c.key} className="flex items-start gap-4 p-5 bg-white border border-dashed border-line-strong rounded-rxl opacity-70">
-                    <div>
-                      <div className="text-sm font-bold mb-1">
-                        {c.title} <span className="ml-1 inline-flex text-[10px] font-bold tracking-wider uppercase px-2 py-0.5 rounded-full bg-mint-100 text-mint-700">{t('contacts.channels.soonBadge')}</span>
+                <div className="bg-white border border-line rounded-rxl p-6 sm:p-7">
+                  <div className="grid sm:grid-cols-2 gap-x-8 gap-y-6">
+                    {DETAILS.map((d) => (
+                      <div key={d.key}>
+                        <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-ink-mute">{d.label}</div>
+                        {d.href ? (
+                          <a href={d.href} className="mt-2 inline-block text-[17px] font-bold tracking-tight tabular-nums text-ink hover:text-brand-deep transition-colors">{d.value}</a>
+                        ) : (
+                          <div className={`mt-2 leading-snug text-ink ${d.fine ? 'text-[14px] font-semibold' : 'text-[17px] font-bold tracking-tight'}`}>{d.value}</div>
+                        )}
+                        {d.note && (
+                          <div className={`mt-1 leading-relaxed text-ink-soft ${d.fine ? 'text-[12px] tabular-nums' : 'text-[13px]'}`}>{d.note}</div>
+                        )}
                       </div>
-                      <p className="text-[13px] text-ink-soft leading-relaxed">{c.desc}</p>
-                    </div>
+                    ))}
                   </div>
-                ))}
+                </div>
               </div>
             </div>
 
