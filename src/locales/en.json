@@ -1805,66 +1805,56 @@
     },
     "cases": {
       "title": "Real Evix clients",
-      "desc": "Clinics and experts in aesthetic medicine running their content on Evix. Below — the NOMOS Clinic growth case and the other clients' platforms.",
-      "realBadge": "Evix client",
+      "desc": "Clinics and experts in aesthetic medicine running their content on Evix. Below — a live growth dashboard for NOMOS Clinic; the other clients can be expanded.",
+      "othersTitle": "More clients on Evix",
+      "othersDesc": "Click a client to see their per-platform growth.",
+      "audienceLabel": "followers",
+      "proofHeading": "Profile screenshots — for proof",
+      "proofPlaceholderHeading": "Profile screenshots — placeholders, to be replaced",
+      "dashboard": {
+        "totalLabel": "Total audience across all socials",
+        "perDay": "per day",
+        "perMonth": "per month",
+        "videos": "videos on Evix",
+        "live": "Updates in real time"
+      },
       "featured": {
-        "niche": "Cosmetology · trichology",
         "title": "How NOMOS Clinic grows on content with Evix",
-        "desc": "NOMOS Clinic is a Moscow clinic of aesthetic cosmetology and trichology, 15+ years on the market. The clinic runs its short-form content on Evix: AI avatars, scripts built on niche hooks, auto-editing and publishing. That's how it built an audience on YouTube and TikTok and steadily ships videos — with up to 130K views each.",
-        "statsLabel": "Results across platforms",
-        "stats": {
-          "0": {
-            "value": "523",
-            "label": "videos on Evix"
-          },
-          "1": {
-            "value": "72.5K",
-            "label": "subscribers · YouTube"
-          },
-          "2": {
-            "value": "161.8K",
-            "label": "followers · TikTok"
-          },
-          "3": {
-            "value": "2.2M",
-            "label": "likes · TikTok"
-          }
-        },
+        "desc": "NOMOS Clinic is a Moscow clinic of aesthetic cosmetology and trichology, 15+ years on the market. The clinic runs its short-form content on Evix: AI avatars, scripts built on niche hooks, auto-editing and publishing. That's how it gathered nearly half a million followers across all social networks — and keeps growing every day.",
         "points": {
           "0": "Tone of Voice quiz and cores tuned to the cosmetology niche",
           "1": "Competitor parsing in the niche and hook collection",
           "2": "Scripts, AI-avatar voiceover and auto-editing",
           "3": "Publishing to YouTube, TikTok and VK from one workspace"
         },
-        "platformsLabel": "Client's platforms",
         "cta": "I want the same"
       },
-      "roster": {
-        "title": "Who we work with",
-        "desc": "A few more clinics and experts on Evix. Click a social icon to open the profile.",
-        "items": {
-          "institut": {
-            "name": "Institut Plastiki",
-            "niche": "Plastic surgery",
-            "note": ""
-          },
-          "genetic": {
-            "name": "Kristina Kuznetsova",
-            "niche": "Genetics · nutrition",
-            "note": ""
-          },
-          "inmedos": {
-            "name": "Inmedos",
-            "niche": "Medical center",
-            "note": ""
-          },
-          "volos": {
-            "name": "doctor__volos",
-            "niche": "Trichology",
-            "note": ""
-          }
+      "list": {
+        "nomos": {
+          "name": "NOMOS Clinic",
+          "niche": "Cosmetology · trichology"
+        },
+        "institut": {
+          "name": "Institut Plastiki",
+          "niche": "Plastic surgery"
+        },
+        "kristina": {
+          "name": "Kristina Kuznetsova",
+          "niche": "Genetics · nutrition"
+        },
+        "vsesvoi": {
+          "name": "VseSvoi",
+          "niche": ""
+        },
+        "volos": {
+          "name": "Doctor Volos",
+          "niche": "Trichology"
         }
-      }
+      },
+      "viewStats": "View stats",
+      "close": "Close",
+      "showAll": "Show all ({{n}})",
+      "collapse": "Collapse list"
     }
   },
   "contacts": {
