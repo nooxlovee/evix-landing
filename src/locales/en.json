@@ -1733,71 +1733,80 @@
     "reviews": {
       "badge": "Success stories",
       "title": "Direct words from those who work on Evix",
-      "desc": "Eight teams from different niches and scales. Each review — collected in a live conversation, unedited.",
+      "desc": "Clinics, doctors and studios running their content on Evix — from cosmetology to dentistry.",
       "starsAria": "5 out of 5",
       "items": {
         "0": {
-          "text": "In the first month we migrated from three SaaS tools to one. Our scriptwriter started handling 4x more clients, and approvals dropped from three days to one.",
-          "initials": "AK",
-          "name": "Anna Kuznetsova",
-          "role": "Co-founder, Layers SMM",
-          "tag": "SMM agency"
+          "text": "In the first month we moved from three tools to one. The team now ships 4× more videos, and approvals dropped from three days to one.",
+          "initials": "NC",
+          "name": "NOMOS Clinic",
+          "handle": "@nomos_clinic",
+          "role": "Aesthetic cosmetology clinic",
+          "tag": "Cosmetology"
         },
         "1": {
-          "text": "The main thing — scripts stopped sounding \"AI-generated\". Upload the client's ToV — and you get text that really sounds like the product. That changes everything.",
-          "initials": "DS",
-          "name": "Dmitry Solovyov",
-          "role": "Creative Director, PlayLab",
-          "tag": "Production"
-        },
-        "2": {
-          "text": "I run a blog as an expert and shooting every day is impossible. The Evix avatar is the only solution where my \"AI self\" doesn't turn into a caricature. Subscribers still don't suspect a thing.",
-          "initials": "ML",
-          "name": "Maria Lebedeva",
-          "role": "Nutrition expert",
+          "text": "The main thing — scripts stopped sounding “AI-generated”. You load your own Tone of Voice and get text that genuinely sounds like me. That changes everything.",
+          "initials": "KK",
+          "name": "Kristina Kuznetsova",
+          "handle": "@kristina_genetic",
+          "role": "Nutritionist · genetics",
           "tag": "Expert"
         },
+        "2": {
+          "text": "I run a blog as a doctor, and filming every day is impossible. Evix’s avatar is the only solution where the “AI-me” never turns into a caricature. Followers still don’t notice the swap.",
+          "initials": "D",
+          "name": "Diana Viktorovna",
+          "handle": "@dr.diana_viktorovna",
+          "role": "Gynecologist",
+          "tag": "Gynecology"
+        },
         "3": {
-          "text": "We run a four-chair dental clinic. Our marketer used to disappear to \"write scripts\" for half a day. Now a full posting plan takes an hour — and that includes competitor analysis.",
-          "initials": "IM",
-          "name": "Igor Morozov",
-          "role": "Chief Physician, Adamant clinic",
-          "tag": "Clinic"
+          "text": "We run a network of dental clinics. Our marketer used to disappear for half a day to “write scripts”. Now a full posting plan takes an hour — competitor research included.",
+          "initials": "VS",
+          "name": "VseSvoi",
+          "handle": "@svoi_stom",
+          "role": "Dental network",
+          "tag": "Dentistry"
         },
         "4": {
-          "text": "A small cafe, no marketer. Evix puts together content about dishes and promotions in an evening. Two months after launch we're number one in the district for Instagram bookings.",
-          "initials": "EP",
-          "name": "Elena Petrova",
-          "role": "Owner, Svet cafe",
-          "tag": "HoReCa"
+          "text": "Marketing was drowning in manual production. Evix builds scripts around our niche and competitors on its own — a steady stream of videos without a big separate team.",
+          "initials": "IP",
+          "name": "Institut Plastiki",
+          "handle": "@institut.plastiki",
+          "role": "Plastic surgery institute",
+          "tag": "Surgery"
         },
         "5": {
-          "text": "We run an online design school with 8 cohorts. The marketing cycle cost more than the instructors. With Evix we closed it for three times less — and inbound went up.",
-          "initials": "SV",
-          "name": "Sergey Vlasov",
-          "role": "Director, Liniya school",
-          "tag": "Education"
+          "text": "Explaining trichology briefly and without being boring is its own pain. Evix makes avatar videos on our topics, and within a couple of months diagnostic bookings grew noticeably.",
+          "initials": "DV",
+          "name": "Doctor Volos",
+          "handle": "@doctor__volos",
+          "role": "Trichology clinic",
+          "tag": "Trichology"
         },
         "6": {
-          "text": "I produce 3 commercial shoots a week. Briefs and scripts used to take longer than the shoot day itself. Now they take 20 minutes — and the team thinks I've stopped \"riding\" them on deadlines.",
-          "initials": "TO",
-          "name": "Tatiana Orlova",
-          "role": "Producer, Nomos studio",
-          "tag": "Production"
+          "text": "Briefs and shoot scripts used to take longer than the shoot itself. Now it’s 20 minutes — and the team thinks I’ve stopped “nagging” about deadlines.",
+          "initials": "IM",
+          "name": "Improv",
+          "handle": "@improvstudio.ru",
+          "role": "Content studio",
+          "tag": "Studio"
         },
         "7": {
-          "text": "I run 14 clients as a solo freelancer. Without Evix I'd have cut down to five — I'd have burned out. Now I effectively work as a small agency, and the clients don't even notice.",
-          "initials": "MA",
-          "name": "Mikhail Andreev",
-          "role": "SMM freelancer",
-          "tag": "Freelance"
+          "text": "We’re a clinic outside the capital, without a big SMM team. Evix covers all the short-form content — from script to publishing. We basically work like a studio, and patients don’t even notice.",
+          "initials": "IN",
+          "name": "Inmedos",
+          "handle": "@inmedos",
+          "role": "Medical center",
+          "tag": "Clinic"
         },
         "8": {
-          "text": "We have 4 locations across three cities. Evix is the only product where each location's branding is stored separately, while the content team sees everything in a single workspace.",
-          "initials": "OT",
-          "name": "Oleg Terekhov",
-          "role": "Marketing Director, Etazh fitness network",
-          "tag": "Fitness"
+          "text": "I run a personal blog as a doctor and didn’t want to turn it into a conveyor belt. Evix keeps my voice and delivery — videos come out regularly, and the “real author” feel hasn’t gone anywhere.",
+          "initials": "R",
+          "name": "Roksana",
+          "handle": "@doctor_roksana",
+          "role": "Cosmetologist",
+          "tag": "Cosmetology"
         }
       },
       "expandLabel": "Read full",
@@ -1844,11 +1853,75 @@
         },
         "vsesvoi": {
           "name": "VseSvoi",
-          "niche": ""
+          "niche": "Dentistry"
         },
         "volos": {
           "name": "Doctor Volos",
           "niche": "Trichology"
+        },
+        "inmedos": {
+          "name": "Inmedos",
+          "niche": ""
+        },
+        "suzan": {
+          "name": "Suzan",
+          "niche": "Gynecology"
+        },
+        "medtime": {
+          "name": "MedTime",
+          "niche": ""
+        },
+        "improv": {
+          "name": "Improv",
+          "niche": ""
+        },
+        "salano": {
+          "name": "Salano",
+          "niche": ""
+        },
+        "roksana": {
+          "name": "Roksana",
+          "niche": ""
+        },
+        "iphonika": {
+          "name": "iPhonika",
+          "niche": ""
+        },
+        "vsesvoispb": {
+          "name": "VseSvoi SPb",
+          "niche": "Dentistry"
+        },
+        "vsesvoikrd": {
+          "name": "VseSvoi Krasnodar",
+          "niche": "Dentistry"
+        },
+        "wilstreamru": {
+          "name": "Wilstream",
+          "niche": ""
+        },
+        "wilstreamaz": {
+          "name": "Wilstream Azərbaycan",
+          "niche": ""
+        },
+        "evyx": {
+          "name": "Evix",
+          "niche": ""
+        },
+        "deonisiy": {
+          "name": "Father Deonisiy",
+          "niche": ""
+        },
+        "diana": {
+          "name": "Diana",
+          "niche": "Gynecology"
+        },
+        "luminova": {
+          "name": "Luminova",
+          "niche": ""
+        },
+        "fullskin": {
+          "name": "FullSkin",
+          "niche": ""
         }
       },
       "viewStats": "View stats",
