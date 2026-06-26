@@ -517,10 +517,12 @@ function PlatformStat({ data, locale, monthLabel }) {
 
 // Per-platform growth grid — reused by the featured card and every accordion client.
 function ClientDashboard({ platforms, locale, monthLabel }) {
-  const colCls = COLS[Math.min(6, Math.max(2, platforms.length))] || COLS[6];
+  // Show only platforms with a growth chart — hide entries that have no `spark` data.
+  const shown = platforms.filter((d) => d.spark);
+  const colCls = COLS[Math.min(6, Math.max(2, shown.length))] || COLS[6];
   return (
     <div className={`grid ${colCls} gap-px bg-line rounded-rlg overflow-hidden border border-line`}>
-      {platforms.map((d) => (
+      {shown.map((d) => (
         <div key={d.p} className="bg-white"><PlatformStat data={d} locale={locale} monthLabel={monthLabel} /></div>
       ))}
     </div>
