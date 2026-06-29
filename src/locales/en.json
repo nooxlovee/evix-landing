@@ -1927,7 +1927,8 @@
       "viewStats": "View stats",
       "close": "Close",
       "showAll": "Show all ({{n}})",
-      "collapse": "Collapse list"
+      "collapse": "Collapse list",
+      "newBadge": "new"
     }
   },
   "contacts": {
