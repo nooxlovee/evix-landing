@@ -24,10 +24,10 @@ export default function Footer() {
           <div className="relative flex lg:justify-end">
             <Link
               to="/#contact"
-              className="group inline-flex items-center gap-2 px-6 py-3.5 rounded-[14px] bg-brand text-white text-sm font-bold tracking-tight hover:bg-brand-deep shadow-mint hover:shadow-mint-hover transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-[14px] bg-brand text-white text-sm font-bold tracking-tight hover:bg-brand-deep hover:-translate-y-0.5 shadow-mint hover:shadow-mint-hover transition-all"
             >
               {t('footer.cta.button')}
-              <svg className="w-4 h-4 transition-transform group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M5 12h14" />
                 <path d="M13 5l7 7-7 7" />
               </svg>
@@ -111,8 +111,7 @@ export default function Footer() {
             <span>{t('footer.rights')}</span>
             <span className="hidden sm:inline text-line-strong">·</span>
             <span className="hidden sm:inline">{t('footer.madeIn')}</span>
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-mint-50 text-brand-deep text-[11px] font-semibold border border-mint-300/40">
-              <span aria-hidden="true" className="w-1.5 h-1.5 rounded-full bg-mint-500 animate-pulse" />
+            <span className="text-brand-deep text-[11px] font-semibold">
               {t('footer.status')}
             </span>
           </div>

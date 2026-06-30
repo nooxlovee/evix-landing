@@ -4,33 +4,12 @@ function cn(...args) {
   return args.filter(Boolean).join(' ');
 }
 
-function Avatar({ initials, avatar, username, size = 'md' }) {
-  const sizeCls = size === 'sm'
-    ? 'w-9 h-9 text-xs'
-    : 'w-11 h-11 sm:w-12 sm:h-12 text-[15px] sm:text-base';
-  return (
-    <div className={cn(
-      'rounded-full bg-gradient-to-br from-mint-300 via-mint-400 to-mint-600 grid place-items-center overflow-hidden shrink-0 font-bold text-[#04241a]',
-      sizeCls
-    )}>
-      {avatar ? (
-        <img src={avatar} alt={username || ''} className="w-full h-full object-cover" />
-      ) : (
-        <span>{initials}</span>
-      )}
-    </div>
-  );
-}
-
-function TestimonialCardInner({ initials, avatar, username, handle, content, date, flat }) {
+function TestimonialCardInner({ username, handle, content, date, flat }) {
   return (
     <>
-      <div className="flex items-start gap-2.5 sm:gap-3 mb-2.5 sm:mb-3">
-        <Avatar initials={initials} avatar={avatar} username={username} />
-        <div className="flex-1 min-w-0">
-          <span className="block font-bold text-ink dark:text-white truncate text-[13px] sm:text-[15px]">{username}</span>
-          <span className="text-ink-mute dark:text-white/55 text-[11px] sm:text-[13px] truncate block">{handle}</span>
-        </div>
+      <div className="flex flex-col mb-2.5 sm:mb-3 min-w-0">
+        <span className="block font-bold text-ink dark:text-white truncate text-[13px] sm:text-[15px]">{username}</span>
+        <span className="text-ink-mute dark:text-white/55 text-[11px] sm:text-[13px] truncate block">{handle}</span>
       </div>
 
       <p className={cn(

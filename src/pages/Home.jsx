@@ -5,8 +5,8 @@ import { motion } from 'framer-motion';
 import { EditorialHero } from '../components/ui/EditorialHero';
 import { InfiniteSlider } from '../components/ui/InfiniteSlider';
 import { TestimonialsColumn } from '../components/ui/TestimonialsColumn';
-import { MagneticButton } from '../components/ui/MagneticButton';
 import { AnimatedCounter } from '../components/ui/AnimatedCounter';
+import { Button } from '../components/ui/Button';
 
 /* ─── DATA SHAPES ───────────────────────────────────────────────── */
 
@@ -31,89 +31,51 @@ const getReviewsData = (t) => [
 
 const clientsData = [
   {
-    name: 'Nomos',
+    name: 'NOMOS Clinic',
     logo: (
-      <span className="brand-logo">
-        <span className="inline-block w-2.5 h-2.5 rounded-full bg-mint-600" aria-hidden="true" />
-        <span className="text-[19px] font-extrabold tracking-[0.22em] uppercase">NOMOS</span>
-      </span>
+      <span className="brand-logo text-[18px] font-extrabold tracking-tight">NOMOS Clinic</span>
     ),
   },
   {
-    name: 'Layers',
+    name: 'Институт пластики',
     logo: (
-      <span className="brand-logo">
-        <svg className="w-[18px] h-[18px] text-mint-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-          <polygon points="12 2 2 7 12 12 22 7 12 2" />
-          <polyline points="2 17 12 22 22 17" />
-          <polyline points="2 12 12 17 22 12" />
-        </svg>
-        <span className="text-[22px] font-extrabold tracking-tight">Layers</span>
-      </span>
+      <span className="brand-logo text-[16px] font-extrabold tracking-tight">Институт пластики</span>
     ),
   },
   {
-    name: 'PlayLab',
+    name: 'Кристина Кузнецова',
     logo: (
-      <span className="brand-logo">
-        <span className="text-[22px] font-extrabold tracking-[-0.03em]">
-          PLAY<span className="font-light italic text-mint-700">lab</span>
-        </span>
-      </span>
+      <span className="brand-logo text-[16px] font-extrabold tracking-tight">Кристина Кузнецова</span>
     ),
   },
   {
-    name: 'Studio M',
+    name: 'Inmedos',
     logo: (
-      <span className="brand-logo">
-        <span className="inline-flex w-7 h-7 rounded-md bg-ink text-white items-center justify-center text-[14px] font-extrabold leading-none" aria-hidden="true">M</span>
-        <span className="text-[13px] font-bold tracking-[0.22em] uppercase">Studio</span>
-      </span>
+      <span className="brand-logo text-[18px] font-extrabold tracking-tight">Inmedos</span>
     ),
   },
   {
-    name: 'Reel.it',
+    name: 'ВсеСвои',
     logo: (
-      <span className="brand-logo">
-        <span className="text-[22px] font-extrabold lowercase tracking-[-0.02em]">
-          reel<span className="text-mint-500">·</span>it
-        </span>
-      </span>
+      <span className="brand-logo text-[18px] font-extrabold tracking-tight">ВсеСвои</span>
     ),
   },
   {
-    name: 'Vortex',
+    name: 'Доктор Волос',
     logo: (
-      <span className="brand-logo">
-        <svg className="w-5 h-5 text-mint-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-          <circle cx="12" cy="12" r="10" />
-          <path d="M2 12c5-5 15-5 20 0" />
-          <path d="M22 12c-5 5-15 5-20 0" />
-        </svg>
-        <span className="text-[19px] font-extrabold tracking-[0.16em] uppercase">VORTEX</span>
-      </span>
+      <span className="brand-logo text-[16px] font-extrabold tracking-tight">Доктор Волос</span>
     ),
   },
   {
-    name: 'Pulse',
+    name: 'Импров',
     logo: (
-      <span className="brand-logo">
-        <svg className="w-6 h-4 text-mint-500" viewBox="0 0 24 16" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-          <path d="M1 8 L6 8 L9 2 L13 14 L17 8 L23 8" />
-        </svg>
-        <span className="text-[22px] font-extrabold tracking-[-0.02em] italic">Pulse.</span>
-      </span>
+      <span className="brand-logo text-[18px] font-extrabold tracking-tight">Импров</span>
     ),
   },
   {
-    name: 'Stellar',
+    name: 'Медтайм',
     logo: (
-      <span className="brand-logo">
-        <svg className="w-5 h-5 text-mint-500" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <polygon points="12 2 15 9 22 9 17 14 19 22 12 18 5 22 7 14 2 9 9 9 12 2" />
-        </svg>
-        <span className="text-[19px] font-extrabold tracking-[0.16em] uppercase">STELLAR</span>
-      </span>
+      <span className="brand-logo text-[18px] font-extrabold tracking-tight">Медтайм</span>
     ),
   },
 ];
@@ -646,12 +608,12 @@ export default function Home() {
                 </p>
 
                 <div className="conv-form__cta">
-                  <MagneticButton type="submit" size="xl" className="btn-shine">
+                  <Button type="submit" size="xl">
                     {t('home.contact.form.submit')}
                     <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                       <path d="M5 12h14" /><path d="M13 6l6 6-6 6" />
                     </svg>
-                  </MagneticButton>
+                  </Button>
                   <p className="conv-form__privacy">{t('home.contact.form.privacy')}</p>
                 </div>
               </form>

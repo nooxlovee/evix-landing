@@ -27,7 +27,7 @@ export function EditorialHero({
         </p>
 
         <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6">
-          <Button onClick={onPrimaryClick} className="btn-shine" size="xl">
+          <Button onClick={onPrimaryClick} size="xl">
             {buttonText}
             <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="M5 12h14" /><path d="M13 6l6 6-6 6" />
